@@ -13,7 +13,7 @@ def test_preferences(client,username):
     client(className="XCUIElementTypeTextField").clear_text()
     client(className="XCUIElementTypeTextField").set_text(username)
     client.xpath('//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]/Button[1]/StaticText[1]').click()
-    client(className="XCUIElementTypeSecureTextField").set_text("123456yyy")
+    client(className="XCUIElementTypeSecureTextField").set_text("qwe12345")
     client.xpath('//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Button[2]').click()
     time.sleep(5)
     if client(label="daily reward close").exists :
