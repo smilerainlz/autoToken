@@ -42,7 +42,7 @@ if myclient(label="我的").exists :
     myclient.xpath('//Window[1]/Other[2]/Other[1]/Other[1]/Button[1]/StaticText[1]').click()
 while True :
     runCount = runCount + 1
-    if runCount%20==0:
+    if runCount%10==0:
         os.system('sh ../charles-start.sh')
     file = codecs.open("username.txt", 'r', "utf-8")
     for line in file:
