@@ -15,7 +15,7 @@ def test_preferences(client,username):
     client.xpath('//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]/Button[1]/StaticText[1]').click()
     client(className="XCUIElementTypeSecureTextField").set_text("qwe12345")
     client.xpath('//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Button[2]').click()
-    time.sleep(5)
+    time.sleep(3)
     if client(label="daily reward close").exists :
         client.xpath('//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]/Other[1]/Image[1]/Image[1]').click()
         time.sleep(3)
@@ -44,7 +44,7 @@ while True :
     runCount = runCount + 1
     if runCount%10==0:
         os.system('sh ../charles-start.sh')
-    file = codecs.open("username.txt", 'r', "utf-8")
+    file = codecs.open("blindbox.txt", 'r', "utf-8")
     for line in file:
         test_preferences(myclient,line)
     file.close()
