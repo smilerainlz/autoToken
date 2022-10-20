@@ -1,4 +1,33 @@
 import os,wda,codecs,time
+
+def addFirend(d):
+    d.click(0.63, 0.145)
+    d.send_keys("588815")
+    d(label="search").click()
+    d.click(0.26, 0.148)
+    d.click(0.106, 0.307)
+    d.xpath('//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[3]/Button[1]/StaticText[1]').click()
+    d(label="orangy ic profile back icon").click()
+    d.click(0.893, 0.094)
+
+def removeGZ(d):
+    d(label="我的").click()
+    d.xpath('//Table/Other[1]/Other[2]/Other[3]').click()
+    while True :
+        d.xpath('//Table/Button[2]/StaticText[1]').click()
+        d.xpath('//NavigationBar/Button[2]/StaticText[1]').click()
+        d.xpath('//Table/Cell[2]/Button[1]').click()
+        d.xpath('//Table/Cell[3]/Button[1]').click()
+        d.xpath('//Table/Cell[4]/Button[1]').click()
+        d.xpath('//Table/Cell[5]/Button[1]').click()
+        d.xpath('//Table/Cell[6]/Button[1]').click()
+        d.xpath('//Table/Cell[7]/Button[1]').click()
+        d.xpath('//Table/Cell[8]/Button[1]').click()
+        d.xpath('//Table/Cell[9]/Button[1]').click()
+        d.xpath('//Table/Cell[10]/Button[1]').click()
+        d.xpath('//NavigationBar/Button[2]/StaticText[1]').click()
+        d.xpath('//Window[1]/Other[2]/Other[2]/Button[3]/StaticText[1]').click()
+
 def test_preferences(client,username):
     #print("Status:", client.status())
     #print("Info:", client.info)
@@ -20,6 +49,7 @@ def test_preferences(client,username):
         client.xpath('//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]/Other[1]/Image[1]/Image[1]').click()
         time.sleep(3)
         client(label="daily reward close").click()
+    removeGZ(client)
     client(label="我的").click()
     client(label="orangy ic hl me page setting i").click()
     client.xpath('//ScrollView/Button[10]').click()
