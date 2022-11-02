@@ -74,20 +74,20 @@ def close(client, appName):
         if client(label="ppx ic main activity close").exists:
             client(label="ppx ic main activity close").click()
     # 退出
-    # if client(label="我的").exists:
-    client(label="我的").click()
-    if appName == "cm":
-        client(label="orangy ic hl me page setting i").click()
-    if appName == "ppx":
-        client(label="ppx ic hl me page setting icon").click()
-    client.xpath('//ScrollView/Button[10]').click()
-    client.xpath('//Window[1]/Other[2]/Other[1]/Other[1]/Button[1]/StaticText[1]').click()
+    if client(label="我的").exists:
+        client(label="我的").click()
+        if appName == "cm":
+            client(label="orangy ic hl me page setting i").click()
+        if appName == "ppx":
+            client(label="ppx ic hl me page setting icon").click()
+        client.xpath('//ScrollView/Button[10]').click()
+        client.xpath('//Window[1]/Other[2]/Other[1]/Other[1]/Button[1]/StaticText[1]').click()
 
 
 def test_preferences(client, username, appName):
     # 登录
     login(client, username, appName)
-    time.sleep(1)
+    time.sleep(3)
     # 如果登录过期
     if client(label="确定").exists:
         client(label="确定").click()
