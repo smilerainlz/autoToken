@@ -93,7 +93,7 @@ def test_preferences(client, username, appName):
         client(label="确定").click()
         # 重新登录
         login(client, username, appName)
-    time.sleep(3)
+        time.sleep(3)
     close(client, appName)
 
 
