@@ -2,12 +2,15 @@ import os,wda,codecs,time
 
 def addFirend(d):
     d.click(0.63, 0.145)
-    d.send_keys("588815")
+    d.send_keys("83881191")
     d(label="search").click()
+    time.sleep(1)
     d.click(0.26, 0.148)
+    time.sleep(1)
     d.click(0.106, 0.307)
     d.xpath('//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[3]/Button[1]/StaticText[1]').click()
     d(label="orangy ic profile back icon").click()
+    time.sleep(1)
     d.click(0.893, 0.094)
 
 def removeGZ(d):
@@ -35,7 +38,6 @@ def test_preferences(client,username):
     #print("AppCurrent:", client.app_current())
     print("当前时间: %s" % time.ctime())
     print(username)
-
     if not client(className="XCUIElementTypeOther").accessible :
     	client.click(0.09, 0.893)
     client(label="orangy ic UserName Login Icon").click()
@@ -44,16 +46,20 @@ def test_preferences(client,username):
     client.xpath('//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]/Button[1]/StaticText[1]').click()
     client(className="XCUIElementTypeSecureTextField").set_text("qwe12345")
     client.xpath('//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Button[2]').click()
-    time.sleep(5)
+    time.sleep(3)
+    if client(label="确定").exists :
+        client(label="确定").click()
+        time.sleep(3)
     if client(label="daily reward close").exists :
         client.xpath('//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]/Other[1]/Image[1]/Image[1]').click()
         time.sleep(3)
         client(label="daily reward close").click()
-    removeGZ(client)
-    client(label="我的").click()
-    client(label="orangy ic hl me page setting i").click()
-    client.xpath('//ScrollView/Button[10]').click()
-    client.xpath('//Window[1]/Other[2]/Other[1]/Other[1]/Button[1]/StaticText[1]').click()
+    #addFirend(client)
+    if client(label="我的").exists :
+        client(label="我的").click()
+        client(label="orangy ic hl me page setting i").click()
+        client.xpath('//ScrollView/Button[10]').click()
+        client.xpath('//Window[1]/Other[2]/Other[1]/Other[1]/Button[1]/StaticText[1]').click()
     time.sleep(1)
 
 runCount=0

@@ -16,6 +16,9 @@ def test_preferences(client,username):
     client(className="XCUIElementTypeSecureTextField").set_text("qwe12345")
     client.xpath('//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Button[2]').click()
     time.sleep(3)
+    if client(label="确定").exists :
+        client(label="确定").click()
+        time.sleep(3)
     if client(label="daily reward close").exists :
         client.xpath('//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]/Other[1]/Image[1]/Image[1]').click()
         time.sleep(3)
