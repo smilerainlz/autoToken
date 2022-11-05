@@ -45,17 +45,14 @@ def login(client, username, appName):
     if not client(className="XCUIElementTypeOther").accessible:
         client.click(0.09, 0.893)
     # 选择用户名登录
-    if appName == "cm":
-        client(label="orangy ic UserName Login Icon").click()
-    if appName == "ppx":
-        client(label="ppx ic UserName Login Icon").click()
+    client(label="手机登录/注册").click()
     # 清空用户名并输入用户名
     client(className="XCUIElementTypeTextField").clear_text()
     client(className="XCUIElementTypeTextField").set_text(username)
     # 点击密码输入框并输入密码
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]/Button[1]/StaticText[1]').click()
-    client(className="XCUIElementTypeSecureTextField").set_text("qwe12345")
+    client(className="XCUIElementTypeSecureTextField").set_text("123321zz1029")
     # 点击登录
     client.xpath('//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Button[2]').click()
 
@@ -98,7 +95,7 @@ def test_preferences(client, username, appName):
 
 
 runCount = 0
-myclient = wda.USBClient("00008101-000958911A91001E",port=8100)
+myclient = wda.USBClient()
 while True:
     # 打开cm
     myclient.session().app_terminate("sg.bigo.orangy")
