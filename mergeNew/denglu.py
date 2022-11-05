@@ -97,23 +97,6 @@ def test_preferences(client, username, appName):
 runCount = 0
 myclient = wda.USBClient()
 while True:
-    # 打开cm
-    myclient.session().app_terminate("sg.bigo.orangy")
-    myclient.session().app_activate("sg.bigo.orangy")
-    if myclient(label="确定").exists:
-        myclient(label="确定").click()
-    # 初始化一次，如果未退出就退出
-    close(myclient, "cm")
-    runCount = runCount + 1
-    # 循环超过10次重启charles
-    if runCount % 10 == 0:
-        os.system('sh ../charles-start.sh')
-    file_cm = codecs.open("username_cm.txt", 'r', "utf-8")
-    for line in file_cm:
-        test_preferences(myclient, line, "cm")
-    file_cm.close()
-    time.sleep(3)
-
     # 打开ppx
     myclient.session().app_terminate("sg.bigo.pipixia")
     myclient.session().app_activate("sg.bigo.pipixia")
