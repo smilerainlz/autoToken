@@ -99,9 +99,9 @@ def test_preferences(client, username, appName):
 
 runCount = 0
 # 本机
-myclient = wda.USBClient("00008101-000958911A91001E",port=8100)
+# myclient = wda.USBClient("00008101-000958911A91001E",port=8100)
 # 测试机器
-# myclient = wda.USBClient("00008101-0006310A0C32001E",port=8100)
+myclient = wda.USBClient("00008101-0006310A0C32001E",port=8100)
 while True:
     # 打开cm
     myclient.session().app_terminate("sg.bigo.orangy")
