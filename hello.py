@@ -150,12 +150,15 @@ def init(client, appName):
         close(client, "ppx", "false")
 
 
-def getDiamond(client):
+def getDiamond(client, appName):
     client(label="我的").click()
     client.xpath('//Table/Cell[1]').click()
     time.sleep(3)
     print("钻石：" + client(className="XCUIElementTypeStaticText")[5].value)
-    client(label="orangy ic common back black").click()
+    if appName == "cm":
+        client(label="orangy ic common back black").click()
+    if appName == "ppx":
+        client(label="ppx ic common back black").click()
 
 
 def process(client, username, appName, device, loginType):
@@ -169,7 +172,7 @@ def process(client, username, appName, device, loginType):
             # 重新登录
             login(client, username, appName)
             time.sleep(3)
-        getDiamond(client)
+        getDiamond(client, appName)
         close(client, appName, "true")
     except:
         print("捕获异常，重新调用登录")
