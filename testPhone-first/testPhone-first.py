@@ -20,6 +20,12 @@ while True:
     # 打开ppx
     hello.init(myclient, "cm")
 
+    file_cm = codecs.open("../data/base_cm.txt", 'r', "utf-8")
+    for line in file_cm:
+        hello.process(myclient, line, "cm", "testPhone", "username")
+    file_cm.close()
+    time.sleep(3)
+
     # 打开ppx
     hello.init(myclient, "ppx")
 

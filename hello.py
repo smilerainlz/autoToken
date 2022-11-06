@@ -163,5 +163,6 @@ def process(client, username, appName, device, loginType):
             time.sleep(3)
         close(client, appName, "true")
     except:
+        print("捕获异常，重新调用登录")
         init(client, appName)
         process(client, username, appName, device, loginType)
