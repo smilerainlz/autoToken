@@ -37,6 +37,23 @@ def removeGZ(client):
         client.xpath('//NavigationBar/Button[2]/StaticText[1]').click()
         client.xpath('//Window[1]/Other[2]/Other[2]/Button[3]/StaticText[1]').click()
 
+def modifyPwd(client):
+    client(label="我的").click()
+    time.sleep(1)
+    client.xpath('//Table/Cell[7]').click()
+    time.sleep(1)
+    client.xpath('//Table/Cell[3]').click()
+    client.xpath('//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/SecureTextField[1]').click()
+    client.xpath('//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/SecureTextField[1]').set_text("123321zz1029")
+    client.xpath('//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]').click()
+    client.xpath('//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]').set_text("qwe12345")
+    client.xpath('//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[4]/SecureTextField[1]').click()
+    client.xpath('//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[4]/SecureTextField[1]').set_text("qwe12345")
+    time.sleep(1)
+    client.xpath('//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Button[1]').click()
+    time.sleep(1)
+    client(label="ppx ic common back black").click()
+    client(label="ppx ic common back black").click()
 
 def login(client, username, appName):
     print("当前时间: %s" % time.ctime())
@@ -52,7 +69,7 @@ def login(client, username, appName):
     # 点击密码输入框并输入密码
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]/Button[1]/StaticText[1]').click()
-    client(className="XCUIElementTypeSecureTextField").set_text("123321zz1029")
+    client(className="XCUIElementTypeSecureTextField").set_text("qwe12345")
     # 点击登录
     client.xpath('//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Button[2]').click()
 

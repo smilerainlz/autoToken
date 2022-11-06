@@ -99,9 +99,9 @@ def test_preferences(client, username, appName):
 
 runCount = 0
 # 本机
-# myclient = wda.USBClient("00008101-000958911A91001E",port=8100)
+myclient = wda.USBClient("00008101-000958911A91001E",port=8100)
 # 测试机器
-myclient = wda.USBClient("00008101-0006310A0C32001E",port=8100)
+# myclient = wda.USBClient("00008101-0006310A0C32001E",port=8100)
 while True:
     # 打开cm
     myclient.session().app_terminate("sg.bigo.orangy")
@@ -109,6 +109,7 @@ while True:
     if myclient(label="确定").exists:
         myclient(label="确定").click()
     # 初始化一次，如果未退出就退出
+    time.sleep(3)
     close(myclient, "cm")
     runCount = runCount + 1
     # 循环超过10次重启charles
