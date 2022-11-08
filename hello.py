@@ -172,7 +172,7 @@ def process(client, username, appName, device, loginType):
             # 重新登录
             login(client, username, appName)
             time.sleep(3)
-        getDiamond(client, appName)
+        # getDiamond(client, appName)
         close(client, appName, "true")
     except:
         print("捕获异常，重新调用登录")
