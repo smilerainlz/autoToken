@@ -71,7 +71,7 @@ def modifyPwd(client):
 # device(iphone or ipad)
 def login(client, username, appName, device, loginType):
     print("当前时间: %s" % time.ctime())
-    print(username)
+    print(username, end="")
     # 如果未勾选用户协议，勾选
     if not client(className="XCUIElementTypeOther").accessible:
         if device == "myPhone" or device == "testPhone":
@@ -154,7 +154,7 @@ def getDiamond(client, appName):
     client(label="我的").click()
     client.xpath('//Table/Cell[1]').click()
     time.sleep(3)
-    print(userName client(className="XCUIElementTypeStaticText")[5].value)
+    print(client(className="XCUIElementTypeStaticText")[5].value)
     if appName == "cm":
         client(label="orangy ic common back black").click()
     if appName == "ppx":
@@ -172,7 +172,7 @@ def process(client, username, appName, device, loginType):
             # 重新登录
             login(client, username, appName)
             time.sleep(3)
-        # getDiamond(client, appName, username)
+        # getDiamond(client, appName)
         close(client, appName, "true")
     except:
         print("捕获异常，重新调用登录")
