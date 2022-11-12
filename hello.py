@@ -154,7 +154,7 @@ def getDiamond(client, appName):
     client(label="我的").click()
     client.xpath('//Table/Cell[1]').click()
     time.sleep(3)
-    print(userName + " ：" + client(className="XCUIElementTypeStaticText")[5].value)
+    print(userName client(className="XCUIElementTypeStaticText")[5].value)
     if appName == "cm":
         client(label="orangy ic common back black").click()
     if appName == "ppx":
@@ -172,7 +172,7 @@ def process(client, username, appName, device, loginType):
             # 重新登录
             login(client, username, appName)
             time.sleep(3)
-        # getDiamond(client, appName)
+        # getDiamond(client, appName, username)
         close(client, appName, "true")
     except:
         print("捕获异常，重新调用登录")
