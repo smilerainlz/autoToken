@@ -1,6 +1,5 @@
 import wda, codecs, time
 
-
 def process(d, userId):
     print(userId)
     d.home()
