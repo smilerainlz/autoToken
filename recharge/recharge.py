@@ -46,8 +46,7 @@ myclient = wda.USBClient("00008101-000958911A91001E", port=8100)
 # myclient = wda.USBClient("00008101-0006310A0C32001E", port=8100)
 # ipad
 # myclient = wda.USBClient("00008030-001E245A21C0202E", port=8100)
-while True:
-    file = codecs.open("second.txt", 'r', "utf-8")
-    for line in file:
-        process(myclient, line)
-    file.close()
+file = codecs.open("second.txt", 'r', "utf-8")
+for line in file:
+    process(myclient, line)
+file.close()
