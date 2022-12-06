@@ -23,9 +23,9 @@ def process(d, userId):
     time.sleep(2)
     if d(label="打开").exists:
         d(label="打开").click()
-    print('购买Hello语音钻石到账号ID' + userId.strip().replace(' ', '').replace('\n', ''))
+    print('购买Hello语音钻石到账号ID' + userId)
     if d(className="XCUIElementTypeStaticText")[2].value != (
-            '购买Hello语音钻石到账号ID' + userId.strip().replace(' ', '').replace('\n', '')):
+            '购买Hello语音钻石到账号ID' + userId):
         print("充值账号错误，无限睡眠：" + d(className="XCUIElementTypeStaticText")[2].value)
         time.sleep(5000000)
     d(label="立即支付").click()
