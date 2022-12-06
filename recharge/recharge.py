@@ -1,6 +1,7 @@
 import wda, codecs, time
 
 def process(d, userId):
+    userId = userId.strip().replace(' ', '').replace('\n', '')
     print(userId)
     d.home()
     d(label="Safari浏览器").click()
@@ -22,7 +23,6 @@ def process(d, userId):
     time.sleep(2)
     if d(label="打开").exists:
         d(label="打开").click()
-    print(d(className="XCUIElementTypeStaticText")[2].value)
     print('购买Hello语音钻石到账号ID' + userId.strip().replace(' ', '').replace('\n', ''))
     if d(className="XCUIElementTypeStaticText")[2].value != (
             '购买Hello语音钻石到账号ID' + userId.strip().replace(' ', '').replace('\n', '')):
