@@ -168,14 +168,15 @@ def switchTab1(client):
     client.swipe(0.5, 0.5, 0.5, 0.01)
     client.swipe(0.5, 0.5, 0.5, 0.01)
     client.swipe(0.5, 0.5, 0.5, 0.01)
-    client.click(0.562, 0.252)
-    time.sleep(2)
-    for i in range(100):
+    time.sleep(3)
+    client.xpath('//Table/Cell[12]/Image[1]').click()
+    time.sleep(3)
+    for i in range(30):
         client.xpath(
             '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/WebView[1]/WebView[1]/WebView[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[3]').click()
         client.xpath(
             '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/WebView[1]/WebView[1]/WebView[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]').click()
-        time.sleep(5)
+        time.sleep(50)
 
 
 def process(client, username, appName, device, loginType):
@@ -190,7 +191,7 @@ def process(client, username, appName, device, loginType):
             login(client, username, appName)
             time.sleep(3)
         # getDiamond(client, appName)
-        # switchTab1(client)
+        switchTab1(client)
         close(client, appName, "true")
     except:
         print("捕获异常，重新调用登录")
