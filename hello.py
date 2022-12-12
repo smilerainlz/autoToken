@@ -53,12 +53,12 @@ def modifyPwd(client):
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]').click()
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]').set_text(
-        "qwe12345")
+        "123456yyy")
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[4]/SecureTextField[1]').click()
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[4]/SecureTextField[1]').set_text(
-        "qwe12345")
+        "123456yyy")
     time.sleep(1)
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Button[1]').click()
@@ -96,7 +96,7 @@ def login(client, username, appName, device, loginType):
     # 点击密码输入框并输入密码
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]/Button[1]/StaticText[1]').click()
-    client(className="XCUIElementTypeSecureTextField").set_text("qwe12345")
+    client(className="XCUIElementTypeSecureTextField").set_text("123456yyy")
     # 点击登录
     client.xpath('//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Button[2]').click()
 
@@ -190,6 +190,7 @@ def process(client, username, appName, device, loginType):
             login(client, username, appName)
             time.sleep(3)
         # getDiamond(client, appName)
+        # switchTab1(client)
         close(client, appName, "true")
     except:
         print("捕获异常，重新调用登录")

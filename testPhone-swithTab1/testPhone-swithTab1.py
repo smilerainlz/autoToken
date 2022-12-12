@@ -23,6 +23,5 @@ while True:
     file_cm = codecs.open("../data/base_swithTab1.txt", 'r', "utf-8")
     for line in file_cm:
         hello.process(myclient, line, "cm", "testPhone", "username")
-        hello.switchTab1(myclient)
     file_cm.close()
     time.sleep(3)
