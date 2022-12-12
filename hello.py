@@ -191,7 +191,7 @@ def process(client, username, appName, device, loginType):
             login(client, username, appName)
             time.sleep(3)
         # getDiamond(client, appName)
-        switchTab1(client)
+        # switchTab1(client)
         close(client, appName, "true")
     except:
         print("捕获异常，重新调用登录")
