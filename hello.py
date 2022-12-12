@@ -161,6 +161,23 @@ def getDiamond(client, appName):
         client(label="ppx ic common back black").click()
 
 
+def switchTab1(client):
+    client(label="发现").click()
+    client.swipe(0.5, 0.5, 0.5, 0.01)
+    client.swipe(0.5, 0.5, 0.5, 0.01)
+    client.swipe(0.5, 0.5, 0.5, 0.01)
+    client.swipe(0.5, 0.5, 0.5, 0.01)
+    client.swipe(0.5, 0.5, 0.5, 0.01)
+    client.click(0.562, 0.252)
+    time.sleep(2)
+    for i in range(100):
+        client.xpath(
+            '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/WebView[1]/WebView[1]/WebView[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[3]').click()
+        client.xpath(
+            '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/WebView[1]/WebView[1]/WebView[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]').click()
+        time.sleep(5)
+
+
 def process(client, username, appName, device, loginType):
     try:
         # 登录
