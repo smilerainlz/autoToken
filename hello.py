@@ -53,12 +53,12 @@ def modifyPwd(client):
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]').click()
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]').set_text(
-        "123456yyy")
+        "qwe12345")
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[4]/SecureTextField[1]').click()
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[4]/SecureTextField[1]').set_text(
-        "123456yyy")
+        "qwe12345")
     time.sleep(1)
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Button[1]').click()
@@ -96,7 +96,7 @@ def login(client, username, appName, device, loginType):
     # 点击密码输入框并输入密码
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]/Button[1]/StaticText[1]').click()
-    client(className="XCUIElementTypeSecureTextField").set_text("123456yyy")
+    client(className="XCUIElementTypeSecureTextField").set_text("qwe12345")
     # 点击登录
     client.xpath('//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Button[2]').click()
 
