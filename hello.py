@@ -171,12 +171,13 @@ def switchTab1(client):
     time.sleep(3)
     client.xpath('//Table/Cell[12]/Image[1]').click()
     time.sleep(3)
-    for i in range(30):
-        client.xpath(
-            '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/WebView[1]/WebView[1]/WebView[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[3]').click()
-        client.xpath(
-            '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/WebView[1]/WebView[1]/WebView[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]').click()
-        time.sleep(50)
+    client(label="orangy ic common back black").click()
+    # for i in range(30):
+    #     client.xpath(
+    #         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/WebView[1]/WebView[1]/WebView[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[3]').click()
+    #     client.xpath(
+    #         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/WebView[1]/WebView[1]/WebView[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]').click()
+    #     time.sleep(50)
 
 
 def process(client, username, appName, device, loginType):
@@ -191,7 +192,7 @@ def process(client, username, appName, device, loginType):
             login(client, username, appName)
             time.sleep(3)
         # getDiamond(client, appName)
-        # switchTab1(client)
+        switchTab1(client)
         close(client, appName, "true")
     except:
         print("捕获异常，重新调用登录")
