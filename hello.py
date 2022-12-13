@@ -179,12 +179,11 @@ def getSecurityPacket(client, isGetSecurityPacket, appName):
     time.sleep(2)
     if isGetSecurityPacket == 1:
         for i in range(7):
-            client.xpath(
-                '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/WebView[1]/WebView[1]/WebView[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[3]').click_exists(
-                timeout=3.0)
-            client.xpath(
-                '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/WebView[1]/WebView[1]/WebView[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]').click_exists(
-                timeout=3.0)
+            if appName == "cm":
+                client(label="orangy ic common back black").click()
+            if appName == "ppx":
+                client(label="ppx ic common back black").click()
+            client.xpath('//Table/Cell[2]/Image[1]').click()
             time.sleep(120)
     if appName =="cm":
         client(label="orangy ic common back black").click()

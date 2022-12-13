@@ -30,6 +30,6 @@ while True:
 
     file_ppx = codecs.open("../data/first_ppx.txt", 'r', "utf-8")
     for line in file_ppx:
-        hello.process(myclient, line, "ppx", "ipad", "username")
+        hello.process(myclient, line, "ppx", "ipad", "username", "false", 2)
     file_ppx.close()
     time.sleep(3)
