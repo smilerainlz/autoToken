@@ -20,8 +20,8 @@ while True:
     # 打开cm
     hello.init(myclient, "cm")
 
-    file_cm = codecs.open("../data/test_swithTab1.txt", 'r', "utf-8")
+    file_cm = codecs.open("../data/securityPacket-1.txt", 'r', "utf-8")
     for line in file_cm:
-        hello.process(myclient, line, "cm", "testPhone", "username")
+        hello.process(myclient, line, "cm", "testPhone", "username", "false", 1)
     file_cm.close()
     time.sleep(3)
