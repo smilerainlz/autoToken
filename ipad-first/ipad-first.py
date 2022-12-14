@@ -17,19 +17,10 @@ while True:
         os.system('sh ../charles-start.sh')
         time.sleep(10)
     # 打开cm
-    hello.init(myclient, "cm")
+    hello.init(myclient)
 
     file_cm = codecs.open("../data/first_cm.txt", 'r', "utf-8")
     for line in file_cm:
-        hello.process(myclient, line, "cm", "ipad", "username", "false", 2)
+        hello.process(myclient, line, "ipad", "username", "false", 2)
     file_cm.close()
-    time.sleep(3)
-
-    # 打开ppx
-    hello.init(myclient, "ppx")
-
-    file_ppx = codecs.open("../data/first_ppx.txt", 'r', "utf-8")
-    for line in file_ppx:
-        hello.process(myclient, line, "ppx", "ipad", "username", "false", 2)
-    file_ppx.close()
     time.sleep(3)

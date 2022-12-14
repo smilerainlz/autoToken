@@ -10,6 +10,7 @@ runCount = 0
 myclient = wda.USBClient("00008101-0006310A0C32001E", port=8100)
 # ipad
 # myclient = wda.USBClient("00008030-001E245A21C0202E", port=8100)
+myclient
 while True:
     runCount = runCount + 1
     # 循环超过5次重启charles
@@ -17,20 +18,11 @@ while True:
         os.system('sh ../charles-start.sh')
         time.sleep(10)
 
-    # 打开ppx
-    hello.init(myclient, "cm")
+    # 打开cm
+    hello.init(myclient)
 
     file_cm = codecs.open("../data/first_cm.txt", 'r', "utf-8")
     for line in file_cm:
-        hello.process(myclient, line, "cm", "testPhone", "username", "false", 2)
+        hello.process(myclient, line, "testPhone", "username", "false", 2)
     file_cm.close()
-    time.sleep(3)
-
-    # 打开ppx
-    hello.init(myclient, "ppx")
-
-    file_ppx = codecs.open("../data/first_ppx.txt", 'r', "utf-8")
-    for line in file_ppx:
-        hello.process(myclient, line, "ppx", "testPhone", "username", "false", 2)
-    file_ppx.close()
     time.sleep(3)

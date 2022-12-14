@@ -74,7 +74,7 @@ def modifyPwd(client):
 # appName(cm or ppx)
 # device(iphone or ipad)
 # loginType(phone or username)
-def login(client, username, appName, device, loginType):
+def login(client, username, device, loginType):
     print("当前时间: %s" % time.ctime())
     print(username, end="")
     # 如果未勾选用户协议，勾选
@@ -86,14 +86,11 @@ def login(client, username, appName, device, loginType):
     # 选择用户名登录
     if loginType == "phone":
         client(label="手机登录/注册").click()
-        if device == "myPhone" or device == "testPhone":
+        if device == "myPhone":
             time.sleep(3)
             client(label="其他号码登录 >").click()
     if loginType == "username":
-        if appName == "cm":
-            client(label="orangy ic UserName Login Icon").click()
-        if appName == "ppx":
-            client(label="ppx ic UserName Login Icon").click()
+        client(label="orangy ic UserName Login Icon").click()
     # 清空用户名并输入用户名
     client(className="XCUIElementTypeTextField").clear_text()
     client(className="XCUIElementTypeTextField").set_text(username)
@@ -107,54 +104,35 @@ def login(client, username, appName, device, loginType):
         timeout=3.0)
 
 
-def close(client, appName, isLogin):
+def close(client, isLogin):
     # 如果弹出签到提示，先签到，再关闭
     if client(label="daily reward close").exists:
         client.xpath(
             '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]/Other[1]/Image[1]/Image[1]').click()
-        time.sleep(1)
         client(label="daily reward close").click()
     # 如果提示年度活动，关掉
-    if appName == "cm":
-        if client(label="orangy ic main activity close").exists:
-            client(label="orangy ic main activity close").click()
-    if appName == "ppx":
-        if client(label="ppx ic main activity close").exists:
-            client(label="ppx ic main activity close").click()
+    if client(label="orangy ic main activity close").exists:
+        client(label="orangy ic main activity close").click()
     # 退出
     if isLogin == "true":
         client(label="我的").click()
-        if appName == "cm":
-            client(label="orangy ic hl me page setting i").click()
-        if appName == "ppx":
-            client(label="ppx ic hl me page setting icon").click()
+        client(label="orangy ic hl me page setting i").click()
         client.xpath('//ScrollView/Button[10]').click()
         client.xpath('//Window[1]/Other[2]/Other[1]/Other[1]/Button[1]/StaticText[1]').click()
     if isLogin != "true":
         if client(label="我的").exists:
             client(label="我的").click()
-            if appName == "cm":
-                client(label="orangy ic hl me page setting i").click()
-            if appName == "ppx":
-                client(label="ppx ic hl me page setting icon").click()
+            client(label="orangy ic hl me page setting i").click()
             client.xpath('//ScrollView/Button[10]').click()
             client.xpath('//Window[1]/Other[2]/Other[1]/Other[1]/Button[1]/StaticText[1]').click()
 
 
-def init(client, appName):
-    if appName == "cm":
-        client.session().app_terminate("sg.bigo.orangy")
-        client.session().app_activate("sg.bigo.orangy")
-    if appName == "ppx":
-        client.session().app_terminate("sg.bigo.pipixia")
-        client.session().app_activate("sg.bigo.pipixia")
+def init(client):
+    client.session().app_terminate("sg.bigo.orangy")
+    client.session().app_activate("sg.bigo.orangy")
     if client(label="确定").exists:
         client(label="确定").click()
-    time.sleep(3)
-    if appName == "cm":
-        close(client, "cm", "false")
-    if appName == "ppx":
-        close(client, "ppx", "false")
+    close(client, "false")
 
 
 def getDiamond(client, appName):
@@ -162,57 +140,43 @@ def getDiamond(client, appName):
     client.xpath('//Table/Cell[1]').click()
     time.sleep(3)
     print(client(className="XCUIElementTypeStaticText")[5].value)
-    if appName == "cm":
-        client(label="orangy ic common back black").click()
-    if appName == "ppx":
-        client(label="ppx ic common back black").click()
+    client(label="orangy ic common back black").click()
 
 
-def getSecurityPacket(client, isGetSecurityPacket, appName):
-    if appName == "ppx":
-        client(label="广场").click()
+def getSecurityPacket(client, isGetSecurityPacket):
     client(label="发现").click()
     time.sleep(1)
     client.swipe(0.5, 0.5, 0.5, 0.01)
-    time.sleep(2)
-    client.xpath('//Table/Cell[2]/Image[1]').click()
-    time.sleep(2)
+    time.sleep(1)
+    client.xpath('//Table/Cell[3]/Image[1]').click()
+    time.sleep(1)
     if isGetSecurityPacket == 1:
         for i in range(7):
-            if appName == "cm":
-                client(label="orangy ic common back black").click()
-            if appName == "ppx":
-                client(label="ppx ic common back black").click()
-            client.xpath('//Table/Cell[2]/Image[1]').click()
+            client(label="orangy ic common back black").click()
+            client.xpath('//Table/Cell[3]/Image[1]').click()
             time.sleep(120)
-    if appName =="cm":
-        client(label="orangy ic common back black").click()
-    if appName =="ppx":
-        client(label="ppx ic common back black").click()
+    client(label="orangy ic common back black").click()
 
 
-# appName(cm or ppx)
 # device(myPhone or testPhone or ipad)
 # loginType(phone or username)
 # isCheckDiamond是否查看钻石（true获取）
 # isGetSecurityPacket是否获取securityPacket（1：1个号循环获取，2：多个号获取）
-def process(client, username, appName, device, loginType, isCheckDiamond, isGetSecurityPacket):
+def process(client, username, device, loginType, isCheckDiamond, isGetSecurityPacket):
     try:
         # 登录
-        login(client, username, appName, device, loginType)
-        time.sleep(2)
+        login(client, username, device, loginType)
         # 如果登录过期
         if client(label="确定").exists:
             client(label="确定").click()
             # 重新登录
-            login(client, username, appName)
-            time.sleep(2)
+            login(client, username, device, loginType)
         if isCheckDiamond == "true":
-            getDiamond(client, appName)
+            getDiamond(client)
         if isGetSecurityPacket >= 1:
-            getSecurityPacket(client, isGetSecurityPacket, appName)
-        close(client, appName, "true")
+            getSecurityPacket(client, isGetSecurityPacket)
+        close(client, "true")
     except:
         print("捕获异常，重新调用登录")
-        init(client, appName)
-        process(client, username, appName, device, loginType)
+        init(client)
+        process(client, username, device, loginType, isCheckDiamond, isGetSecurityPacket)

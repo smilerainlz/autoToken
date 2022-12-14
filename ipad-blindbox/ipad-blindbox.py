@@ -16,11 +16,11 @@ while True:
     if runCount % 5 == 0:
         os.system('sh ../charles-start.sh')
         time.sleep(10)
-    # 打开ppx
-    hello.init(myclient, "ppx")
+    # 打开cm
+    hello.init(myclient)
 
     file_ppx = codecs.open("../data/blindbox.txt", 'r', "utf-8")
     for line in file_ppx:
-        hello.process(myclient, line, "ppx", "ipad", "username", "false", 2)
+        hello.process(myclient, line, "ipad", "username", "false", 2)
     file_ppx.close()
     time.sleep(3)
