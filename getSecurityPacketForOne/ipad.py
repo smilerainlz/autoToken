@@ -20,6 +20,6 @@ while True:
         time.sleep(10)
 
     # 打开cm
-    hello.init(myclient, "cm")
-    hello.process(myclient, "q3452725271", "cm", "testPhone", "username", "false", 1)
+    hello.init(myclient)
+    hello.process(myclient, "q350948908", "ipad", "username", "false", 1)
     time.sleep(3)
