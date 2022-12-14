@@ -145,11 +145,9 @@ def getDiamond(client, appName):
 
 def getSecurityPacket(client, isGetSecurityPacket):
     client(label="发现").click()
-    time.sleep(1)
     client.swipe(0.5, 0.5, 0.5, 0.01)
     time.sleep(1)
     client.xpath('//Table/Cell[3]/Image[1]').click()
-    time.sleep(1)
     if isGetSecurityPacket == 1:
         for i in range(7):
             client(label="orangy ic common back black").click()
