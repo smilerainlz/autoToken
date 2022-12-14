@@ -143,10 +143,12 @@ def getDiamond(client, appName):
     client(label="orangy ic common back black").click()
 
 
-def getSecurityPacket(client, isGetSecurityPacket):
+def getSecurityPacket(client, isGetSecurityPacket, device):
     client(label="发现").click()
-    client.swipe(0.5, 0.88, 0.5, 0.01)
-    # client.swipe(0.5, 0.5, 0.5, 0.01)
+    if device == "ipad":
+        client.swipe(0.5, 0.88, 0.5, 0.01)
+    if device != "ipad":
+        client.swipe(0.5, 0.88, 0.5, 0.1)
     time.sleep(1)
     client.xpath('//Table/Cell[4]/Image[1]').click()
     time.sleep(1)
@@ -174,7 +176,7 @@ def process(client, username, device, loginType, isCheckDiamond, isGetSecurityPa
         if isCheckDiamond == "true":
             getDiamond(client)
         if isGetSecurityPacket >= 1:
-            getSecurityPacket(client, isGetSecurityPacket)
+            getSecurityPacket(client, isGetSecurityPacket, device)
         close(client, "true")
     except:
         print("捕获异常，重新调用登录")
