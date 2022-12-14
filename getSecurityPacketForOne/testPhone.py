@@ -19,9 +19,5 @@ while True:
 
     # 打开cm
     hello.init(myclient, "cm")
-
-    file_cm = codecs.open("../data/securityPacket-1.txt", 'r', "utf-8")
-    for line in file_cm:
-        hello.process(myclient, line, "cm", "testPhone", "username", "false", 1)
-    file_cm.close()
+    hello.process(myclient, "q3452725271", "cm", "testPhone", "username", "false", 1)
     time.sleep(3)
