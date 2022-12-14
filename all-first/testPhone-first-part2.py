@@ -4,7 +4,7 @@ sys.path.append("..//")
 import hello
 
 runCount = 0
-# 本机（旧）
+# 本机
 # myclient = wda.USBClient("00008101-000958911A91001E",port=8100)
 # 测试机器
 myclient = wda.USBClient("00008101-0006310A0C32001E", port=8100)
@@ -22,7 +22,7 @@ while True:
     # 打开cm
     hello.init(myclient)
 
-    file_cm = codecs.open("../data/first_cm_part2.txt", 'r', "utf-8")
+    file_cm = codecs.open("../data/first_part2.txt", 'r', "utf-8")
     for line in file_cm:
         hello.process(myclient, line, "testPhone", "username", "false", 2)
     file_cm.close()

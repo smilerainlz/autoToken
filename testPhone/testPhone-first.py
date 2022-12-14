@@ -10,6 +10,8 @@ runCount = 0
 myclient = wda.USBClient("00008101-0006310A0C32001E", port=8100)
 # ipad
 # myclient = wda.USBClient("00008030-001E245A21C0202E", port=8100)
+# 本机（新）
+# myclient = wda.USBClient("00008110-001A21803482401E", port=8100)
 while True:
     runCount = runCount + 1
     # 循环超过5次重启charles
@@ -20,8 +22,8 @@ while True:
     # 打开cm
     hello.init(myclient)
 
-    file_ppx = codecs.open("../data/blindbox.txt", 'r', "utf-8")
-    for line in file_ppx:
+    file_cm = codecs.open("../data/first.txt", 'r', "utf-8")
+    for line in file_cm:
         hello.process(myclient, line, "testPhone", "username", "false", 2)
-    file_ppx.close()
+    file_cm.close()
     time.sleep(3)
