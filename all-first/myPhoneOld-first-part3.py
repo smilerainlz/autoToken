@@ -19,7 +19,7 @@ while True:
     # 打开cm
     hello.init(myclient)
 
-    file_cm = codecs.open("../data/first_cm_part2.txt", 'r', "utf-8")
+    file_cm = codecs.open("../data/first_cm_part3.txt", 'r', "utf-8")
     for line in file_cm:
         hello.process(myclient, line, "myPhone", "username", "false", 2)
     file_cm.close()
