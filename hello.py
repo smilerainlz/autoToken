@@ -135,7 +135,7 @@ def init(client):
     close(client, "false")
 
 
-def getDiamond(client, appName):
+def getDiamond(client):
     client(label="我的").click()
     client.xpath('//Table/Cell[1]').click()
     time.sleep(3)
