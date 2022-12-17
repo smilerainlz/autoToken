@@ -146,16 +146,16 @@ def getDiamond(client):
 def getSecurityPacket(client, isGetSecurityPacket, device):
     client(label="发现").click()
     if device == "ipad":
-	# 3
+        # 3
         client.swipe(0.5, 0.88, 0.5, 0.3)
         # 4
         # client.swipe(0.5, 0.88, 0.5, 0.5)
         # client.swipe(0.5, 0.88, 0.5, 0.5)
     else:
-	# 3
+        # 3
         client.swipe(0.5, 0.88, 0.5, 0.5)
         # 4
-        # client.swipe(0.5, 0.88, 0.5, 0.3)
+        # client.swipe(0.5, 0.88, 0.5, 0.2)
     time.sleep(1)
     client.xpath('//Table/Cell[3]/Image[1]').click()
     time.sleep(2)
