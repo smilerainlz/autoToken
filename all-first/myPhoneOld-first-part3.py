@@ -18,4 +18,3 @@ while True:
     file_cm = codecs.open("../data/first-part3.txt", 'r', "utf-8")
     for line in file_cm:
         hello.process(myclient, line, "myPhone", "username", "false", 2)
-    file_cm.close()
