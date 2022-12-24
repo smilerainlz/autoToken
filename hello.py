@@ -1,10 +1,11 @@
 import time
 
 
-def addFirend(client, appName):
-    client.click(0.63, 0.145)
-    client.send_keys("83881191")
-    client(label="search").click()
+def addFirend(client):
+    time.sleep(2)
+    client.click(0.205, 0.149)
+    client.send_keys("80716857")
+    client(label="搜索").click()
     time.sleep(1)
     client.click(0.26, 0.148)
     time.sleep(1)
@@ -12,13 +13,9 @@ def addFirend(client, appName):
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[3]/Button[1]/StaticText[1]').click_exists(
         timeout=3.0)
-    if appName == "cm":
-        client(label="orangy ic profile back icon").click()
-    if appName == "ppx":
-        client(label="ppx ic profile back icon").click()
+    client(label="orangy ic profile back icon").click()
     time.sleep(1)
     client.click(0.893, 0.094)
-
 
 def removeGZ(client):
     client(label="我的").click()
@@ -145,19 +142,19 @@ def getDiamond(client):
 
 def getSecurityPacket(client, isGetSecurityPacket, device):
     client(label="发现").click()
-    # if device == "ipad":
+    if device == "ipad":
         # 2
         # client.swipe(0.5, 0.88, 0.5, 0.5)
         # 3
-        # client.swipe(0.5, 0.88, 0.5, 0.3)
+        client.swipe(0.5, 0.88, 0.5, 0.3)
         # 4
         # client.swipe(0.5, 0.88, 0.5, 0.5)
         # client.swipe(0.5, 0.88, 0.5, 0.5)
-    # else:
+    else:
         # 2
         # client.swipe(0.5, 0.88, 0.5, 0.7)
         # 3
-        # client.swipe(0.5, 0.88, 0.5, 0.5)
+        client.swipe(0.5, 0.88, 0.5, 0.5)
         # 4
         # client.swipe(0.5, 0.88, 0.5, 0.2)
     time.sleep(1)
