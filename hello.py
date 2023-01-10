@@ -196,7 +196,7 @@ def process(client, username, device, loginType, isCheckDiamond, isGetSecurityPa
         if isGetSecurityPacket >= 1:
             getSecurityPacket(client, isGetSecurityPacket, device)
         close(client, "true")
-        time.sleep(20)
+        time.sleep(10)
     except:
         print("捕获异常，重新调用登录")
         init(client)
