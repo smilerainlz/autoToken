@@ -162,7 +162,7 @@ def getSecurityPacket(client, isGetSecurityPacket, device):
     client.xpath('//Table/Cell[1]/Image[1]').click()
     time.sleep(2)
     client.swipe(0.5, 0.88, 0.5, 0.3)
-    client.swipe(0.5, 0.88, 0.5, 0.3)
+    client.swipe(0.5, 0.88, 0.5, 0.5)
     time.sleep(1)
     client(label="前往购买礼包").click()
     time.sleep(1)
