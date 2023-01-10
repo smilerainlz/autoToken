@@ -17,6 +17,7 @@ def addFirend(client):
     time.sleep(1)
     client.click(0.893, 0.094)
 
+
 def removeGZ(client):
     client(label="我的").click()
     client.xpath('//Table/Other[1]/Other[2]/Other[3]').click()
@@ -143,20 +144,20 @@ def getDiamond(client):
 def getSecurityPacket(client, isGetSecurityPacket, device):
     client(label="发现").click()
     # if device == "ipad":
-        # 2
-        # client.swipe(0.5, 0.88, 0.5, 0.5)
-        # 3
-        # client.swipe(0.5, 0.88, 0.5, 0.3)
-        # 4
-        # client.swipe(0.5, 0.88, 0.5, 0.5)
-        # client.swipe(0.5, 0.88, 0.5, 0.5)
+    # 2
+    # client.swipe(0.5, 0.88, 0.5, 0.5)
+    # 3
+    # client.swipe(0.5, 0.88, 0.5, 0.3)
+    # 4
+    # client.swipe(0.5, 0.88, 0.5, 0.5)
+    # client.swipe(0.5, 0.88, 0.5, 0.5)
     # else:
-        # 2
-        # client.swipe(0.5, 0.88, 0.5, 0.7)
-        # 3
-        # client.swipe(0.5, 0.88, 0.5, 0.5)
-        # 4
-        # client.swipe(0.5, 0.88, 0.5, 0.2)
+    # 2
+    # client.swipe(0.5, 0.88, 0.5, 0.7)
+    # 3
+    # client.swipe(0.5, 0.88, 0.5, 0.5)
+    # 4
+    # client.swipe(0.5, 0.88, 0.5, 0.2)
     time.sleep(1)
     client.xpath('//Table/Cell[1]/Image[1]').click()
     time.sleep(2)
@@ -173,7 +174,8 @@ def getSecurityPacket(client, isGetSecurityPacket, device):
             client(label="orangy ic common back black").click()
             client.xpath('//Table/Cell[3]/Image[1]').click()
             time.sleep(60)
-    client.xpath('//Window/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/WebView[1]/WebView[1]/WebView[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]').click()
+    client.xpath(
+        '//Window/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/WebView[1]/WebView[1]/WebView[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]').click()
 
 
 # device(myPhone or testPhone or ipad)
@@ -194,6 +196,7 @@ def process(client, username, device, loginType, isCheckDiamond, isGetSecurityPa
         if isGetSecurityPacket >= 1:
             getSecurityPacket(client, isGetSecurityPacket, device)
         close(client, "true")
+        time.sleep(20)
     except:
         print("捕获异常，重新调用登录")
         init(client)
