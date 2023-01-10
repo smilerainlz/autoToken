@@ -165,7 +165,7 @@ def getSecurityPacket(client, isGetSecurityPacket, device):
     time.sleep(1)
     client(label="前往购买礼包").click()
     time.sleep(1)
-    client(label="60钻购买").click()
+    client(label="200钻购买").click()
     time.sleep(1)
     client.xpath('//*[@label="网页对话框"]/Other[1]').click()
     if isGetSecurityPacket == 1:
