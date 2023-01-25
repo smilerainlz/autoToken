@@ -143,42 +143,30 @@ def getDiamond(client):
 
 def getSecurityPacket(client, isGetSecurityPacket, device):
     client(label="发现").click()
-    # if device == "ipad":
+    if device == "ipad":
     # 2
-    # client.swipe(0.5, 0.88, 0.5, 0.5)
+        client.swipe(0.5, 0.88, 0.5, 0.5)
     # 3
     # client.swipe(0.5, 0.88, 0.5, 0.3)
     # 4
     # client.swipe(0.5, 0.88, 0.5, 0.5)
     # client.swipe(0.5, 0.88, 0.5, 0.5)
-    # else:
+    else:
     # 2
-    # client.swipe(0.5, 0.88, 0.5, 0.7)
+        client.swipe(0.5, 0.88, 0.5, 0.7)
     # 3
     # client.swipe(0.5, 0.88, 0.5, 0.5)
     # 4
     # client.swipe(0.5, 0.88, 0.5, 0.2)
     time.sleep(1)
-    client.swipe(0.5, 0.88, 0.5, 0.2)
-    client.swipe(0.5, 0.88, 0.5, 0.2)
-    time.sleep(1)
-    client.xpath('//Table/Cell[5]/Image[1]').click()
+    client.xpath('//Table/Cell[2]/Image[1]').click()
     time.sleep(3)
-    client.swipe(0.5, 0.88, 0.5, 0.3)
-    client.swipe(0.5, 0.88, 0.5, 0.3)
-    time.sleep(1)
-    client(label="前往购买礼包").click()
-    time.sleep(1)
-    client(label="200钻购买").click()
-    time.sleep(10)
-    client.xpath('//*[@label="网页对话框"]/Other[1]').click()
     if isGetSecurityPacket == 1:
         for i in range(7):
             client(label="orangy ic common back black").click()
-            client.xpath('//Table/Cell[5]/Image[1]').click()
+            client.xpath('//Table/Cell[2]/Image[1]').click()
             time.sleep(60)
-    client.xpath(
-        '//Window/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/WebView[1]/WebView[1]/WebView[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]').click()
+    client(label="orangy ic common back black").click()
 
 
 # device(myPhone or testPhone or ipad)
