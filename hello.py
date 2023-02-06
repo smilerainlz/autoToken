@@ -163,7 +163,7 @@ def getSecurityPacket(client, isGetSecurityPacket, device):
     time.sleep(5)
     client.xpath('//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/WebView[1]/WebView[1]/WebView[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]').click()
     time.sleep(3)
-    client.swipe(0.5, 0.8, 0.5, 0.5)
+    client.swipe(0.5, 0.8, 0.5, 0.2)
     time.sleep(3)
     client.xpath('//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/WebView[1]/WebView[1]/WebView[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[6]/Other[4]/Other[1]').click()
     time.sleep(3)
