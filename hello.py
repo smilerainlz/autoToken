@@ -54,19 +54,19 @@ def modifyPwd(client):
         timeout=3.0)
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]').set_text(
-        "qwe12345")
+        "zzz12345")
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[4]/SecureTextField[1]').click_exists(
         timeout=3.0)
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[4]/SecureTextField[1]').set_text(
-        "qwe12345")
+        "zzz12345")
     time.sleep(1)
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Button[1]').click_exists(
         timeout=3.0)
-    client(label="ppx ic common back black").click()
-    client(label="ppx ic common back black").click()
+    client(label="cm ic common back black").click()
+    client(label="cm ic common back black").click()
 
 
 # appName(cm or ppx)
@@ -161,13 +161,16 @@ def getSecurityPacket(client, isGetSecurityPacket, device):
     time.sleep(1)
     client.xpath('//Table/Cell[1]/Image[1]').click()
     time.sleep(5)
-    client.xpath('//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/WebView[1]/WebView[1]/WebView[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]').click()
+    client.xpath(
+        '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/WebView[1]/WebView[1]/WebView[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]').click()
     time.sleep(3)
     client.swipe(0.5, 0.8, 0.5, 0.2)
     time.sleep(3)
-    client.xpath('//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/WebView[1]/WebView[1]/WebView[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[6]/Other[4]/Other[1]').click()
+    client.xpath(
+        '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/WebView[1]/WebView[1]/WebView[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[6]/Other[4]/Other[1]').click()
     time.sleep(3)
-    client.xpath('//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/WebView[1]/WebView[1]/WebView[1]/Other[1]/Other[1]/Other[1]/Other[1]/Button[2]').click()
+    client.xpath(
+        '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/WebView[1]/WebView[1]/WebView[1]/Other[1]/Other[1]/Other[1]/Other[1]/Button[2]').click()
     if isGetSecurityPacket == 1:
         for i in range(7):
             client(label="orangy ic common back black").click()
@@ -194,6 +197,7 @@ def process(client, username, device, loginType, isCheckDiamond, isGetSecurityPa
             getDiamond(client)
         if isGetSecurityPacket >= 1:
             getSecurityPacket(client, isGetSecurityPacket, device)
+        modifyPwd(client)
         close(client, "true")
     except:
         print("捕获异常，重新调用登录")
