@@ -197,7 +197,6 @@ def process(client, username, device, loginType, isCheckDiamond, isGetSecurityPa
             getDiamond(client)
         if isGetSecurityPacket >= 1:
             getSecurityPacket(client, isGetSecurityPacket, device)
-        modifyPwd(client)
         close(client, "true")
     except:
         print("捕获异常，重新调用登录")
