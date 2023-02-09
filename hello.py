@@ -65,8 +65,8 @@ def modifyPwd(client):
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Button[1]').click_exists(
         timeout=3.0)
-    client(label="cm ic common back black").click()
-    client(label="cm ic common back black").click()
+    client(label="orangy ic common back black").click()
+    client(label="orangy ic common back black").click()
 
 
 # appName(cm or ppx)
