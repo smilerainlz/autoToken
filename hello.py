@@ -159,23 +159,21 @@ def getSecurityPacket(client, isGetSecurityPacket, device):
     # 4
     # client.swipe(0.5, 0.88, 0.5, 0.2)
     time.sleep(1)
-    client.xpath('//Table/Cell[1]/Image[1]').click()
-    time.sleep(5)
-    client.xpath(
-        '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/WebView[1]/WebView[1]/WebView[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]').click()
+    client.swipe(0.5, 0.88, 0.5, 0.5)
+    time.sleep(1)
+    client.xpath('//Table/Cell[2]/Image[1]').click()
     time.sleep(3)
     client.swipe(0.5, 0.8, 0.5, 0.2)
     time.sleep(3)
     client.xpath(
-        '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/WebView[1]/WebView[1]/WebView[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[6]/Other[4]/Other[1]').click()
+        '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/WebView[1]/WebView[1]/WebView[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[7]/Other[8]/Other[1]').click()
     time.sleep(3)
     client.xpath(
-        '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/WebView[1]/WebView[1]/WebView[1]/Other[1]/Other[1]/Other[1]/Other[1]/Button[2]').click()
+        '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/WebView[1]/WebView[1]/WebView[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[7]/Button[1]').click()
     if isGetSecurityPacket == 1:
         for i in range(7):
-            client(label="orangy ic common back black").click()
-            client.xpath('//Table/Cell[1]/Image[1]').click()
-            client.click(0.3, 0.3)
+            client.xpath(
+                '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/WebView[1]/WebView[1]/WebView[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[7]/Button[1]').click()
             time.sleep(60)
     client(label="orangy ic common back black").click()
 
