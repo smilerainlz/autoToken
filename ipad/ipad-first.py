@@ -21,7 +21,7 @@ while True:
     # 打开cm
     hello.init(myclient)
 
-    file_cm = codecs.open("../data/action.txt", 'r', "utf-8")
+    file_cm = codecs.open("../data/first.txt", 'r', "utf-8")
     for line in file_cm:
         hello.process(myclient, line, "ipad", "username", "false", 2)
     file_cm.close()
