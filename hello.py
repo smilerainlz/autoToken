@@ -185,7 +185,6 @@ def process(client, username, device, loginType, isCheckDiamond, isGetSecurityPa
     try:
         # 登录
         login(client, username, device, loginType)
-        modifyPwd(client)
         # 如果登录过期
         if client(label="确定").exists:
             client(label="确定").click()
