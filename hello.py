@@ -40,7 +40,7 @@ def removeGZ(client):
 def modifyPwd(client):
     client(label="我的").click()
     time.sleep(1)
-    client.xpath('//Table/Cell[7]').click()
+    client.xpath('//Table/Cell[8]').click()
     time.sleep(1)
     client.xpath('//Table/Cell[3]').click()
     client.xpath(
@@ -54,13 +54,13 @@ def modifyPwd(client):
         timeout=3.0)
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]').set_text(
-        "zzz12345")
+        "zxc123123")
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[4]/SecureTextField[1]').click_exists(
         timeout=3.0)
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[4]/SecureTextField[1]').set_text(
-        "zzz12345")
+        "zxc123123")
     time.sleep(1)
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Button[1]').click_exists(
@@ -96,7 +96,7 @@ def login(client, username, device, loginType):
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]/Button[1]/StaticText[1]').click_exists(
         timeout=3.0)
-    client(className="XCUIElementTypeSecureTextField").set_text("zzz12345")
+    client(className="XCUIElementTypeSecureTextField").set_text("zxc123123")
     # 点击登录
     client.xpath('//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Button[2]').click_exists(
         timeout=3.0)
@@ -166,11 +166,11 @@ def getSecurityPacket(client, isGetSecurityPacket, device):
     time.sleep(2)
     client.swipe(0.5, 0.8, 0.5, 0.5)
     time.sleep(2)
-    client.click(0.566,0.896)
+    client.click(0.566, 0.896)
     time.sleep(1)
     if isGetSecurityPacket == 1:
         for i in range(7):
-            client.click(0.566,0.896)
+            client.click(0.566, 0.896)
             time.sleep(60)
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/WebView[1]/WebView[1]/WebView[1]/Other[1]/Other[1]/Other[1]/Other[1]/Button[1]').click()
@@ -185,6 +185,7 @@ def process(client, username, device, loginType, isCheckDiamond, isGetSecurityPa
     try:
         # 登录
         login(client, username, device, loginType)
+        modifyPwd(client)
         # 如果登录过期
         if client(label="确定").exists:
             client(label="确定").click()
