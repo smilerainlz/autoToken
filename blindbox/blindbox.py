@@ -16,6 +16,6 @@ while True:
 
     file_cm = codecs.open("../data/blindbox.txt", 'r', "utf-8")
     for line in file_cm:
-        hello.process(myclient, line, "testPhone", "username", "true", 0)
+        hello.process(myclient, line, "testPhone", "username", "false", 0)
     file_cm.close()
     time.sleep(3)

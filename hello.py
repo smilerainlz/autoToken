@@ -157,17 +157,20 @@ def getSecurityPacket(client, isGetSecurityPacket, device):
     # 3
     # client.swipe(0.5, 0.88, 0.5, 0.5)
     # 4
-    client.swipe(0.5, 0.88, 0.5, 0.2)
+    time.sleep(5)
+    client.swipe(0.5, 0.88, 0.5, 0.3)
+    client.swipe(0.5, 0.88, 0.5, 0.3)
+    client.swipe(0.5, 0.88, 0.5, 0.3)
     time.sleep(3)
-    client.xpath('//Table/Cell[4]/Image[1]').click()
+    client.xpath('//Table/Cell[8]/Image[1]').click()
     time.sleep(2)
     client.swipe(0.5, 0.8, 0.5, 0.5)
     time.sleep(2)
-    client(label="立即开通 尊享1个月").click()
+    client.click(0.566,0.896)
     time.sleep(1)
     if isGetSecurityPacket == 1:
         for i in range(7):
-            client(label="立即开通 尊享1个月").click()
+            client(label="立即开通 超值12个月").click()
             time.sleep(60)
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/WebView[1]/WebView[1]/WebView[1]/Other[1]/Other[1]/Other[1]/Other[1]/Button[1]').click()

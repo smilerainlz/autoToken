@@ -21,7 +21,7 @@ while True:
 
     # 打开cm
     hello.init(myclient)
-    hello.process(myclient, "tql123580", "ipad", "username", "false", 2)
-    time.sleep(3)
     hello.process(myclient, "m13211870646", "ipad", "username", "false", 2)
-    time.sleep(60)
+    hello.process(myclient, "q3452725271", "ipad", "username", "false", 2)
+    hello.process(myclient, "m18559530951", "ipad", "username", "false", 2)
+    hello.process(myclient, "id82560797", "ipad", "username", "false", 2)
