@@ -21,9 +21,6 @@ while True:
 
     # 打开cm
     hello.init(myclient)
-    hello.process(myclient, "m15085471763", "myPhone", "username", "false", 2)
-    hello.process(myclient, "m17208810645", "myPhone", "username", "false", 2)
-    hello.process(myclient, "m13985701121", "myPhone", "username", "false", 2)
-    hello.process(myclient, "m13765629645", "myPhone", "username", "false", 2)
-    hello.process(myclient, "m18050421030", "myPhone", "username", "false", 2)
-    time.sleep(3)
+    hello.process(myclient, "id588815", "myPhone", "username", "false", 2)
+    hello.process(myclient, "q3452725271", "myPhone", "username", "false", 2)
+    time.sleep(60)

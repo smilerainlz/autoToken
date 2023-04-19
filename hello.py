@@ -40,7 +40,7 @@ def removeGZ(client):
 def modifyPwd(client):
     client(label="我的").click()
     time.sleep(1)
-    client.xpath('//Table/Cell[8]').click()
+    client.xpath('//Table/Cell[7]').click()
     time.sleep(1)
     client.xpath('//Table/Cell[3]').click()
     client.xpath(
@@ -65,9 +65,9 @@ def modifyPwd(client):
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Button[1]').click_exists(
         timeout=3.0)
+    time.sleep(1)
     client(label="orangy ic common back black").click()
-    client(label="orangy ic common back black").click()
-
+    time.sleep(1)
 
 # appName(cm or ppx)
 # device(iphone or ipad)
@@ -96,7 +96,7 @@ def login(client, username, device, loginType):
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]/Button[1]/StaticText[1]').click_exists(
         timeout=3.0)
-    client(className="XCUIElementTypeSecureTextField").set_text("zxc123123")
+    client(className="XCUIElementTypeSecureTextField").set_text("zxc123123$")
     # 点击登录
     client.xpath('//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Button[2]').click_exists(
         timeout=3.0)
@@ -142,6 +142,8 @@ def getDiamond(client):
 
 
 def getSecurityPacket(client, isGetSecurityPacket, device):
+    client(label="社区").click()
+    time.sleep(3)
     client(label="发现").click()
     # if device == "ipad":
     # 2
@@ -158,11 +160,10 @@ def getSecurityPacket(client, isGetSecurityPacket, device):
     # client.swipe(0.5, 0.88, 0.5, 0.5)
     # 4
     time.sleep(5)
-    client.swipe(0.5, 0.88, 0.5, 0.3)
-    client.swipe(0.5, 0.88, 0.5, 0.3)
+    client.swipe(0.5, 0.88, 0.5, 0.2)
     client.swipe(0.5, 0.88, 0.5, 0.3)
     time.sleep(3)
-    client.xpath('//Table/Cell[8]/Image[1]').click()
+    client.xpath('//Table/Cell[6]/Image[1]').click()
     time.sleep(2)
     client.swipe(0.5, 0.8, 0.5, 0.5)
     time.sleep(2)
