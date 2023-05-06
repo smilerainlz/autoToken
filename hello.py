@@ -145,9 +145,9 @@ def getSecurityPacket(client, isGetSecurityPacket, device):
     client(label="社区").click()
     time.sleep(3)
     client(label="发现").click()
-    # if device == "ipad":
+    if device == "ipad":
     # 2
-    # client.swipe(0.5, 0.88, 0.5, 0.5)
+      client.swipe(0.5, 0.88, 0.5, 0.5)
     # 3
     # client.swipe(0.5, 0.88, 0.5, 0.3)
     # 4
@@ -160,8 +160,8 @@ def getSecurityPacket(client, isGetSecurityPacket, device):
     # client.swipe(0.5, 0.88, 0.5, 0.5)
     # 4
     time.sleep(5)
-    client.swipe(0.5, 0.88, 0.5, 0.2)
     client.swipe(0.5, 0.88, 0.5, 0.3)
+    client.swipe(0.5, 0.88, 0.5, 0.2)
     time.sleep(3)
     client.xpath('//Table/Cell[6]/Image[1]').click()
     time.sleep(2)
