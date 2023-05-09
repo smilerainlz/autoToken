@@ -201,3 +201,8 @@ def process(client, username, device, loginType, isCheckDiamond, isGetSecurityPa
         print("捕获异常，重新调用登录")
         init(client)
         process(client, username, device, loginType, isCheckDiamond, isGetSecurityPacket)
+
+def processNew(client, username, device, loginType, isCheckDiamond, isGetSecurityPacket):
+    if isGetSecurityPacket >= 1:
+        getSecurityPacket(client, isGetSecurityPacket, device)
+    time.sleep(60)
