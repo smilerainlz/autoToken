@@ -22,5 +22,5 @@ while True:
     # 打开cm
     myclient.session().app_terminate("sg.bigo.orangy")
     myclient.session().app_activate("sg.bigo.orangy")
-    hello.processNew(myclient, "lfl123456", "myPhone", "username", "false", 1)
+    hello.processNew(myclient, "lfl123456", "myPhone", "username", "false", 1,"cm")
     time.sleep(30)

@@ -69,6 +69,7 @@ def modifyPwd(client):
     client(label="orangy ic common back black").click()
     time.sleep(1)
 
+
 # appName(cm or ppx)
 # device(iphone or ipad)
 # loginType(phone or username)
@@ -141,13 +142,16 @@ def getDiamond(client):
     client(label="orangy ic common back black").click()
 
 
-def getSecurityPacket(client, isGetSecurityPacket, device):
-    client(label="社区").click()
+def getSecurityPacket(client, isGetSecurityPacket, device, appType):
+    if appType == "cm":
+        client(label="社区").click()
+    if appType == "ppx":
+        client(label="广场").click()
     time.sleep(3)
     client(label="发现").click()
     if device == "ipad":
-    # 2
-      client.swipe(0.5, 0.88, 0.5, 0.5)
+        # 2
+        client.swipe(0.5, 0.88, 0.5, 0.5)
     # 3
     # client.swipe(0.5, 0.88, 0.5, 0.3)
     # 4
@@ -202,7 +206,8 @@ def process(client, username, device, loginType, isCheckDiamond, isGetSecurityPa
         init(client)
         process(client, username, device, loginType, isCheckDiamond, isGetSecurityPacket)
 
-def processNew(client, username, device, loginType, isCheckDiamond, isGetSecurityPacket):
+
+def processNew(client, username, device, loginType, isCheckDiamond, isGetSecurityPacket, appType):
     if isGetSecurityPacket >= 1:
-        getSecurityPacket(client, isGetSecurityPacket, device)
+        getSecurityPacket(client, isGetSecurityPacket, device, appType)
     time.sleep(60)
