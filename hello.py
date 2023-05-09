@@ -170,7 +170,7 @@ def getSecurityPacket(client, isGetSecurityPacket, device):
     client.click(0.566, 0.896)
     time.sleep(1)
     if isGetSecurityPacket == 1:
-        for i in range(7):
+        for i in range(10):
             client.click(0.566, 0.896)
             time.sleep(60)
     client.xpath(
@@ -195,6 +195,7 @@ def process(client, username, device, loginType, isCheckDiamond, isGetSecurityPa
             getDiamond(client)
         if isGetSecurityPacket >= 1:
             getSecurityPacket(client, isGetSecurityPacket, device)
+        time.sleep(60)
         close(client, "true")
     except:
         print("捕获异常，重新调用登录")

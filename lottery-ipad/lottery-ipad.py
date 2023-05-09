@@ -18,4 +18,4 @@ while True:
     for line in file_cm:
         hello.process(myclient, line, "ipad", "username", "true", 0)
     file_cm.close()
-    time.sleep(300)
+    time.sleep(800)
