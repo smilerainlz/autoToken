@@ -20,7 +20,7 @@ while True:
         time.sleep(10)
 
     # 打开cm
-    client.session().app_terminate("sg.bigo.pipixia")
-    client.session().app_activate("sg.bigo.pipixia")
+    myclient.session().app_terminate("sg.bigo.pipixia")
+    myclient.session().app_activate("sg.bigo.pipixia")
     hello.processNew(myclient, "Linjingjing", "myPhone", "username", "false", 1)
     time.sleep(30)
