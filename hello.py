@@ -175,7 +175,7 @@ def getSecurityPacket(client, isGetSecurityPacket, device, appType):
     client.click(0.566, 0.896)
     time.sleep(1)
     if isGetSecurityPacket == 1:
-        for i in range(10):
+        for i in range(5):
             client.click(0.566, 0.896)
             time.sleep(60)
     client.xpath(
