@@ -16,4 +16,3 @@ while True:
     myclient.session().app_terminate("sg.bigo.pipixia")
     myclient.session().app_activate("sg.bigo.pipixia")
     hello.processNew(myclient, "hello334407", "myPhone", "username", "false", 1, "ppx")
-    time.sleep(30)
