@@ -4,7 +4,7 @@ sys.path.append("..//")
 import hello
 
 runCount = 0
-myclient = wda.USBClient("00008101-0006310A0C32001E", port=8100)
+myclient = wda.USBClient("00008101-000958911A91001E", port=8100)
 while True:
     runCount = runCount + 1
     # 循环超过5次重启charles
@@ -16,6 +16,6 @@ while True:
 
     file_cm = codecs.open("../data/lottery.txt", 'r', "utf-8")
     for line in file_cm:
-        hello.process(myclient, line, "testPhone", "username", "true", 0)
+        hello.process(myclient, line, "myPhone", "phone", "false", 0)
     file_cm.close()
-    time.sleep(300)
+    time.sleep(500)
