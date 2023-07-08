@@ -145,31 +145,27 @@ def getDiamond(client):
 def getSecurityPacket(client, isGetSecurityPacket, device, appType):
     if appType == "cm":
         client(label="社区").click()
+        time.sleep(3)
+        client(label="发现").click()
     if appType == "ppx":
         client(label="广场").click()
-    time.sleep(3)
-    client(label="发现").click()
+        time.sleep(3)
+        client(label="发现").click()
+    if appType == "hello":
+        client(label="星球").click()
     time.sleep(5)
+    client.swipe(0.5, 0.88, 0.5, 0.2)
+    client.swipe(0.5, 0.88, 0.5, 0.2)
+    client.swipe(0.5, 0.88, 0.5, 0.2)
     if device == "ipad":
-        # 2
         client.swipe(0.5, 0.88, 0.5, 0.2)
-    # 3
-    # client.swipe(0.5, 0.88, 0.5, 0.3)
-    # 4
-    # client.swipe(0.5, 0.88, 0.5, 0.5)
-    # client.swipe(0.5, 0.88, 0.5, 0.5)
-    # else:
-    # 2
-    # client.swipe(0.5, 0.88, 0.5, 0.7)
-    # 3
-    # client.swipe(0.5, 0.88, 0.5, 0.5)
-    # 4
-    client.swipe(0.5, 0.88, 0.5, 0.2)
-    client.swipe(0.5, 0.88, 0.5, 0.2)
-    client.swipe(0.5, 0.88, 0.5, 0.5)
-    client.swipe(0.5, 0.88, 0.5, 0.5)
+    if appType == "hello":
+        client.swipe(0.5, 0.88, 0.5, 0.2)
     time.sleep(3)
-    client.xpath('//Table/Cell[7]/Image[1]').click()
+    if appType == "hello":
+        client.xpath('//Table/Cell[9]/Image[1]').click()
+    if appType != "hello":
+        client.xpath('//Table/Cell[7]/Image[1]').click()
     time.sleep(2)
     client.swipe(0.5, 0.8, 0.5, 0.5)
     time.sleep(2)
