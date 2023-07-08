@@ -169,7 +169,7 @@ def getSecurityPacket(client, isGetSecurityPacket, device, appType):
     client.swipe(0.5, 0.88, 0.5, 0.5)
     client.swipe(0.5, 0.88, 0.5, 0.5)
     time.sleep(3)
-    client.xpath('//Table/Cell[8]/Image[1]').click()
+    client.xpath('//Table/Cell[7]/Image[1]').click()
     time.sleep(2)
     client.swipe(0.5, 0.8, 0.5, 0.5)
     time.sleep(2)
