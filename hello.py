@@ -156,7 +156,8 @@ def getSecurityPacket(client, isGetSecurityPacket, device, appType):
     time.sleep(5)
     client.swipe(0.5, 0.88, 0.5, 0.2)
     client.swipe(0.5, 0.88, 0.5, 0.2)
-    client.swipe(0.5, 0.88, 0.5, 0.2)
+    client.swipe(0.5, 0.88, 0.5, 0.5)
+    client.swipe(0.5, 0.88, 0.5, 0.5)
     if device == "ipad":
         client.swipe(0.5, 0.88, 0.5, 0.2)
     if appType == "hello":
@@ -165,7 +166,7 @@ def getSecurityPacket(client, isGetSecurityPacket, device, appType):
     if appType == "hello":
         client.xpath('//Table/Cell[9]/Image[1]').click()
     if appType != "hello":
-        client.xpath('//Table/Cell[7]/Image[1]').click()
+        client.xpath('//Table/Cell[9]/Image[1]').click()
     time.sleep(2)
     client.swipe(0.5, 0.8, 0.5, 0.5)
     time.sleep(2)
