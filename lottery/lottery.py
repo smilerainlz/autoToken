@@ -4,7 +4,7 @@ sys.path.append("..//")
 import hello
 
 runCount = 0
-myclient = wda.USBClient("00008101-000958911A91001E", port=8100)
+myclient = wda.USBClient("c933eea94b3ba611f48322b9d9ebc02e9c1efef1", port=8100)
 while True:
     runCount = runCount + 1
     # 循环超过5次重启charles
