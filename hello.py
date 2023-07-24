@@ -163,7 +163,7 @@ def getSecurityPacket(client, isGetSecurityPacket, device, appType):
         client.swipe(0.5, 0.88, 0.5, 0.2)
     time.sleep(3)
     if appType == "hello":
-        client.xpath('//Table/Cell[7]/Image[1]').click()
+        client.xpath('//Table/Cell[9]/Image[1]').click()
     if appType != "hello":
         client.xpath('//Table/Cell[7]/Image[1]').click()
     time.sleep(2)
