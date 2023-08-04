@@ -15,5 +15,5 @@ while True:
     # 打开cm
     myclient.session().app_terminate("com.yy.hello")
     myclient.session().app_activate("com.yy.hello")
-    # hello.process(myclient, "xiaochun1314", "myPhone", "username", "false", 0)
+    # hello.process(myclient, "hm19980718", "myPhone", "username", "false", 0)
     hello.processNew(myclient, "hello334407", "myPhone", "username", "false", 1, "hello")

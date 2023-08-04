@@ -13,7 +13,7 @@ while True:
         time.sleep(10)
 
     # 打开cm
-    myclient.session().app_terminate("sg.bigo.orangy")
-    myclient.session().app_activate("sg.bigo.orangy")
-    # hello.process(myclient, "20020311723x", "myPhone", "username", "false", 0)
-    hello.processNew(myclient, "hello5555", "myPhone", "username", "false", 1, "ppx")
+    myclient.session().app_terminate("com.yy.hello")
+    myclient.session().app_activate("com.yy.hello")
+    # hello.process(myclient, "lg0811200", "myPhone", "username", "false", 0)
+    hello.processNew(myclient, "hello5555", "myPhone", "username", "false", 1, "hello")
