@@ -20,6 +20,5 @@ while True:
         time.sleep(10)
 
     # 打开cm
-    myclient.session().app_terminate("com.yy.hello")
-    myclient.session().app_activate("com.yy.hello")
+    hello.initNoClose(myclient, "hello")
     hello.processNew(myclient, "Linjingjing", "ipad", "username", "false", 1, "hello")
