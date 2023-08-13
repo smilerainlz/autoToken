@@ -13,6 +13,5 @@ while True:
         time.sleep(10)
 
     # 打开cm
-    myclient.session().app_terminate("sg.bigo.orangy")
-    myclient.session().app_activate("sg.bigo.orangy")
+    hello.initNoClose(myclient, "hello")
     hello.processNew(myclient, "hello334407", "myPhone", "username", "false", 1, "ppx")

@@ -16,6 +16,6 @@ while True:
 
     file_cm = codecs.open("../data/lottery.txt", 'r', "utf-8")
     for line in file_cm:
-        hello.process(myclient, line, "myPhone", "phone", "false", 0)
+        hello.process(myclient, line, "phone", "phone", "false", 0)
     file_cm.close()
     time.sleep(500)

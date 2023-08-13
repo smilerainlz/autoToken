@@ -17,4 +17,4 @@ hello.init(myclient)
 while True:
     file_cm = codecs.open("../data/first-part4.txt", 'r', "utf-8")
     for line in file_cm:
-        hello.process(myclient, line, "myPhone", "username", "false", 2)
+        hello.process(myclient, line, "phone", "username", "false", 2)

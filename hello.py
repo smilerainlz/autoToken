@@ -78,18 +78,18 @@ def login(client, username, device, loginType):
     print(username, end="")
     # 如果未勾选用户协议，勾选
     if not client(className="XCUIElementTypeOther").accessible:
-        if device == "myPhone" or device == "testPhone":
+        if device == "phone":
             client.click(0.09, 0.893)
         if device == "ipad":
             client.click(0.29, 0.959)
     # 选择用户名登录
     if loginType == "phone":
         client(label="手机登录/注册").click()
-        if device == "myPhone":
-            time.sleep(3)
+        time.sleep(5)
+        if client(label="其他号码登录 >").exists:
             client(label="其他号码登录 >").click()
     if loginType == "username":
-        client(label="orangy ic UserName Login Icon").click()
+        client.click(0.821, 0.817)
     # 清空用户名并输入用户名
     client(className="XCUIElementTypeTextField").clear_text()
     client(className="XCUIElementTypeTextField").set_text(username)
@@ -109,30 +109,44 @@ def close(client, isLogin):
         client.xpath(
             '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]/Other[1]/Image[1]/Image[1]').click()
         client(label="daily reward close").click()
-    # 如果提示年度活动，关掉
-    if client(label="orangy ic main activity close").exists:
-        client(label="orangy ic main activity close").click()
     # 退出
     if isLogin == "true":
         client(label="我的").click()
-        client(label="orangy ic hl me page setting i").click()
+        client.click(0.927, 0.088)
         client.xpath('//ScrollView/Button[10]').click()
         client.xpath('//Window[1]/Other[2]/Other[1]/Other[1]/Button[1]/StaticText[1]').click()
     if isLogin != "true":
         if client(label="我的").exists:
             client(label="我的").click()
-            client(label="orangy ic hl me page setting i").click()
+            client.click(0.927, 0.088)
             client.xpath('//ScrollView/Button[10]').click()
             client.xpath('//Window[1]/Other[2]/Other[1]/Other[1]/Button[1]/StaticText[1]').click()
 
 
-def init(client):
-    client.session().app_terminate("sg.bigo.orangy")
-    client.session().app_activate("sg.bigo.orangy")
+def init(client, appType):
+    if appType == "cm":
+        client.session().app_terminate("sg.bigo.orangy")
+        client.session().app_activate("sg.bigo.orangy")
+    if appType == "ppx":
+        client.session().app_terminate("sg.bigo.pipixia")
+        client.session().app_activate("sg.bigo.pipixia")
+    if appType == "hello":
+        client.session().app_terminate("com.yy.hello")
+        client.session().app_activate("com.yy.hello")
     if client(label="确定").exists:
         client(label="确定").click()
     close(client, "false")
 
+def initNoClose(client, appType):
+    if appType == "cm":
+        client.session().app_terminate("sg.bigo.orangy")
+        client.session().app_activate("sg.bigo.orangy")
+    if appType == "ppx":
+        client.session().app_terminate("sg.bigo.pipixia")
+        client.session().app_activate("sg.bigo.pipixia")
+    if appType == "hello":
+        client.session().app_terminate("com.yy.hello")
+        client.session().app_activate("com.yy.hello")
 
 def getDiamond(client):
     client(label="我的").click()
@@ -173,7 +187,8 @@ def getSecurityPacket(client, isGetSecurityPacket, device, appType):
 # loginType(phone or username)
 # isCheckDiamond是否查看钻石（true获取）
 # isGetSecurityPacket是否获取securityPacket（1：1个号循环获取，2：多个号获取）
-def process(client, username, device, loginType, isCheckDiamond, isGetSecurityPacket):
+def process(client, username, device, loginType, isCheckDiamond, isGetSecurityPacket, appType):
+    init(client, appType)
     try:
         # 登录
         login(client, username, device, loginType)
@@ -185,12 +200,12 @@ def process(client, username, device, loginType, isCheckDiamond, isGetSecurityPa
         if isCheckDiamond == "true":
             getDiamond(client)
         if isGetSecurityPacket >= 1:
-            getSecurityPacket(client, isGetSecurityPacket, device)
+            getSecurityPacket(client, isGetSecurityPacket, device, appType)
         close(client, "true")
     except:
         print("捕获异常，重新调用登录")
-        init(client)
-        process(client, username, device, loginType, isCheckDiamond, isGetSecurityPacket)
+        init(client, appType)
+        process(client, username, device, loginType, isCheckDiamond, isGetSecurityPacket, appType)
 
 
 def processNew(client, username, device, loginType, isCheckDiamond, isGetSecurityPacket, appType):
