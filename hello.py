@@ -104,10 +104,12 @@ def login(client, username, device, loginType):
 
 
 def close(client, isLogin):
+    time.sleep(3)
     # 如果弹出签到提示，先签到，再关闭
     if client(label="daily reward close").exists:
         client.xpath(
             '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]/Other[1]/Image[1]/Image[1]').click()
+        time.sleep(3)
         client(label="daily reward close").click()
     # 退出
     if isLogin == "true":
