@@ -20,7 +20,7 @@ while True:
         time.sleep(10)
 
     # 打开cm
-    hello.init(myclient)
+    hello.init(myclient, "cm")
 
     file_cm = codecs.open("../data/first.txt", 'r', "utf-8")
     for line in file_cm:

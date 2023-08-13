@@ -13,7 +13,7 @@ myclient = wda.USBClient("00008030-001E245A21C0202E", port=8100)
 # 本机（新）
 # myclient = wda.USBClient("00008110-001A21803482401E", port=8100)
 # 打开cm
-hello.init(myclient)
+hello.init(myclient,"cm")
 while True:
     file_cm = codecs.open("../data/first-part1.txt", 'r', "utf-8")
     for line in file_cm:

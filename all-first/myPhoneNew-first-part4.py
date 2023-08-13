@@ -13,7 +13,7 @@ runCount = 0
 # 本机（新）
 myclient = wda.USBClient("00008110-001A21803482401E", port=8100)
 # 打开cm
-hello.init(myclient)
+hello.init(myclient,"cm")
 while True:
     file_cm = codecs.open("../data/first-part4.txt", 'r', "utf-8")
     for line in file_cm:
