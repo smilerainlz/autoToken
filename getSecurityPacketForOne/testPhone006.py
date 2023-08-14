@@ -4,7 +4,7 @@ sys.path.append("..//")
 import hello
 
 runCount = 0
-myclient = wda.USBClient("010c2c6dd46d94ab3f129697112f74b3a2367f75", port=8100)
+myclient = wda.USBClient("15b6ddd0b40473b4c753ad9ff7dddad149cf6eb4", port=8100)
 while True:
     runCount = runCount + 1
     # 循环超过5次重启charles
@@ -14,5 +14,5 @@ while True:
 
     # 打开cm
     hello.initNoClose(myclient, "cm")
-    # hello.process(myclient, "a64015556", "myPhone", "username", "false", 0)
-    hello.processNew(myclient, "hello334407", "myPhone", "username", "false", 1, "ppx")
+    # hello.process(myclient, "lg0811200", "myPhone", "username", "false", 0)
+    hello.processNew(myclient, "hello5555", "myPhone", "username", "false", 1, "ppx")
