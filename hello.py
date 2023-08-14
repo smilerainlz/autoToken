@@ -128,6 +128,28 @@ def close(client, isLogin):
             client.xpath('//Window[1]/Other[2]/Other[1]/Other[1]/Button[1]/StaticText[1]').click()
 
 
+def closeForIpad(client, isLogin):
+    time.sleep(3)
+    # 如果弹出签到提示，先签到，再关闭
+    if client(label="daily reward close").exists:
+        client.xpath(
+            '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]/Other[1]/Image[1]/Image[1]').click()
+        time.sleep(3)
+        client(label="daily reward close").click()
+    # 退出
+    if isLogin == "true":
+        client(label="我的").click()
+        client.click(0.975, 0.043)
+        client.xpath('//ScrollView/Button[10]').click()
+        client.xpath('//Window[1]/Other[2]/Other[1]/Other[1]/Button[1]/StaticText[1]').click()
+    if isLogin != "true":
+        if client(label="我的").exists:
+            client(label="我的").click()
+            client.click(0.975, 0.043)
+            client.xpath('//ScrollView/Button[10]').click()
+            client.xpath('//Window[1]/Other[2]/Other[1]/Other[1]/Button[1]/StaticText[1]').click()
+
+
 def init(client, appType):
     if appType == "cm":
         client.session().app_terminate("sg.bigo.orangy")
@@ -142,6 +164,22 @@ def init(client, appType):
         client(label="确定").click()
     close(client, "false")
 
+
+def initForIpad(client, appType):
+    if appType == "cm":
+        client.session().app_terminate("sg.bigo.orangy")
+        client.session().app_activate("sg.bigo.orangy")
+    if appType == "ppx":
+        client.session().app_terminate("sg.bigo.pipixia")
+        client.session().app_activate("sg.bigo.pipixia")
+    if appType == "hello":
+        client.session().app_terminate("com.yy.hello")
+        client.session().app_activate("com.yy.hello")
+    if client(label="确定").exists:
+        client(label="确定").click()
+    closeForIpad(client, "false")
+
+
 def initNoClose(client, appType):
     if appType == "cm":
         client.session().app_terminate("sg.bigo.orangy")
@@ -152,6 +190,7 @@ def initNoClose(client, appType):
     if appType == "hello":
         client.session().app_terminate("com.yy.hello")
         client.session().app_activate("com.yy.hello")
+
 
 def getDiamond(client):
     client(label="我的").click()
@@ -206,10 +245,16 @@ def process(client, username, device, loginType, isCheckDiamond, isGetSecurityPa
             getDiamond(client)
         if isGetSecurityPacket >= 1:
             getSecurityPacket(client, isGetSecurityPacket, device, appType)
-        close(client, "true")
+        if device == "ipad":
+            closeForIpad(client, "true")
+        if device == "iphone":
+            close(client, "true")
     except:
         print("捕获异常，重新调用登录")
-        init(client, appType)
+        if device == "ipad":
+            closeForIpad(client, "true")
+        if device == "iphone":
+            close(client, "true")
         process(client, username, device, loginType, isCheckDiamond, isGetSecurityPacket, appType)
 
 
