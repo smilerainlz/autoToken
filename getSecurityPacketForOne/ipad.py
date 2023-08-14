@@ -20,5 +20,6 @@ while True:
         time.sleep(10)
 
     # 打开cm
-    hello.initNoClose(myclient, "hello")
+    hello.initNoClose(myclient, "cm")
+    hello.process(myclient, "yaya1314520", "ipad", "username", "false", 0, "cm")
     hello.processNew(myclient, "Linjingjing", "ipad", "username", "false", 1, "hello")
