@@ -89,7 +89,10 @@ def login(client, username, device, loginType):
         if client(label="其他号码登录 >").exists:
             client(label="其他号码登录 >").click()
     if loginType == "username":
-        client.click(0.821, 0.817)
+        if device == "ipad":
+            client.click(0.609, 0.898)
+        if device == "phone":
+            client.click(0.821, 0.817)
     # 清空用户名并输入用户名
     client(className="XCUIElementTypeTextField").clear_text()
     client(className="XCUIElementTypeTextField").set_text(username)
