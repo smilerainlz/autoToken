@@ -213,7 +213,7 @@ def getSecurityPacket(client, isGetSecurityPacket, device, appType):
         client(label="星球").click()
     time.sleep(5)
     client(label="超级玩家").click()
-    time.sleep(2)
+    time.sleep(10)
     client.swipe(0.5, 0.8, 0.5, 0.5)
     time.sleep(2)
     client.click(0.566, 0.896)
