@@ -15,3 +15,4 @@ while True:
         print("当前时间: %s" % time.ctime())
         print(myclient.xpath(
             '//Window/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[4]/Other[1]/StaticText[1]').value)
+        time.sleep(10)
