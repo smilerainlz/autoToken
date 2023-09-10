@@ -8,12 +8,4 @@ r = redis.Redis(host='garyhelo.redis.rds.aliyuncs.com', port=6379, db=0, passwor
 testa = "恭喜 电 获得 永夜的黎明 ，万众瞩目，火速围观！"
 while True:
     myclient.click(0.5, 0.5)
-    if myclient.xpath(
-            '//Window/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[4]/Other[1]/StaticText[1]').exists:
-        if "万众瞩目，火速围观" in myclient.xpath(
-                '//Window/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[4]/Other[1]/StaticText[1]').value:
-            r.set("myFlagCount", "-1")
-            print("当前时间: %s" % time.ctime())
-        # print(myclient.xpath(
-        #    '//Window/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[4]/Other[1]/StaticText[1]').value)
-        time.sleep(10)
+    time.sleep(100)
