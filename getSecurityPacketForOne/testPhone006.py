@@ -10,6 +10,7 @@ while True:
     # 循环超过5次重启charles
     if runCount % 200 == 0:
         os.system('sh ../charles-start.sh')
+        print("重启charles")
         time.sleep(10)
 
     # 打开cm
