@@ -8,7 +8,7 @@ myclient = wda.USBClient("77df71489bd1227029fad1ce678d80490f52196e", port=8100)
 while True:
     runCount = runCount + 1
     # 循环超过5次重启charles
-    if runCount % 200 == 0:
+    if runCount % 30 == 0:
         os.system('sh ../charles-start.sh')
         time.sleep(10)
 
