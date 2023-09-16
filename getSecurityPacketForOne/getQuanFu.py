@@ -1,6 +1,6 @@
 import wda, time, sys, redis
 
-myclient = wda.USBClient("15b6ddd0b40473b4c753ad9ff7dddad149cf6eb4", port=8100)
+myclient = wda.USBClient("984e38e08278e882dda3017fc916d873d457b13d", port=8100)
 r = redis.Redis(host='garyhelo.redis.rds.aliyuncs.com', port=6379, db=0, password='Lz860822')
 print("当前时间: %s" % time.ctime())
 while True:
