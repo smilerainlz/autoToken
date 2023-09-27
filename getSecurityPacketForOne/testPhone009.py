@@ -1,6 +1,6 @@
 import os, wda, codecs, time, sys
 
-sys.path.append("//")
+sys.path.append("..//")
 import hello
 
 runCount = 0
