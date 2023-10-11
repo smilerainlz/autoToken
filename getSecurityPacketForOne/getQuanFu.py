@@ -2,15 +2,17 @@ import os
 
 import wda, time, sys, redis
 
+key = "024"
+uuid = "c933eea94b3ba611f48322b9d9ebc02e9c1efef1"
 try:
-    myclient = wda.USBClient("15b6ddd0b40473b4c753ad9ff7dddad149cf6eb4", port=8100)
+    myclient = wda.USBClient("c933eea94b3ba611f48322b9d9ebc02e9c1efef1", port=8100)
 except:
     os.system(
-        "/Users/jfx/Library/Python/3.9/bin/tidevice -u 15b6ddd0b40473b4c753ad9ff7dddad149cf6eb4 kill com.facebook.WebDriverAgentLib.lizhengtest021.xctrunner")
+        "/Users/jfx/Library/Python/3.9/bin/tidevice -u " + uuid + " kill com.facebook.WebDriverAgentLib.lizhengtest" + key + ".xctrunner")
     os.system(
-        "/Users/jfx/Library/Python/3.9/bin/tidevice -u 15b6ddd0b40473b4c753ad9ff7dddad149cf6eb4 launch com.facebook.WebDriverAgentLib.lizhengtest021.xctrunner")
+        "/Users/jfx/Library/Python/3.9/bin/tidevice -u " + uuid + " launch com.facebook.WebDriverAgentLib.lizhengtest" + key + ".xctrunner")
     time.sleep(3)
-    myclient = wda.USBClient("15b6ddd0b40473b4c753ad9ff7dddad149cf6eb4", port=8100)
+    myclient = wda.USBClient("c933eea94b3ba611f48322b9d9ebc02e9c1efef1", port=8100)
     myclient.session().app_activate("com.yy.hello")
 r = redis.Redis(host='garyhelo.redis.rds.aliyuncs.com', port=6379, db=0, password='Lz860822')
 print("当前时间: %s" % time.ctime())
@@ -19,9 +21,9 @@ while True:
     count = count + 1
     if count % 500 == 0:
         os.system(
-            "/Users/jfx/Library/Python/3.9/bin/tidevice -u 15b6ddd0b40473b4c753ad9ff7dddad149cf6eb4 kill com.facebook.WebDriverAgentLib.lizhengtest021.xctrunner")
+            "/Users/jfx/Library/Python/3.9/bin/tidevice -u " + uuid + " kill com.facebook.WebDriverAgentLib.lizhengtest" + key + ".xctrunner")
         os.system(
-            "/Users/jfx/Library/Python/3.9/bin/tidevice -u 15b6ddd0b40473b4c753ad9ff7dddad149cf6eb4 launch com.facebook.WebDriverAgentLib.lizhengtest021.xctrunner")
+            "/Users/jfx/Library/Python/3.9/bin/tidevice -u " + uuid + " launch com.facebook.WebDriverAgentLib.lizhengtest" + key + ".xctrunner")
         time.sleep(3)
         myclient.session().app_activate("com.yy.hello")
         print("当前时间: %s" % time.ctime() + " : 重启")

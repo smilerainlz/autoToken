@@ -15,5 +15,5 @@ while True:
 
     # 打开cm
     hello.initNoClose(myclient, "hello")
-    # hello.process(myclient, "linx2001", "phone", "username", "false", 0, "hello")
+    # hello.process(myclient, "lg0811200", "phone", "username", "false", 0, "hello")
     hello.processNew(myclient, "hello5555", "myPhone", "username", "false", 1, "hello")

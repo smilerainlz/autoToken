@@ -259,6 +259,10 @@ def process(client, username, device, loginType, isCheckDiamond, isGetSecurityPa
 
 
 def processNew(client, username, device, loginType, isCheckDiamond, isGetSecurityPacket, appType):
+    time.sleep(5)
+    if client(label="daily reward close").exists:
+        client.xpath("//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]/Other[1]/Image[1]/Image[1]").click()
+        client(label="daily reward close").click()
     if isGetSecurityPacket >= 1:
         getSecurityPacket(client, isGetSecurityPacket, device, appType)
     time.sleep(60)
