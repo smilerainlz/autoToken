@@ -202,7 +202,7 @@ def getDiamond(client):
 
 def getSecurityPacket(client, isGetSecurityPacket, device, appType):
     if appType == "cm":
-        client(label="社区").click()
+        client(label="广场").click()
         time.sleep(3)
         client(label="发现").click()
     if appType == "ppx":
@@ -213,15 +213,17 @@ def getSecurityPacket(client, isGetSecurityPacket, device, appType):
         client(label="星球").click()
     time.sleep(5)
     client(label="超级玩家").click()
-    time.sleep(10)
+    time.sleep(20)
+    # client.click(0.566, 0.896)
+    time.sleep(1)
     client.swipe(0.5, 0.8, 0.5, 0.5)
     time.sleep(2)
     client.click(0.566, 0.896)
     time.sleep(1)
     if isGetSecurityPacket == 1:
-        for i in range(5):
-            client.click(0.566, 0.896)
-            time.sleep(60)
+        # for i in range(5):
+        client.click(0.566, 0.896)
+            # time.sleep(60)
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/WebView[1]/WebView[1]/WebView[1]/Other[1]/Other[1]/Other[1]/Other[1]/Button[1]').click()
     # client(label="orangy ic common back black").click()
@@ -265,4 +267,4 @@ def processNew(client, username, device, loginType, isCheckDiamond, isGetSecurit
         client(label="daily reward close").click()
     if isGetSecurityPacket >= 1:
         getSecurityPacket(client, isGetSecurityPacket, device, appType)
-    time.sleep(60)
+    time.sleep(10)

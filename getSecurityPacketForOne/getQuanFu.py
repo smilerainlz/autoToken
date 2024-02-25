@@ -2,10 +2,10 @@ import os
 
 import wda, time, sys, redis
 
-key = "024"
-uuid = "c933eea94b3ba611f48322b9d9ebc02e9c1efef1"
+key = "067"
+uuid = "984e38e08278e882dda3017fc916d873d457b13d"
 try:
-    myclient = wda.USBClient("c933eea94b3ba611f48322b9d9ebc02e9c1efef1", port=8100)
+    myclient = wda.USBClient("984e38e08278e882dda3017fc916d873d457b13d", port=8100)
 except:
     os.system(
         "/Users/jfx/Library/Python/3.9/bin/tidevice -u " + uuid + " kill com.facebook.WebDriverAgentLib.lizhengtest" + key + ".xctrunner")
