@@ -54,13 +54,13 @@ def modifyPwd(client):
         timeout=3.0)
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]').set_text(
-        "zxc123123")
+        "zxcvbn123$")
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[4]/SecureTextField[1]').click_exists(
         timeout=3.0)
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[4]/SecureTextField[1]').set_text(
-        "zxc123123")
+        "zxcvbn123$")
     time.sleep(1)
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Button[1]').click_exists(
@@ -100,7 +100,7 @@ def login(client, username, device, loginType):
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]/Button[1]/StaticText[1]').click_exists(
         timeout=3.0)
-    client(className="XCUIElementTypeSecureTextField").set_text("zxc123123$")
+    client(className="XCUIElementTypeSecureTextField").set_text("zxcvbn123$")
     # 点击登录
     client.xpath('//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Button[2]').click_exists(
         timeout=3.0)
@@ -214,7 +214,7 @@ def getSecurityPacket(client, isGetSecurityPacket, device, appType):
     time.sleep(5)
     client(label="超级玩家").click()
     time.sleep(20)
-    # client.click(0.566, 0.896)
+    client.click(0.566, 0.896)
     time.sleep(1)
     client.swipe(0.5, 0.8, 0.5, 0.5)
     time.sleep(2)
@@ -224,8 +224,10 @@ def getSecurityPacket(client, isGetSecurityPacket, device, appType):
         # for i in range(5):
         client.click(0.566, 0.896)
             # time.sleep(60)
-    client.xpath(
-        '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/WebView[1]/WebView[1]/WebView[1]/Other[1]/Other[1]/Other[1]/Other[1]/Button[1]').click()
+    time.sleep(1)
+    client.click(0.066, 0.077)
+    # client.xpath(
+    #    '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/WebView[1]/WebView[1]/WebView[1]/Other[1]/Other[1]/Other[1]/Other[1]/Button[1]').click()
     # client(label="orangy ic common back black").click()
 
 

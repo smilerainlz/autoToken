@@ -4,7 +4,16 @@ sys.path.append("..//")
 import hello
 
 runCount = 0
-myclient = wda.USBClient("958249e4a70aff1b6514cd0cf64df32aeb9ecbb2", port=8100)
+uuid = "958249e4a70aff1b6514cd0cf64df32aeb9ecbb2"
+key = "0002"
+try:
+    myclient = wda.USBClient(uuid, port=8100)
+except:
+    os.system(
+        "/Users/jfx/Library/Python/3.9/bin/tidevice -u " + uuid + " kill com.facebook.WebDriverAgentLib.lizhengtest" + key + ".xctrunner")
+    os.system(
+        "/Users/jfx/Library/Python/3.9/bin/tidevice -u " + uuid + " launch com.facebook.WebDriverAgentLib.lizhengtest" + key + ".xctrunner")
+    myclient = wda.USBClient("uuid", port=8100)
 while True:
     runCount = runCount + 1
     # 循环超过5次重启charles

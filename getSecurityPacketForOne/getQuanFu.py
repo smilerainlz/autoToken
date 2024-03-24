@@ -2,7 +2,7 @@ import os
 
 import wda, time, sys, redis
 
-key = "067"
+key = "068"
 uuid = "984e38e08278e882dda3017fc916d873d457b13d"
 try:
     myclient = wda.USBClient("984e38e08278e882dda3017fc916d873d457b13d", port=8100)
