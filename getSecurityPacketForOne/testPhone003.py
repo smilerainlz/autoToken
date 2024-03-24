@@ -13,7 +13,7 @@ except:
         "/Users/jfx/Library/Python/3.9/bin/tidevice -u " + uuid + " kill com.facebook.WebDriverAgentLib.lizhengtest" + key + ".xctrunner")
     os.system(
         "/Users/jfx/Library/Python/3.9/bin/tidevice -u " + uuid + " launch com.facebook.WebDriverAgentLib.lizhengtest" + key + ".xctrunner")
-    myclient = wda.USBClient("uuid", port=8100)
+    myclient = wda.USBClient(uuid, port=8100)
 while True:
     runCount = runCount + 1
     # 循环超过5次重启charles
