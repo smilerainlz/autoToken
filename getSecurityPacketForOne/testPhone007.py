@@ -5,7 +5,7 @@ import hello
 
 runCount = 0
 uuid = "984e38e08278e882dda3017fc916d873d457b13d"
-key = "0001"
+key = "0008"
 try:
     myclient = wda.USBClient(uuid, port=8100)
 except:

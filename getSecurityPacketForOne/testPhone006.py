@@ -5,7 +5,7 @@ import hello
 
 runCount = 0
 uuid = "15b6ddd0b40473b4c753ad9ff7dddad149cf6eb4"
-key = "0001"
+key = "0015"
 try:
     myclient = wda.USBClient(uuid, port=8100)
 except:
@@ -24,11 +24,11 @@ while True:
 
     # 打开cm
     hello.initNoClose(myclient, "hello")
-    # hello.process(myclient, "id588815", "phone", "username", "false", 0, "hello")
-    hello.processNew(myclient, "hello5555", "myPhone", "username", "false", 1, "hello")
+    # hello.process(myclient, "bmbm123", "phone", "username", "false", 0, "hello")
+    hello.processNew(myclient, "bmbm123", "myPhone", "username", "false", 1, "hello")
 
     hello.initNoClose(myclient, "cm")
-    hello.processNew(myclient, "hello5555", "myPhone", "username", "false", 1, "cm")
+    hello.processNew(myclient, "bmbm123", "myPhone", "username", "false", 1, "cm")
 
     hello.initNoClose(myclient, "ppx")
     hello.processNew(myclient, "hello5555", "myPhone", "username", "false", 1, "ppx")
