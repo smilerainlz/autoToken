@@ -54,13 +54,13 @@ def modifyPwd(client):
         timeout=3.0)
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]').set_text(
-        "zxcvbn123$")
+        "qwe$1234")
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[4]/SecureTextField[1]').click_exists(
         timeout=3.0)
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[4]/SecureTextField[1]').set_text(
-        "zxcvbn123$")
+        "qwe$1234")
     time.sleep(1)
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Button[1]').click_exists(
@@ -100,7 +100,7 @@ def login(client, username, device, loginType):
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]/Button[1]/StaticText[1]').click_exists(
         timeout=3.0)
-    client(className="XCUIElementTypeSecureTextField").set_text("zxcvbn123$")
+    client(className="XCUIElementTypeSecureTextField").set_text("qwe$1234")
     # 点击登录
     client.xpath('//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Button[2]').click_exists(
         timeout=3.0)
@@ -214,7 +214,7 @@ def getSecurityPacket(client, isGetSecurityPacket, device, appType):
     time.sleep(5)
     client(label="超级玩家").click()
     time.sleep(20)
-    client.click(0.566, 0.896)
+    # client.click(0.566, 0.896)
     time.sleep(1)
     client.swipe(0.5, 0.8, 0.5, 0.5)
     time.sleep(2)
