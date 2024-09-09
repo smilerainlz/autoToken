@@ -28,7 +28,7 @@ while True:
     hello.processNew(myclient, "hello5555", "myPhone", "username", "false", 1, "hello")
 
     hello.initNoClose(myclient, "cm")
-    # hello.process(myclient, "", "phone", "username", "false", 0, "cm")
+    # hello.process(myclient, "pipa88", "phone", "username", "false", 0, "cm")
     hello.processNew(myclient, "hello5555", "myPhone", "username", "false", 1, "cm")
 
     hello.initNoClose(myclient, "ppx")
