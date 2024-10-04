@@ -1,4 +1,4 @@
-import time
+import time, wda, os, codecs
 
 
 def addFirend(client):
@@ -71,17 +71,13 @@ def modifyPwd(client):
 
 
 # appName(cm or ppx)
-# device(iphone or ipad)
 # loginType(phone or username)
-def login(client, username, device, loginType):
+def login(client, username, password, loginType):
     print("当前时间: %s" % time.ctime())
     print(username, end="")
     # 如果未勾选用户协议，勾选
     if not client(className="XCUIElementTypeOther").accessible:
-        if device == "phone":
-            client.click(0.09, 0.893)
-        if device == "ipad":
-            client.click(0.29, 0.959)
+        client.click(0.09, 0.893)
     # 选择用户名登录
     if loginType == "phone":
         client(label="手机登录/注册").click()
@@ -89,10 +85,7 @@ def login(client, username, device, loginType):
         if client(label="其他号码登录 >").exists:
             client(label="其他号码登录 >").click()
     if loginType == "username":
-        if device == "ipad":
-            client.click(0.609, 0.898)
-        if device == "phone":
-            client.click(0.821, 0.817)
+        client.click(0.821, 0.817)
     # 清空用户名并输入用户名
     client(className="XCUIElementTypeTextField").clear_text()
     client(className="XCUIElementTypeTextField").set_text(username)
@@ -100,7 +93,7 @@ def login(client, username, device, loginType):
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]/Button[1]/StaticText[1]').click_exists(
         timeout=3.0)
-    client(className="XCUIElementTypeSecureTextField").set_text("qwe$1234")
+    client(className="XCUIElementTypeSecureTextField").set_text(password)
     # 点击登录
     client.xpath('//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Button[2]').click_exists(
         timeout=3.0)
@@ -200,7 +193,7 @@ def getDiamond(client):
     client(label="orangy ic common back black").click()
 
 
-def getSecurityPacket(client, isGetSecurityPacket, device, appType):
+def getSecurityPacket(client, isGetSecurityPacket, appType):
     if appType == "cm":
         client(label="广场").click()
         time.sleep(3)
@@ -223,7 +216,7 @@ def getSecurityPacket(client, isGetSecurityPacket, device, appType):
     if isGetSecurityPacket == 1:
         # for i in range(5):
         client.click(0.566, 0.896)
-            # time.sleep(60)
+        # time.sleep(60)
     time.sleep(1)
     client.click(0.066, 0.077)
     # client.xpath(
@@ -231,42 +224,88 @@ def getSecurityPacket(client, isGetSecurityPacket, device, appType):
     # client(label="orangy ic common back black").click()
 
 
-# device(myPhone or testPhone or ipad)
 # loginType(phone or username)
 # isCheckDiamond是否查看钻石（true获取）
 # isGetSecurityPacket是否获取securityPacket（1：1个号循环获取，2：多个号获取）
-def process(client, username, device, loginType, isCheckDiamond, isGetSecurityPacket, appType):
-    init(client, appType)
-    try:
-        # 登录
-        login(client, username, device, loginType)
-        # 如果登录过期
-        if client(label="确定").exists:
-            client(label="确定").click()
-            # 重新登录
-            login(client, username, device, loginType)
-        if isCheckDiamond == "true":
-            getDiamond(client)
-        if isGetSecurityPacket >= 1:
-            getSecurityPacket(client, isGetSecurityPacket, device, appType)
-        if device == "ipad":
-            closeForIpad(client, "true")
-        if device == "iphone":
-            close(client, "true")
-    except:
-        print("捕获异常，重新调用登录")
-        if device == "ipad":
-            closeForIpad(client, "true")
-        if device == "iphone":
-            close(client, "true")
-        process(client, username, device, loginType, isCheckDiamond, isGetSecurityPacket, appType)
+def process(client, username, password, loginType, isCheckDiamond, isGetSecurityPacket, appType):
+    # 登录
+    login(client, username, password, loginType)
+    # 如果登录过期
+    if client(label="确定").exists:
+        client(label="确定").click()
+        # 重新登录
+        login(client, username, loginType)
+    if isCheckDiamond == "true":
+        getDiamond(client)
+    if isGetSecurityPacket >= 1:
+        getSecurityPacket(client, isGetSecurityPacket, appType)
+    close(client, "true")
 
 
-def processNew(client, username, device, loginType, isCheckDiamond, isGetSecurityPacket, appType):
+def processNew(client, isGetSecurityPacket, appType):
     time.sleep(5)
     if client(label="daily reward close").exists:
         client.xpath("//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]/Other[1]/Image[1]/Image[1]").click()
         client(label="daily reward close").click()
     if isGetSecurityPacket >= 1:
-        getSecurityPacket(client, isGetSecurityPacket, device, appType)
+        try:
+            getSecurityPacket(client, isGetSecurityPacket, appType)
+        except:
+            print(appType + " : 号被顶了")
     time.sleep(10)
+
+
+def doAll(uuid, key):
+    runCount = 0
+    try:
+        myclient = wda.USBClient(uuid, port=8100)
+    except:
+        os.system(
+            "/Users/jfx/Library/Python/3.9/bin/tidevice -u " + uuid + " kill com.facebook.WebDriverAgentLib.lizhengtest" + key + ".xctrunner")
+        os.system(
+            "/Users/jfx/Library/Python/3.9/bin/tidevice -u " + uuid + " launch com.facebook.WebDriverAgentLib.lizhengtest" + key + ".xctrunner")
+        myclient = wda.USBClient(uuid, port=8100)
+    while True:
+        runCount = runCount + 1
+        # 循环超过5次重启charles
+        if runCount % 200 == 0:
+            os.system('sh ../charles-start.sh')
+            print("重启charles")
+            time.sleep(10)
+
+        # 打开cm
+        initNoClose(myclient, "hello")
+        # process(myclient, "bmbm123", "username", "false", 0, "hello")
+        processNew(myclient, 1, "hello")
+
+        initNoClose(myclient, "cm")
+        processNew(myclient, 1, "cm")
+
+        initNoClose(myclient, "ppx")
+        processNew(myclient, 1, "ppx")
+
+
+def doFromFile(uuid, key, fileName):
+    runCount = 0
+    try:
+        myclient = wda.USBClient(uuid, port=8100)
+    except:
+        os.system(
+            "/Users/jfx/Library/Python/3.9/bin/tidevice -u " + uuid + " kill com.facebook.WebDriverAgentLib.lizhengtest" + key + ".xctrunner")
+        os.system(
+            "/Users/jfx/Library/Python/3.9/bin/tidevice -u " + uuid + " launch com.facebook.WebDriverAgentLib.lizhengtest" + key + ".xctrunner")
+        myclient = wda.USBClient(uuid, port=8100)
+    init(myclient, "hello")
+    while True:
+        runCount = runCount + 1
+        # 循环超过5次重启charles
+        if runCount % 200 == 0:
+            os.system('sh ../charles-start.sh')
+            print("重启charles")
+            time.sleep(10)
+
+        # 打开cm
+        while True:
+            file_cm = codecs.open("../data/" + fileName + ".txt", 'r', "utf-8")
+            for line in file_cm:
+                process(myclient, line.split(",")[0], line.split(",")[1], "username", "false", 1, "hello")
