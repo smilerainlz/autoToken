@@ -219,6 +219,9 @@ def getSecurityPacket(client, isGetSecurityPacket, appType):
         # time.sleep(60)
     time.sleep(1)
     client.click(0.066, 0.077)
+    time.sleep(2)
+    if client(label="icon close interest label").exists:
+        client(label="icon close interest label").click()
     # client.xpath(
     #    '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/WebView[1]/WebView[1]/WebView[1]/Other[1]/Other[1]/Other[1]/Other[1]/Button[1]').click()
     # client(label="orangy ic common back black").click()
@@ -235,8 +238,6 @@ def process(client, username, password, loginType, isCheckDiamond, isGetSecurity
             '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]/Other[1]/Image[1]/Image[1]').click()
         time.sleep(3)
         client(label="daily reward close").click()
-    if client(label="icon close interest label").exists:
-        client(label="icon close interest label").click()
     # 如果登录过期
     if client(label="确定").exists:
         client(label="确定").click()
