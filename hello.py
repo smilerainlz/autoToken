@@ -120,7 +120,6 @@ def close(client, isLogin):
             client.xpath('//ScrollView/Button[10]').click()
             client.xpath('//Window[1]/Other[2]/Other[1]/Other[1]/Button[1]/StaticText[1]').click()
 
-
 def closeForIpad(client, isLogin):
     time.sleep(3)
     # 如果弹出签到提示，先签到，再关闭
