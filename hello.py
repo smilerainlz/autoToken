@@ -325,4 +325,8 @@ def doFromFile(uuid, key, fileName):
                     process(myclient, line.split("----")[0], line.split("----")[1], "username", "false", 1, "hello")
                 except:
                     init(myclient, "hello")
-                    process(myclient, line.split("----")[0], line.split("----")[1], "username", "false", 1, "hello")
+                    try:
+                        process(myclient, line.split("----")[0], line.split("----")[1], "username", "false", 1, "hello")
+                    except:
+                        init(myclient, "hello")
+                        process(myclient, line.split("----")[0], line.split("----")[1], "username", "false", 1, "hello")
