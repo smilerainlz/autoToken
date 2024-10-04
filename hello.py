@@ -235,6 +235,8 @@ def process(client, username, password, loginType, isCheckDiamond, isGetSecurity
             '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]/Other[1]/Image[1]/Image[1]').click()
         time.sleep(3)
         client(label="daily reward close").click()
+    if client(label="icon close interest label").exists:
+        client(label="icon close interest label").click()
     # 如果登录过期
     if client(label="确定").exists:
         client(label="确定").click()
@@ -313,4 +315,8 @@ def doFromFile(uuid, key, fileName):
         while True:
             file_cm = codecs.open("../data/" + fileName + ".txt", 'r', "utf-8")
             for line in file_cm:
-                process(myclient, line.split("----")[0], line.split("----")[1], "username", "false", 1, "hello")
+                try:
+                    process(myclient, line.split("----")[0], line.split("----")[1], "username", "false", 1, "hello")
+                except:
+                    init(myclient, "hello")
+                    process(myclient, line.split("----")[0], line.split("----")[1], "username", "false", 1, "hello")
