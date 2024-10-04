@@ -230,6 +230,11 @@ def getSecurityPacket(client, isGetSecurityPacket, appType):
 def process(client, username, password, loginType, isCheckDiamond, isGetSecurityPacket, appType):
     # 登录
     login(client, username, password, loginType)
+    if client(label="daily reward close").exists:
+        client.xpath(
+            '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]/Other[1]/Image[1]/Image[1]').click()
+        time.sleep(3)
+        client(label="daily reward close").click()
     # 如果登录过期
     if client(label="确定").exists:
         client(label="确定").click()
