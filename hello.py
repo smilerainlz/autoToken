@@ -119,7 +119,7 @@ def close(client, isLogin):
             client.click(0.927, 0.088)
             client.xpath('//ScrollView/Button[10]').click()
             client.xpath('//Window[1]/Other[2]/Other[1]/Other[1]/Button[1]/StaticText[1]').click()
-    if client(label="我的").exists:
+    if client(label="").exists:
         client(label="我的").click()
         client.click(0.927, 0.088)
         client.xpath('//ScrollView/Button[10]').click()
@@ -329,4 +329,10 @@ def doFromFile(uuid, key, fileName):
                         process(myclient, line.split("----")[0], line.split("----")[1], "username", "false", 1, "hello")
                     except:
                         init(myclient, "hello")
-                        process(myclient, line.split("----")[0], line.split("----")[1], "username", "false", 1, "hello")
+                        try:
+                            process(myclient, line.split("----")[0], line.split("----")[1], "username", "false", 1,
+                                    "hello")
+                        except:
+                            init(myclient, "hello")
+                            process(myclient, line.split("----")[0], line.split("----")[1], "username", "false", 1,
+                                    "hello")
