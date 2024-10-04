@@ -119,11 +119,6 @@ def close(client, isLogin):
             client.click(0.927, 0.088)
             client.xpath('//ScrollView/Button[10]').click()
             client.xpath('//Window[1]/Other[2]/Other[1]/Other[1]/Button[1]/StaticText[1]').click()
-    if client(label="").exists:
-        client(label="我的").click()
-        client.click(0.927, 0.088)
-        client.xpath('//ScrollView/Button[10]').click()
-        client.xpath('//Window[1]/Other[2]/Other[1]/Other[1]/Button[1]/StaticText[1]').click()
 
 
 def closeForIpad(client, isLogin):
