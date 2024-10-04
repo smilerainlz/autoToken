@@ -308,4 +308,4 @@ def doFromFile(uuid, key, fileName):
         while True:
             file_cm = codecs.open("../data/" + fileName + ".txt", 'r', "utf-8")
             for line in file_cm:
-                process(myclient, line.split(",")[0], line.split(",")[1], "username", "false", 1, "hello")
+                process(myclient, line.split(",")[0], line.split(",")[1], "phone", "false", 1, "hello")
