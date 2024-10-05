@@ -304,7 +304,7 @@ def doAll(uuid, key):
         processNew(myclient, 1, "ppx")
 
 
-def doFromFile(uuid, key, fileName):
+def doFromFile(uuid, key, fileName, appType):
     runCount = 0
     try:
         myclient = wda.USBClient(uuid, port=8100)
@@ -314,7 +314,7 @@ def doFromFile(uuid, key, fileName):
         os.system(
             "/Users/jfx/Library/Python/3.9/bin/tidevice -u " + uuid + " launch com.facebook.WebDriverAgentLib.lizhengtest" + key + ".xctrunner")
         myclient = wda.USBClient(uuid, port=8100)
-    init(myclient, "hello")
+    init(myclient, appType)
     while True:
         runCount = runCount + 1
         # 循环超过5次重启charles
@@ -328,17 +328,12 @@ def doFromFile(uuid, key, fileName):
             file_cm = codecs.open("../data/" + fileName + ".txt", 'r', "utf-8")
             for line in file_cm:
                 try:
-                    process(myclient, line.split("----")[0], line.split("----")[1], "username", "false", 1, "hello")
+                    process(myclient, line.split("----")[0], line.split("----")[1], "username", "false", 1, appType)
                 except:
-                    init(myclient, "hello")
+                    init(myclient, appType)
                     try:
-                        process(myclient, line.split("----")[0], line.split("----")[1], "username", "false", 1, "hello")
+                        process(myclient, line.split("----")[0], line.split("----")[1], "username", "false", 1, appType)
                     except:
-                        init(myclient, "hello")
-                        try:
-                            process(myclient, line.split("----")[0], line.split("----")[1], "username", "false", 1,
-                                    "hello")
-                        except:
-                            init(myclient, "hello")
-                            process(myclient, line.split("----")[0], line.split("----")[1], "username", "false", 1,
-                                    "hello")
+                        init(myclient, appType)
+                        process(myclient, line.split("----")[0], line.split("----")[1], "username", "false", 1,
+                                appType)
