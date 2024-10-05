@@ -110,18 +110,26 @@ def close(client, isLogin):
     # 退出
     if isLogin == "true":
         client(label="我的").click()
+        if client(label="选好了").exists:
+            client(label="选好了").click()
         client.click(0.927, 0.088)
         client.xpath('//ScrollView/Button[10]').click()
+        if client(label="下次再说").exists:
+            client.xpath('//Window[1]/Other[2]/Other[1]/Other[1]/Button[1]/StaticText[1]').click()
+            client.xpath('//ScrollView/Button[10]').click()
         client.xpath('//Window[1]/Other[2]/Other[1]/Other[1]/Button[1]/StaticText[1]').click()
     if isLogin != "true":
         if client(label="我的").exists:
             client(label="我的").click()
+            if client(label="选好了").exists:
+                client(label="选好了").click()
             client.click(0.927, 0.088)
             client.xpath('//ScrollView/Button[10]').click()
+            if client(label="下次再说").exists:
+                client.xpath('//Window[1]/Other[2]/Other[1]/Other[1]/Button[1]/StaticText[1]').click()
+                client.xpath('//ScrollView/Button[10]').click()
             client.xpath('//Window[1]/Other[2]/Other[1]/Other[1]/Button[1]/StaticText[1]').click()
-    time.sleep(1)
-    if client(label="选好了").exists:
-        client(label="选好了").click()
+
 
 def closeForIpad(client, isLogin):
     time.sleep(3)
@@ -221,9 +229,6 @@ def getSecurityPacket(client, isGetSecurityPacket, appType):
         # time.sleep(60)
     time.sleep(1)
     client.click(0.066, 0.077)
-    time.sleep(2)
-    if client(label="icon close interest label").exists:
-        client(label="icon close interest label").click()
     # client.xpath(
     #    '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/WebView[1]/WebView[1]/WebView[1]/Other[1]/Other[1]/Other[1]/Other[1]/Button[1]').click()
     # client(label="orangy ic common back black").click()
