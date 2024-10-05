@@ -165,6 +165,10 @@ def init(client, appType):
         client.session().app_activate("com.yy.hello")
     if client(label="确定").exists:
         client(label="确定").click()
+    time.sleep(3)
+    if client(label="daily reward close").exists:
+        client.click(0.501, 0.694)
+        client(label="daily reward close").click()
     close(client, "false")
 
 
