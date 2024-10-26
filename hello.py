@@ -113,10 +113,10 @@ def close(client, isLogin):
         if client(label="选好了").exists:
             client(label="选好了").click()
         client.click(0.927, 0.088)
-        client.xpath('//ScrollView/Button[10]').click()
+        client(label="退出当前帐号").click()
         if client(label="下次再说").exists:
             client.xpath('//Window[1]/Other[2]/Other[1]/Other[1]/Button[1]/StaticText[1]').click()
-            client.xpath('//ScrollView/Button[10]').click()
+            client(label="退出当前帐号").click()
         client.xpath('//Window[1]/Other[2]/Other[1]/Other[1]/Button[1]/StaticText[1]').click()
     if isLogin != "true":
         if client(label="我的").exists:
@@ -124,10 +124,10 @@ def close(client, isLogin):
             if client(label="选好了").exists:
                 client(label="选好了").click()
             client.click(0.927, 0.088)
-            client.xpath('//ScrollView/Button[10]').click()
+            client(label="退出当前帐号").click()
             if client(label="下次再说").exists:
                 client.xpath('//Window[1]/Other[2]/Other[1]/Other[1]/Button[1]/StaticText[1]').click()
-                client.xpath('//ScrollView/Button[10]').click()
+                client(label="退出当前帐号").click()
             client.xpath('//Window[1]/Other[2]/Other[1]/Other[1]/Button[1]/StaticText[1]').click()
 
 
@@ -143,13 +143,13 @@ def closeForIpad(client, isLogin):
     if isLogin == "true":
         client(label="我的").click()
         client.click(0.975, 0.043)
-        client.xpath('//ScrollView/Button[10]').click()
+        client(label="退出当前帐号").click()
         client.xpath('//Window[1]/Other[2]/Other[1]/Other[1]/Button[1]/StaticText[1]').click()
     if isLogin != "true":
         if client(label="我的").exists:
             client(label="我的").click()
             client.click(0.975, 0.043)
-            client.xpath('//ScrollView/Button[10]').click()
+            client(label="退出当前帐号").click()
             client.xpath('//Window[1]/Other[2]/Other[1]/Other[1]/Button[1]/StaticText[1]').click()
 
 
@@ -327,13 +327,14 @@ def doFromFile(uuid, key, fileName, appType):
         while True:
             file_cm = codecs.open("../data/" + fileName + ".txt", 'r', "utf-8")
             for line in file_cm:
+                print(line.split("----")[2])
                 try:
-                    process(myclient, line.split("----")[0], line.split("----")[1], "username", "false", 1, appType)
+                    process(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2], "false", 1, appType)
                 except:
                     init(myclient, appType)
                     try:
-                        process(myclient, line.split("----")[0], line.split("----")[1], "username", "false", 1, appType)
+                        process(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2], "false", 1, appType)
                     except:
                         init(myclient, appType)
-                        process(myclient, line.split("----")[0], line.split("----")[1], "username", "false", 1,
+                        process(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2], "false", 1,
                                 appType)
