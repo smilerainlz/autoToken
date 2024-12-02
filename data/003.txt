@@ -14,8 +14,6 @@ ID92214933----hwk642671----username----
 ID92277090----sap646579----username----
 ID92356457----ccv124871----username----
 ID92339469----qos643565----username----
-ID92296732----qtx042617----username----
-ID92216300----agx416948----username----
 ID92337457----cqr959852----username----
 ID92354049----wxd632084----username----
 ID92312667----plj174230----username----
