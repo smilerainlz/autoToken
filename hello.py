@@ -201,7 +201,7 @@ def initNoClose(client, appType):
 
 def getDiamond(client):
     client(label="我的").click()
-    client.xpath('//Table/Cell[1]').click()
+    client(label="我的钱包").click()
     time.sleep(3)
     print(client(className="XCUIElementTypeStaticText")[5].value)
     client(label="orangy ic common back black").click()
