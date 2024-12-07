@@ -204,7 +204,7 @@ def getDiamond(client):
     client(label="我的钱包").click()
     time.sleep(3)
     print("     " + client(className="XCUIElementTypeStaticText")[5].value)
-    client.click(0.6, 0.6)
+    client.click(0.6, 0.6).click()
 
 
 def getSecurityPacket(client, isGetSecurityPacket, appType):
