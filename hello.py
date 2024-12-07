@@ -304,7 +304,7 @@ def doAll(uuid, key):
         processNew(myclient, 1, "ppx")
 
 
-def doFromFile(uuid, key, fileName, appType):
+def doFromFile(uuid, key, fileName, appType, isCheckDiamond):
     runCount = 0
     try:
         myclient = wda.USBClient(uuid, port=8100)
@@ -329,16 +329,16 @@ def doFromFile(uuid, key, fileName, appType):
             for line in file_cm:
                 print(line.split("----")[2])
                 try:
-                    process(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2], "false", 1,
+                    process(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2], isCheckDiamond, 1,
                             appType)
                 except:
                     init(myclient, appType)
                     try:
-                        process(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2], "false",
+                        process(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2], isCheckDiamond,
                                 1, appType)
                     except:
                         init(myclient, appType)
-                        process(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2], "false",
+                        process(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2], isCheckDiamond,
                                 1,
                                 appType)
 
