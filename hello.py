@@ -40,33 +40,23 @@ def removeGZ(client):
 def modifyPwd(client, password):
     client(label="我的").click()
     time.sleep(1)
-    client.xpath('//Table/Cell[7]').click()
+    client(label="安全中心").click()
     time.sleep(1)
     client.xpath('//Table/Cell[3]').click()
     client.xpath(
-        '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/SecureTextField[1]').click_exists(
-        timeout=3.0)
-    client.xpath(
-        '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/SecureTextField[1]').set_text(
+        '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/SecureTextField[1]').set_text(
         password)
     client.xpath(
-        '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]').click_exists(
-        timeout=3.0)
-    client.xpath(
-        '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]').set_text(
+        '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]/SecureTextField[1]').set_text(
         "qwer1234$$")
     client.xpath(
-        '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[4]/SecureTextField[1]').click_exists(
-        timeout=3.0)
-    client.xpath(
-        '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[4]/SecureTextField[1]').set_text(
+        '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[4]/SecureTextField[1]').set_text(
         "qwer1234$$")
     time.sleep(1)
     client.xpath(
-        '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Button[1]').click_exists(
-        timeout=3.0)
+        '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Button[1]').click()
     time.sleep(1)
-    client(label="orangy ic common back black").click()
+    client.click(0.057, 0.052)
     time.sleep(1)
 
 
