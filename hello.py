@@ -37,7 +37,7 @@ def removeGZ(client):
         client.xpath('//Window[1]/Other[2]/Other[2]/Button[3]/StaticText[1]').click()
 
 
-def modifyPwd(client):
+def modifyPwd(client, password):
     client(label="我的").click()
     time.sleep(1)
     client.xpath('//Table/Cell[7]').click()
@@ -48,19 +48,19 @@ def modifyPwd(client):
         timeout=3.0)
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/SecureTextField[1]').set_text(
-        "zzz12345")
+        password)
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]').click_exists(
         timeout=3.0)
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]').set_text(
-        "qwe$1234")
+        "qwer1234$$")
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[4]/SecureTextField[1]').click_exists(
         timeout=3.0)
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[4]/SecureTextField[1]').set_text(
-        "qwe$1234")
+        "qwer1234$$")
     time.sleep(1)
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Button[1]').click_exists(
@@ -329,16 +329,19 @@ def doFromFile(uuid, key, fileName, appType, isCheckDiamond):
             for line in file_cm:
                 print(line.split("----")[2])
                 try:
-                    process(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2], isCheckDiamond, 1,
+                    process(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
+                            isCheckDiamond, 1,
                             appType)
                 except:
                     init(myclient, appType)
                     try:
-                        process(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2], isCheckDiamond,
+                        process(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
+                                isCheckDiamond,
                                 1, appType)
                     except:
                         init(myclient, appType)
-                        process(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2], isCheckDiamond,
+                        process(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
+                                isCheckDiamond,
                                 1,
                                 appType)
 
