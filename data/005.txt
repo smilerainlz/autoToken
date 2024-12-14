@@ -1,9 +1,3 @@
-ID92305085----qwer1234$$----username----
-ID92303836----qwer1234$$----username----
-ID92317544----qwer1234$$----username----
-ID92291773----qwer1234$$----username----
-ID92331766----qwer1234$$----username----
-ID92317592----qwer1234$$----username----
 ID92354548----qwer1234$$----username----
 ID92132221----qwer1234$$----username----
 ID92355366----qwer1234$$----username----
