@@ -1,5 +1,3 @@
-ID92277021----qwer1234$$----username----
-ID92285933----qwer1234$$----username----
 ID92300332----qwer1234$$----username----
 ID92307353----qwer1234$$----username----
 ID92315447----qwer1234$$----username----
@@ -15,16 +13,3 @@ ID92310379----qwer1234$$----username----
 ID92302395----qwer1234$$----username----
 ID92353258----qwer1234$$----username----
 ID92319990----qwer1234$$----username----
-ID92302121----qwer1234$$----username----
-ID92293856----qwer1234$$----username----
-ID92314625----qwer1234$$----username----
-ID92358285----qwer1234$$----username----
-ID92299802----qwer1234$$----username----
-ID92311272----qwer1234$$----username----
-ID92333640----qwer1234$$----username----
-ID92303421----qwer1234$$----username----
-ID92304225----qwer1234$$----username----
-ID92305246----qwer1234$$----username----
-ID92308806----qwer1234$$----username----
-ID92299342----qwer1234$$----username----
-ID92284462----qwer1234$$----username----
