@@ -10,6 +10,3 @@ ID92278343----qwer1234$$----username----
 ID92336559----qwer1234$$----username----
 ID92307729----qwer1234$$----username----
 ID92310379----qwer1234$$----username----
-ID92302395----qwer1234$$----username----
-ID92353258----qwer1234$$----username----
-ID92319990----qwer1234$$----username----
