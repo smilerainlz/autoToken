@@ -6,5 +6,5 @@ import hello
 uuid = "010c2c6dd46d94ab3f129697112f74b3a2367f75"
 key = "0048"
 
-# hello.doAll(uuid, key)
-hello.doFromFile(uuid, key, "003", "hello", "false")
+hello.doAll(uuid, key)
+# hello.doFromFile(uuid, key, "003", "hello", "false")
