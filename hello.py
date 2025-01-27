@@ -214,7 +214,7 @@ def getSecurityPacket(client, isGetSecurityPacket, appType):
     # client.click(0.566, 0.896)
     time.sleep(1)
     client.swipe(0.5, 0.8, 0.5, 0.5)
-    time.sleep(2)
+    time.sleep(10)
     client.click(0.566, 0.896)
     time.sleep(1)
     if isGetSecurityPacket == 1:
@@ -334,6 +334,7 @@ def doFromFile(uuid, key, fileName, appType, isCheckDiamond):
                                 isCheckDiamond,
                                 1,
                                 appType)
+            time.sleep(1680)
 
 
 def doFromFileAll(uuid, key, fileName):
