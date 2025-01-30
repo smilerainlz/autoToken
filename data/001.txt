@@ -1,14 +1,5 @@
-ID92306618----emq055111----username----
-ID92357568----zpq188017----username----
-ID92296573----wkh858595----username----
-ID92277675----rxh798109----username----
-ID92331605----lln519265----username----
-ID92306175----xwz679485----username----
-ID92292617----fca557432----username----
-ID92291578----eme562660----username----
 ID92302706----dxs904093----username----
 ID92354465----nbx594201----username----
-ID92301889----rpm050822----username----
 ID92346172----nhv616266----username----
 ID92180648----qwe947278----username----
 ID92286952----yio133925----username----
@@ -48,9 +39,6 @@ ID92300168----eyy101234----username----
 ID92350582----taf606446----username----
 ID92270860----edu221823----username----
 ID92338382----vtk109638----username----
-ID92337335----cdq094639----username----
-ID92353731----aga387070----username----
-ID92309642----pbr292873----username----
 ID92298331----oab648593----username----
 ID92293128----cnh935862----username----
 ID92298755----hjh902965----username----
