@@ -27,5 +27,3 @@ ID92338382----vtk109638----username----
 ID92337335----cdq094639----username----
 ID92353731----aga387070----username----
 ID92309642----pbr292873----username----
-ID92298331----oab648593----username----
-ID92284462----qwer1234$$----username----
