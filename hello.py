@@ -315,6 +315,7 @@ def doFromFile(uuid, key, fileName, appType, isCheckDiamond):
 
         # 打开cm
         while True:
+            time.sleep(1200)
             file_cm = codecs.open("../data/" + fileName + ".txt", 'r', "utf-8")
             for line in file_cm:
                 print(line.split("----")[2])

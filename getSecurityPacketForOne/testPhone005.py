@@ -8,4 +8,3 @@ key = "0048"
 
 # hello.doAll(uuid, key)
 hello.doFromFile(uuid, key, "005", "hello", "false")
-time.sleep(1200)
