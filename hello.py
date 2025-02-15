@@ -334,7 +334,7 @@ def doFromFile(uuid, key, fileName, appType, isCheckDiamond):
                                 isCheckDiamond,
                                 1,
                                 appType)
-            time.sleep(1200)
+            time.sleep(1000)
 
 
 def doFromFileAll(uuid, key, fileName):
