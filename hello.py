@@ -248,7 +248,6 @@ def process(client, username, password, loginType, isCheckDiamond, isGetSecurity
         getDiamond(client)
     if isGetSecurityPacket >= 1:
         getSecurityPacket(client, isGetSecurityPacket, appType)
-    time.sleep(20)
     close(client, "true")
 
 
