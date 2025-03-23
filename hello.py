@@ -321,19 +321,19 @@ def doFromFile(uuid, key, fileName, appType, isCheckDiamond):
                 print(line.split("----")[2])
                 try:
                     process(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
-                            isCheckDiamond, 0,
+                            isCheckDiamond, 1,
                             appType)
                 except:
                     init(myclient, appType)
                     try:
                         process(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
                                 isCheckDiamond,
-                                0, appType)
+                                1, appType)
                     except:
                         init(myclient, appType)
                         process(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
                                 isCheckDiamond,
-                                0,
+                                1,
                                 appType)
             time.sleep(1200)
 
