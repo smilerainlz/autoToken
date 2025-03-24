@@ -336,6 +336,47 @@ def doFromFile(uuid, key, fileName, appType, isCheckDiamond):
                                 appType)
             # time.sleep(1200)
 
+def doFromFileSleep(uuid, key, fileName, appType, isCheckDiamond):
+    runCount = 0
+    try:
+        myclient = wda.USBClient(uuid, port=8100)
+    except:
+        os.system(
+            "/Users/jfx/Library/Python/3.9/bin/tidevice -u " + uuid + " kill com.facebook.WebDriverAgentLib.lizhengtest" + key + ".xctrunner")
+        os.system(
+            "/Users/jfx/Library/Python/3.9/bin/tidevice -u " + uuid + " launch com.facebook.WebDriverAgentLib.lizhengtest" + key + ".xctrunner")
+        myclient = wda.USBClient(uuid, port=8100)
+    init(myclient, appType)
+    while True:
+        runCount = runCount + 1
+        # 循环超过5次重启charles
+        if runCount % 200 == 0:
+            os.system('sh ../charles-start.sh')
+            print("重启charles")
+            time.sleep(10)
+
+        # 打开cm
+        while True:
+            file_cm = codecs.open("../data/" + fileName + ".txt", 'r', "utf-8")
+            for line in file_cm:
+                print(line.split("----")[2])
+                try:
+                    process(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
+                            isCheckDiamond, 1,
+                            appType)
+                except:
+                    init(myclient, appType)
+                    try:
+                        process(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
+                                isCheckDiamond,
+                                1, appType)
+                    except:
+                        init(myclient, appType)
+                        process(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
+                                isCheckDiamond,
+                                1,
+                                appType)
+            time.sleep(1200)
 
 def doFromFileAll(uuid, key, fileName):
     try:
