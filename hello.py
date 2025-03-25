@@ -250,6 +250,26 @@ def process(client, username, password, loginType, isCheckDiamond, isGetSecurity
         getSecurityPacket(client, isGetSecurityPacket, appType)
     close(client, "true")
 
+def processSleep(client, username, password, loginType, isCheckDiamond, isGetSecurityPacket, appType):
+    # 登录
+    login(client, username, password, loginType)
+    if client(label="daily reward close").exists:
+        client.xpath(
+            '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]/Other[1]/Image[1]/Image[1]').click()
+        time.sleep(3)
+        client(label="daily reward close").click()
+    # 如果登录过期
+    if client(label="确定").exists:
+        client(label="确定").click()
+        # 重新登录
+        login(client, username, loginType)
+    if isCheckDiamond == "true":
+        getDiamond(client)
+    if isGetSecurityPacket >= 1:
+        getSecurityPacket(client, isGetSecurityPacket, appType)
+    time.sleep(15)
+    close(client, "true")
+
 
 def processNew(client, isGetSecurityPacket, appType):
     time.sleep(5)
@@ -361,22 +381,21 @@ def doFromFileSleep(uuid, key, fileName, appType, isCheckDiamond):
             for line in file_cm:
                 print(line.split("----")[2])
                 try:
-                    process(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
+                    processSleep(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
                             isCheckDiamond, 0,
                             appType)
                 except:
                     init(myclient, appType)
                     try:
-                        process(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
+                        processSleep(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
                                 isCheckDiamond,
                                 0, appType)
                     except:
                         init(myclient, appType)
-                        process(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
+                        processSleep(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
                                 isCheckDiamond,
                                 0,
                                 appType)
-            time.sleep(1200)
 
 def doFromFileAll(uuid, key, fileName):
     try:
