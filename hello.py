@@ -267,7 +267,7 @@ def processSleep(client, username, password, loginType, isCheckDiamond, isGetSec
         getDiamond(client)
     if isGetSecurityPacket >= 1:
         getSecurityPacket(client, isGetSecurityPacket, appType)
-    # time.sleep(15)
+    time.sleep(15)
     close(client, "true")
 
 
@@ -381,18 +381,18 @@ def doFromFileSleep(uuid, key, fileName, appType, isCheckDiamond):
             for line in file_cm:
                 print(line.split("----")[2])
                 try:
-                    processSleep(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
+                    process(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
                             isCheckDiamond, 1,
                             appType)
                 except:
                     init(myclient, appType)
                     try:
-                        processSleep(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
+                        process(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
                                 isCheckDiamond,
                                 1, appType)
                     except:
                         init(myclient, appType)
-                        processSleep(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
+                        process(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
                                 isCheckDiamond,
                                 1,
                                 appType)
