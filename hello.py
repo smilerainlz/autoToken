@@ -381,22 +381,22 @@ def doFromFileSleep(uuid, key, fileName, appType, isCheckDiamond):
             for line in file_cm:
                 print(line.split("----")[2])
                 try:
-                    process(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
-                            isCheckDiamond, 1,
+                    processSleep(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
+                            isCheckDiamond, 0,
                             appType)
                 except:
                     init(myclient, appType)
                     try:
-                        process(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
+                        processSleep(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
                                 isCheckDiamond,
-                                1, appType)
+                                0, appType)
                     except:
                         init(myclient, appType)
-                        process(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
+                        processSleep(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
                                 isCheckDiamond,
-                                1,
+                                0,
                                 appType)
-            time.sleep(1200)
+            # time.sleep(1200)
 
 def doFromFileAll(uuid, key, fileName):
     try:
