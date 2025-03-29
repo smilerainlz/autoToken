@@ -4,6 +4,7 @@ import wda, codecs, time
 def process(client, userId):
     userId = userId.strip().replace(' ', '').replace('\n', '')
     print(userId)
+    time.sleep(2)
     if client(label="取消").exists:
         client(label="取消").click()
         time.sleep(3)
@@ -30,6 +31,8 @@ def process(client, userId):
         time.sleep(5)
         if client(label="购买Hello语音钻石到账号ID" + userId + "点  6点0 0元").exists:
             client(label="立即支付").click()
+            if client(label="确认支付").exists:
+                client(label="确认支付").click()
             client.xpath('//Window[3]/Other[1]/Other[1]/Other[2]/Key[8]/StaticText[1]').click()
             client.xpath('//Window[3]/Other[1]/Other[1]/Other[2]/Key[6]/StaticText[1]').click()
             client.xpath('//Window[3]/Other[1]/Other[1]/Other[2]/Key[10]/StaticText[1]').click()

@@ -229,27 +229,35 @@ def openSuperPlayer(client):
         "//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/WebView[1]/WebView[1]/WebView[1]/Other[1]/Other[1]/Other[1]/Other[1]/Button[1]").click()
 
 
-def sendGift(client, userId):
+def sendGift(client, sendUserId, sendType, sendName):
     client.xpath("//*[@label=\"搜大神、搜房间、搜玩友\"]").click()
-    client.send_keys(userId)
+    client.send_keys(sendUserId)
     client.xpath("//*[@label=\"搜索\"]").click()
+    time.sleep(1)
     client.click(0.109, 0.291)
     client.xpath(
         "//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[4]/Other[1]/Button[1]").click()
-    if client.xpath("//*[@label=\"ID: " + userId + "\"]").exists:
+    if client.xpath("//*[@label=\"ID: " + sendUserId + "\"]").exists:
         client.xpath("//*[@label=\"送礼物\"]").click()
         # 送普通礼物
-        # client.xpath("//*[@label=\"星耀票\"]").click()
-        # client.xpath("//*[@label=\"送礼\"]").click()
+        if sendType == "diamond":
+            client.xpath("//*[@label=\"经典\"]").click()
         # 送福袋
-        client.swipe_up()
-        client.xpath("//*[@label=\"特别\"]").click()
-        client.xpath("//*[@label=\"初级水晶球\"]").click()
-        client.xpath("//*[@label=\"送礼\"]").click()
+        elif sendType == "package":
+            client.xpath("//*[@label=\"包裹\"]").click()
+            client.swipe_up()
+            client.swipe_up()
+        else:
+            client.xpath("//*[@label=\"特别\"]").click()
+        if client.xpath("//*[@label=\"" + sendName + "\"]").exists:
+            client.xpath("//*[@label=\"" + sendName + "\"]").click()
+            client.xpath("//*[@label=\"送礼\"]").click()
+        else:
+            client.xpath("//*[@label=\"new chatroom navi bar more\"]").click()
+            print("礼物不存在")
         time.sleep(1)
         if client(label="取消").exists:
             client(label="取消").click()
-    client.xpath("//*[@label=\"new chatroom navi bar more\"]").click()
     client.xpath("//*[@label=\"new chatroom navi bar more\"]").click()
     client.xpath('//CollectionView/Cell[4]/Other[1]/Image[1]').click()
     time.sleep(1)
@@ -311,24 +319,20 @@ def process(client, username, password, loginType, isCheckDiamond, isGetSecurity
     close(client, "true")
 
 
-def processSleep(client, username, password, loginType, isCheckDiamond, isGetSecurityPacket, appType):
+def processSendGift(client, username, password, loginType, sendUserId, sendType, sendName):
     # 登录
     login(client, username, password, loginType)
-    if client(label="daily reward close").exists:
+    if client(label="daily reward close", timeout=1.0).exists:
         client.xpath(
-            '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]/Other[1]/Image[1]/Image[1]').click()
+            "//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]/Other[1]/Image[1]/Image[1]").click()
         time.sleep(3)
         client(label="daily reward close").click()
     # 如果登录过期
-    if client(label="确定").exists:
+    if client(label="确定", timeout=1.0).exists:
         client(label="确定").click()
         # 重新登录
         login(client, username, loginType)
-    if isCheckDiamond == "true":
-        getDiamond(client)
-    if isGetSecurityPacket >= 1:
-        getSecurityPacket(client, isGetSecurityPacket, appType)
-    time.sleep(15)
+    sendGift(client, sendUserId, sendType, sendName)
     close(client, "true")
 
 
@@ -418,7 +422,7 @@ def doFromFile(uuid, key, fileName, appType, isCheckDiamond):
             # time.sleep(1200)
 
 
-def doFromFileSleep(uuid, key, fileName, appType, isCheckDiamond):
+def doFromFileSendGift(uuid, key, fileName, appType, sendUserId, sendType, sendName):
     runCount = 0
     try:
         myclient = wda.USBClient(uuid, port=8100)
@@ -429,36 +433,21 @@ def doFromFileSleep(uuid, key, fileName, appType, isCheckDiamond):
             "/Users/jfx/Library/Python/3.9/bin/tidevice -u " + uuid + " launch com.facebook.WebDriverAgentLib.lizhengtest" + key + ".xctrunner")
         myclient = wda.USBClient(uuid, port=8100)
     init(myclient, appType)
-    while True:
-        runCount = runCount + 1
-        # 循环超过5次重启charles
-        if runCount % 200 == 0:
-            os.system('sh ../charles-start.sh')
-            print("重启charles")
-            time.sleep(10)
-
-        # 打开cm
-        while True:
-            file_cm = codecs.open("../data/" + fileName + ".txt", 'r', "utf-8")
-            for line in file_cm:
-                print(line.split("----")[2])
-                try:
-                    processSleep(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
-                                 isCheckDiamond, 0,
-                                 appType)
-                except:
-                    init(myclient, appType)
-                    try:
-                        processSleep(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
-                                     isCheckDiamond,
-                                     0, appType)
-                    except:
-                        init(myclient, appType)
-                        processSleep(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
-                                     isCheckDiamond,
-                                     0,
-                                     appType)
-            # time.sleep(1200)
+    file_cm = codecs.open("../data/" + fileName + ".txt", 'r', "utf-8")
+    for line in file_cm:
+        print(line.split("----")[2])
+        try:
+            processSendGift(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
+                                    sendUserId, sendType, sendName)
+        except:
+            init(myclient, appType)
+            try:
+                processSendGift(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
+                                        sendUserId, sendType, sendName)
+            except:
+                init(myclient, appType)
+                processSendGift(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
+                                        sendUserId, sendType, sendName)
 
 
 def doFromFileAll(uuid, key, fileName):
