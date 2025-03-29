@@ -48,15 +48,15 @@ def modifyPwd(client, password):
         password)
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]/SecureTextField[1]').set_text(
-        "qwer1234$$")
+        "qwer1234$$$")
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[4]/SecureTextField[1]').set_text(
-        "qwer1234$$")
+        "qwer1234$$$")
     time.sleep(1)
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Button[1]').click()
     time.sleep(1)
-    client.click(0.057, 0.052)
+    client.click(0.051, 0.065)
     time.sleep(1)
 
 
@@ -196,6 +196,15 @@ def getDiamond(client):
     print("     " + client(className="XCUIElementTypeStaticText")[5].value)
     client.click(0.06, 0.06)
 
+def intoRoom(client):
+    client(label="星球").click()
+    client.swipe_left()
+    time.sleep(1)
+    client.xpath('//*[@label="声音恋人"]').click()
+    time.sleep(1)
+    client.click(0.756, 0.677)
+    client.click(0.93, 0.062)
+    client.click(0.843, 0.097)
 
 def getSecurityPacket(client, isGetSecurityPacket, appType):
     if appType == "cm":
@@ -249,6 +258,7 @@ def process(client, username, password, loginType, isCheckDiamond, isGetSecurity
     if isGetSecurityPacket >= 1:
         getSecurityPacket(client, isGetSecurityPacket, appType)
     close(client, "true")
+
 
 def processSleep(client, username, password, loginType, isCheckDiamond, isGetSecurityPacket, appType):
     # 登录
@@ -356,6 +366,7 @@ def doFromFile(uuid, key, fileName, appType, isCheckDiamond):
                                 appType)
             # time.sleep(1200)
 
+
 def doFromFileSleep(uuid, key, fileName, appType, isCheckDiamond):
     runCount = 0
     try:
@@ -382,21 +393,22 @@ def doFromFileSleep(uuid, key, fileName, appType, isCheckDiamond):
                 print(line.split("----")[2])
                 try:
                     processSleep(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
-                            isCheckDiamond, 0,
-                            appType)
+                                 isCheckDiamond, 0,
+                                 appType)
                 except:
                     init(myclient, appType)
                     try:
                         processSleep(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
-                                isCheckDiamond,
-                                0, appType)
+                                     isCheckDiamond,
+                                     0, appType)
                     except:
                         init(myclient, appType)
                         processSleep(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
-                                isCheckDiamond,
-                                0,
-                                appType)
+                                     isCheckDiamond,
+                                     0,
+                                     appType)
             # time.sleep(1200)
+
 
 def doFromFileAll(uuid, key, fileName):
     try:
