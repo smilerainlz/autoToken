@@ -18,7 +18,7 @@ def process(client, userId):
         time.sleep(2)
         client.xpath('//*[@label="充值中心"]/Other[9]').click()
         myclient.swipe_up()
-        time.sleep(1)
+        time.sleep(3)
         if client.xpath("//Switch").value == 0:
             myclient.xpath("//Switch").click()
         client(label="微信支付").click()
