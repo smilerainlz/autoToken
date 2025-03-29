@@ -13,7 +13,7 @@ def process(client, userId):
     client.xpath('//*[@label=""]').clear_text()
     client.send_keys(userId)
     time.sleep(1)
-    if client.xpath("//*[@label=\"充值中心\"]/TextField").value == "588815":
+    if client.xpath("//*[@label=\"充值中心\"]/TextField").value == userId:
         client(label="完成").click()
         time.sleep(2)
         client.xpath('//*[@label="充值中心"]/Other[9]').click()
