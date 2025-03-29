@@ -27,8 +27,9 @@ def process(client, userId):
         time.sleep(3)
         if client(label="打开").exists:
             client(label="打开").click()
-        client(label="立即支付").click()
-        if client(label="购买Hello语音钻石到账号ID" + userId + "点  6点0 0元", timeout=10.0).exists:
+        time.sleep(5)
+        if client(label="购买Hello语音钻石到账号ID" + userId + "点  6点0 0元").exists:
+            client(label="立即支付").click()
             client.xpath('//Window[3]/Other[1]/Other[1]/Other[2]/Key[8]/StaticText[1]').click()
             client.xpath('//Window[3]/Other[1]/Other[1]/Other[2]/Key[6]/StaticText[1]').click()
             client.xpath('//Window[3]/Other[1]/Other[1]/Other[2]/Key[10]/StaticText[1]').click()
@@ -37,9 +38,9 @@ def process(client, userId):
             client.xpath('//Window[3]/Other[1]/Other[1]/Other[2]/Key[2]/StaticText[1]').click()
             client(label="完成").click()
         else:
+            print(userId + " : 充值id或金额错误，跳过！")
             client(label="取消").click()
             client(label="放弃").click()
-            print(userId + " : 充值id或金额错误，跳过！")
     else:
         print(userId + " : 充值id错误，跳过！")
 
