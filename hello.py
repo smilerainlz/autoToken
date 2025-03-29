@@ -209,6 +209,30 @@ def intoRoom(client):
     client.click(0.843, 0.097)
 
 
+def openSuperPlayer(client):
+    client.xpath("//*[@label=\"星球\"]").click()
+    client.xpath("//*[@label=\"超级玩家\"]").click()
+    client.swipe_up()
+    client.swipe(0.7, 0.758, 0.204, 0.768)
+    client.xpath("//*[@label=\"¥3\"]").click()
+    time.sleep(1)
+    if client.xpath("//*[@label=\"立即开通 体验7天\"]").exists:
+        client.xpath("//*[@label=\"立即开通 体验7天\"]").click()
+        client.xpath("//*[@label=\"订阅\"]").click()
+        time.sleep(5)
+        if client(label="购买").exists:
+            client.xpath("//*[@label=\"购买\"]").click()
+            client.xpath("//*[@label=\"好\"]").click()
+            time.sleep(5)
+        else:
+            client.send_keys("860822!Zzpg")
+            client.xpath("//*[@label=\"登录\"]").click()
+            client.xpath("//*[@label=\"购买\"]").click()
+            client.xpath("//*[@label=\"好\"]").click()
+    client.xpath(
+        "//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/WebView[1]/WebView[1]/WebView[1]/Other[1]/Other[1]/Other[1]/Other[1]/Button[1]").click()
+
+
 def getSecurityPacket(client, isGetSecurityPacket, appType):
     if appType == "cm":
         client(label="广场").click()
