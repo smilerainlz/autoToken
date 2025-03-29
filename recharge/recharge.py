@@ -1,6 +1,4 @@
 import wda, codecs, time
-
-
 def process(client, userId):
     userId = userId.strip().replace(' ', '').replace('\n', '')
     print(userId)
