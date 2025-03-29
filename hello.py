@@ -155,6 +155,8 @@ def init(client, appType):
         client.session().app_activate("com.yy.hello")
     if client(label="确定").exists:
         client(label="确定").click()
+    if client(label="取消").exists:
+        client(label="取消").click()
     time.sleep(3)
     if client(label="daily reward close").exists:
         client.click(0.501, 0.694)
@@ -303,6 +305,8 @@ def process(client, username, password, loginType, isCheckDiamond, isGetSecurity
         time.sleep(3)
         client(label="daily reward close").click()
     # 如果登录过期
+    if client(label="取消",timeout=2.0).exists:
+        client(label="取消").click()
     if client(label="确定").exists:
         client(label="确定").click()
         # 重新登录
