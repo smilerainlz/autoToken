@@ -196,6 +196,7 @@ def getDiamond(client):
     print("     " + client(className="XCUIElementTypeStaticText")[5].value)
     client.click(0.06, 0.06)
 
+
 def intoRoom(client):
     client(label="星球").click()
     client.swipe_left()
@@ -205,6 +206,7 @@ def intoRoom(client):
     client.click(0.756, 0.677)
     client.click(0.93, 0.062)
     client.click(0.843, 0.097)
+
 
 def getSecurityPacket(client, isGetSecurityPacket, appType):
     if appType == "cm":
@@ -257,6 +259,7 @@ def process(client, username, password, loginType, isCheckDiamond, isGetSecurity
         getDiamond(client)
     if isGetSecurityPacket >= 1:
         getSecurityPacket(client, isGetSecurityPacket, appType)
+    intoRoom(client)
     close(client, "true")
 
 
