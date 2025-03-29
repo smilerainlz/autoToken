@@ -204,6 +204,7 @@ def intoRoom(client):
     client.xpath('//*[@label="声音恋人"]').click()
     time.sleep(1)
     client.click(0.756, 0.677)
+    time.sleep(5)
     client.click(0.93, 0.062)
     client.click(0.843, 0.097)
 
