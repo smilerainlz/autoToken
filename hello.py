@@ -102,6 +102,8 @@ def close(client, isLogin):
     # 退出
     if isLogin == "true":
         client(label="我的").click()
+        if client(label="选好了").exists:
+            client(label="选好了").click()
         client.click(0.927, 0.088)
         client(label="退出当前帐号").click()
         if client(label="下次再说", timeout=1.0).exists:
