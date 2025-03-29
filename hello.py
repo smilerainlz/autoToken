@@ -90,18 +90,18 @@ def login(client, username, password, loginType):
 
 
 def close(client, isLogin):
-    time.sleep(3)
-    # 如果弹出签到提示，先签到，再关闭
-    if client(label="daily reward close").exists:
+    if client(label="确定", timeout=1.0).exists:
+        client(label="确定").click()
+    if client(label="取消", timeout=1.0).exists:
+        client(label="取消").click()
+    if client(label="daily reward close", timeout=1.0).exists:
         client.xpath(
-            '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]/Other[1]/Image[1]/Image[1]').click()
+            "//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]/Other[1]/Image[1]/Image[1]").click()
         time.sleep(3)
         client(label="daily reward close").click()
     # 退出
     if isLogin == "true":
         client(label="我的").click()
-        if client(label="选好了").exists:
-            client(label="选好了").click()
         client.click(0.927, 0.088)
         client(label="退出当前帐号").click()
         if client(label="下次再说").exists:
@@ -153,14 +153,6 @@ def init(client, appType):
     if appType == "hello":
         client.session().app_terminate("com.yy.hello")
         client.session().app_activate("com.yy.hello")
-    if client(label="确定").exists:
-        client(label="确定").click()
-    if client(label="取消").exists:
-        client(label="取消").click()
-    time.sleep(3)
-    if client(label="daily reward close").exists:
-        client.click(0.501, 0.694)
-        client(label="daily reward close").click()
     close(client, "false")
 
 
@@ -299,15 +291,13 @@ def getSecurityPacket(client, isGetSecurityPacket, appType):
 def process(client, username, password, loginType, isCheckDiamond, isGetSecurityPacket, appType):
     # 登录
     login(client, username, password, loginType)
-    if client(label="daily reward close").exists:
+    if client(label="daily reward close", timeout=1.0).exists:
         client.xpath(
-            '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]/Other[1]/Image[1]/Image[1]').click()
+            "//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]/Other[1]/Image[1]/Image[1]").click()
         time.sleep(3)
         client(label="daily reward close").click()
     # 如果登录过期
-    if client(label="取消",timeout=2.0).exists:
-        client(label="取消").click()
-    if client(label="确定").exists:
+    if client(label="确定", timeout=1.0).exists:
         client(label="确定").click()
         # 重新登录
         login(client, username, loginType)
