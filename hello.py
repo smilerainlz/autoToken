@@ -239,7 +239,7 @@ def sendGift(client, username, sendUserId, sendType, sendName):
     if client.xpath("//*[@label=\"search\"]").exists:
         client.xpath("//*[@label=\"search\"]").click()
     time.sleep(1)
-    sendPackageMethed(client, username, sendUserId, sendType)
+    sendMethed(client, username, sendUserId, sendType, sendName)
     time.sleep(1)
     client.click(0.901, 0.089)
 
@@ -269,6 +269,7 @@ def sendMethed(client, username, sendUserId, sendType, sendName):
         time.sleep(1)
         if client(label="取消").exists:
             client(label="取消").click()
+            client.xpath("//*[@label=\"new chatroom navi bar more\"]").click()
     else:
         print(username + " : 送礼物失败")
     client.xpath("//*[@label=\"new chatroom navi bar more\"]").click()
