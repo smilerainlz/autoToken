@@ -241,35 +241,49 @@ def sendGift(client, username, sendUserId, sendType, sendName):
     time.sleep(1)
     client.click(0.114, 0.31)
     time.sleep(1)
-    client.click(0.501, 0.158)
-    if client.xpath("//*[@label=\"ID: " + sendUserId + "\"]").exists:
-        client.xpath("//*[@label=\"送礼物\"]").click()
-        # 送普通礼物
-        if sendType == "diamond":
-            client.xpath("//*[@label=\"经典\"]").click()
-        # 送福袋
-        elif sendType == "package":
-            client.xpath("//*[@label=\"包裹\"]").click()
-            # client.swipe_up()
-            # client.swipe_up()
-        else:
-            client.xpath("//*[@label=\"特别\"]").click()
-        if client.xpath("//*[@label=\"" + sendName + "\"]").exists:
-            client.xpath("//*[@label=\"" + sendName + "\"]").click()
-            client.xpath("//*[@label=\"送礼\"]").click()
-        else:
-            client.xpath("//*[@label=\"new chatroom navi bar more\"]").click()
-            print("礼物不存在")
-        time.sleep(1)
-        if client(label="取消").exists:
-            client(label="取消").click()
-    else:
-        print(username + " : 送礼物失败")
+    sendMethed(client, username, sendUserId, sendType, "礼花")
+    sendMethed(client, username, sendUserId, sendType, "聚宝盆")
+    sendMethed(client, username, sendUserId, sendType, "草莓冰棒")
+    sendMethed(client, username, sendUserId, sendType, "白桃啵啵")
+    sendMethed(client, username, sendUserId, sendType, "彩虹星")
+    sendMethed(client, username, sendUserId, sendType, "星月烙印")
+    sendMethed(client, username, sendUserId, sendType, "轻羽礼帽")
+    sendMethed(client, username, sendUserId, sendType, "金月星芒")
+    sendMethed(client, username, sendUserId, sendType, "吉吉松鼠")
+    sendMethed(client, username, sendUserId, sendType, "律动音符")
     client.xpath("//*[@label=\"new chatroom navi bar more\"]").click()
     client.xpath('//CollectionView/Cell[4]/Other[1]/Image[1]').click()
     time.sleep(1)
     client.click(0.901, 0.089)
 
+
+def sendMethed(client, username, sendUserId, sendType, sendName):
+    while True:
+        client.click(0.501, 0.158)
+        if client.xpath("//*[@label=\"ID: " + sendUserId + "\"]").exists:
+            client.xpath("//*[@label=\"送礼物\"]").click()
+            # 送普通礼物
+            if sendType == "diamond":
+                client.xpath("//*[@label=\"经典\"]").click()
+            # 送福袋
+            elif sendType == "package":
+                client.xpath("//*[@label=\"包裹\"]").click()
+                client.swipe_up()
+                # client.swipe_up()
+            else:
+                client.xpath("//*[@label=\"特别\"]").click()
+            if client.xpath("//*[@label=\"" + sendName + "\"]").exists:
+                client.xpath("//*[@label=\"" + sendName + "\"]").click()
+                client.xpath("//*[@label=\"送礼\"]").click()
+            else:
+                client.xpath("//*[@label=\"new chatroom navi bar more\"]").click()
+                print("礼物不存在 ：" + sendName)
+                break
+            time.sleep(1)
+            if client(label="取消").exists:
+                client(label="取消").click()
+        else:
+            print(username + " : 送礼物失败")
 
 def getSecurityPacket(client, isGetSecurityPacket, appType):
     if appType == "cm":
