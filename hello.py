@@ -199,7 +199,8 @@ def intoRoom(client):
     time.sleep(1)
     client.xpath('//*[@label="声音恋人"]').click()
     time.sleep(1)
-    client.click(0.756, 0.677)
+    client.click(0.297, 0.652)
+    # client.click(0.756, 0.677)
     time.sleep(5)
     client.click(0.93, 0.062)
     client.click(0.843, 0.097)
@@ -438,16 +439,16 @@ def doFromFileSendGift(uuid, key, fileName, appType, sendUserId, sendType, sendN
         print(line.split("----")[2])
         try:
             processSendGift(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
-                                    sendUserId, sendType, sendName)
+                            sendUserId, sendType, sendName)
         except:
             init(myclient, appType)
             try:
                 processSendGift(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
-                                        sendUserId, sendType, sendName)
+                                sendUserId, sendType, sendName)
             except:
                 init(myclient, appType)
                 processSendGift(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
-                                        sendUserId, sendType, sendName)
+                                sendUserId, sendType, sendName)
 
 
 def doFromFileAll(uuid, key, fileName):
