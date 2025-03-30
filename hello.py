@@ -249,8 +249,8 @@ def sendGift(client, sendUserId, sendType, sendName):
         # 送福袋
         elif sendType == "package":
             client.xpath("//*[@label=\"包裹\"]").click()
-            #client.swipe_up()
-            #client.swipe_up()
+            # client.swipe_up()
+            # client.swipe_up()
         else:
             client.xpath("//*[@label=\"特别\"]").click()
         if client.xpath("//*[@label=\"" + sendName + "\"]").exists:
@@ -383,7 +383,7 @@ def doAll(uuid, key):
         processNew(myclient, 1, "ppx")
 
 
-def doFromFile(uuid, key, fileName, appType, isCheckDiamond):
+def doFromFile(uuid, key, fileName, appType, isCheckDiamond, isGetSecurityPacket, sleepTime):
     runCount = 0
     try:
         myclient = wda.USBClient(uuid, port=8100)
@@ -409,21 +409,22 @@ def doFromFile(uuid, key, fileName, appType, isCheckDiamond):
                 print(line.split("----")[2])
                 try:
                     process(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
-                            isCheckDiamond, 1,
+                            isCheckDiamond, isGetSecurityPacket,
                             appType)
                 except:
                     init(myclient, appType)
                     try:
                         process(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
                                 isCheckDiamond,
-                                1, appType)
+                                isGetSecurityPacket, appType)
                     except:
                         init(myclient, appType)
                         process(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
                                 isCheckDiamond,
-                                1,
+                                isGetSecurityPacket,
                                 appType)
-            # time.sleep(1200)
+            if sleepTime != 0:
+                time.sleep(sleepTime)
 
 
 def doFromFileSendGift(uuid, key, fileName, appType, sendUserId, sendType, sendName):
@@ -452,30 +453,3 @@ def doFromFileSendGift(uuid, key, fileName, appType, sendUserId, sendType, sendN
                 init(myclient, appType)
                 processSendGift(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
                                 sendUserId, sendType, sendName)
-
-
-def doFromFileAll(uuid, key, fileName):
-    try:
-        myclient = wda.USBClient(uuid, port=8100)
-    except:
-        os.system(
-            "/Users/jfx/Library/Python/3.9/bin/tidevice -u " + uuid + " kill com.facebook.WebDriverAgentLib.lizhengtest" + key + ".xctrunner")
-        os.system(
-            "/Users/jfx/Library/Python/3.9/bin/tidevice -u " + uuid + " launch com.facebook.WebDriverAgentLib.lizhengtest" + key + ".xctrunner")
-        myclient = wda.USBClient(uuid, port=8100)
-    file_cm = codecs.open("../data/" + fileName + ".txt", 'r', "utf-8")
-    for line in file_cm:
-        print(line.split("----")[2])
-        try:
-            init(myclient, line.split("----")[3])
-            process(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2], "false", 1,
-                    line.split("----")[3])
-        except:
-            init(myclient, line.split("----")[3])
-            try:
-                process(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2], "false", 1,
-                        line.split("----")[3])
-            except:
-                init(myclient, line.split("----")[3])
-                process(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2], "false", 1,
-                        line.split("----")[3])
