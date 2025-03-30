@@ -327,6 +327,7 @@ def sendPackageMethed(client, username, sendUserId, sendType):
                 print("所有礼物不存在")
                 break
         client.xpath("//*[@label=\"profile back icon\"]").click()
+        client.xpath("//*[@label=\"profile back icon\"]").click()
     else:
         client.xpath("//*[@label=\"profile back icon\"]").click()
         print(username + " : 礼物ID不符合")
