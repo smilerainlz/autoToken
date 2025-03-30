@@ -199,9 +199,8 @@ def intoRoom(client):
     client(label="封坑踢保").click()
     client(label="声音恋人").click()
     time.sleep(1)
-    client.xpath('//*[@label="声音恋人"]').click()
-    time.sleep(1)
-    client.click(0.297, 0.652)
+    client.xpath(
+        "//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/ScrollView[1]/Other[1]/Other[1]/CollectionView[1]/Cell[2]/Other[1]/Image[1]").click()
     # client.click(0.756, 0.677)
     time.sleep(5)
     client.click(0.93, 0.062)
