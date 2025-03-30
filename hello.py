@@ -233,9 +233,12 @@ def openSuperPlayer(client):
 def sendGift(client, sendUserId, sendType, sendName):
     client.xpath("//*[@label=\"搜大神、搜房间、搜玩友\"]").click()
     client.send_keys(sendUserId)
-    client.xpath("//*[@label=\"搜索\"]").click()
+    if client.xpath("//*[@label=\"搜索\"]").exists:
+        client.xpath("//*[@label=\"搜索\"]").click()
+    if client.xpath("//*[@label=\"search\"]").exists:
+        client.xpath("//*[@label=\"search\"]").click()
     time.sleep(1)
-    client.click(0.109, 0.291)
+    client.click(0.114, 0.31)
     client.xpath(
         "//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[4]/Other[1]/Button[1]").click()
     if client.xpath("//*[@label=\"ID: " + sendUserId + "\"]").exists:
@@ -246,8 +249,8 @@ def sendGift(client, sendUserId, sendType, sendName):
         # 送福袋
         elif sendType == "package":
             client.xpath("//*[@label=\"包裹\"]").click()
-            client.swipe_up()
-            client.swipe_up()
+            #client.swipe_up()
+            #client.swipe_up()
         else:
             client.xpath("//*[@label=\"特别\"]").click()
         if client.xpath("//*[@label=\"" + sendName + "\"]").exists:
