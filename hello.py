@@ -195,6 +195,7 @@ def getDiamond(client):
 
 def intoRoom(client):
     client(label="首页").click()
+    client(label="推荐").click()
     client.swipe_left()
     time.sleep(1)
     client.xpath('//*[@label="声音恋人"]').click()
