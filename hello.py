@@ -240,8 +240,8 @@ def sendGift(client, sendUserId, sendType, sendName):
         client.xpath("//*[@label=\"search\"]").click()
     time.sleep(1)
     client.click(0.114, 0.31)
-    client.xpath(
-        "//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[4]/Other[1]/Button[1]").click()
+    time.sleep(1)
+    client.click(0.501, 0.158)
     if client.xpath("//*[@label=\"ID: " + sendUserId + "\"]").exists:
         client.xpath("//*[@label=\"送礼物\"]").click()
         # 送普通礼物
