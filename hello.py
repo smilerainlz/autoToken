@@ -265,10 +265,11 @@ def sendMethed(client, username, sendUserId, sendType, sendName):
             client.xpath("//*[@label=\"送礼\"]").click()
         else:
             client.xpath("//*[@label=\"new chatroom navi bar more\"]").click()
-            print("礼物不存在 ：" + sendName)
+            print(username + " : 礼物不存在 ：" + sendName)
         time.sleep(1)
         if client(label="取消").exists:
             client(label="取消").click()
+            print(username + " : 没钻了，请充值")
             client.xpath("//*[@label=\"new chatroom navi bar more\"]").click()
     else:
         print(username + " : 送礼物失败")
