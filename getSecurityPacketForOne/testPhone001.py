@@ -13,4 +13,4 @@ key = "0057"
 # hello.doFromFile(uuid, key, "001", "hello", "false", 1, 0)
 
 # 送礼物uuid, key, fileName, appType, sendUserId, sendType, sendName
-hello.doFromFileSendGift(uuid, key, "001", "hello", "588815", "fudai", "初级水晶球")
+hello.doFromFileSendGift(uuid, key, "001", "hello", "49502575", "fudai", "初级水晶球")
