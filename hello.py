@@ -231,7 +231,7 @@ def openSuperPlayer(client):
         "//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/WebView[1]/WebView[1]/WebView[1]/Other[1]/Other[1]/Other[1]/Other[1]/Button[1]").click()
 
 
-def sendGift(client, sendUserId, sendType, sendName):
+def sendGift(client, username, sendUserId, sendType, sendName):
     client.xpath("//*[@label=\"搜大神、搜房间、搜玩友\"]").click()
     client.send_keys(sendUserId)
     if client.xpath("//*[@label=\"搜索\"]").exists:
@@ -263,6 +263,8 @@ def sendGift(client, sendUserId, sendType, sendName):
         time.sleep(1)
         if client(label="取消").exists:
             client(label="取消").click()
+    else:
+        print(username + " : 送礼物失败")
     client.xpath("//*[@label=\"new chatroom navi bar more\"]").click()
     client.xpath('//CollectionView/Cell[4]/Other[1]/Image[1]').click()
     time.sleep(1)
@@ -337,7 +339,7 @@ def processSendGift(client, username, password, loginType, sendUserId, sendType,
         client(label="确定").click()
         # 重新登录
         login(client, username, loginType)
-    sendGift(client, sendUserId, sendType, sendName)
+    sendGift(client, username, sendUserId, sendType, sendName)
     close(client, "true")
 
 
