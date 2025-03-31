@@ -372,7 +372,7 @@ def getSecurityPacket(client, isGetSecurityPacket, appType):
 # loginType(phone or username)
 # isCheckDiamond是否查看钻石（true获取）
 # isGetSecurityPacket是否获取securityPacket（1：1个号循环获取，2：多个号获取）
-def process(client, username, password, loginType, isCheckDiamond, isGetSecurityPacket, appType):
+def process(client, username, password, loginType, isCheckDiamond, isGetSecurityPacket, appType, isInToRoom):
     # 登录
     login(client, username, password, loginType)
     if client(label="daily reward close", timeout=1.0).exists:
@@ -389,7 +389,8 @@ def process(client, username, password, loginType, isCheckDiamond, isGetSecurity
         getDiamond(client)
     if isGetSecurityPacket >= 1:
         getSecurityPacket(client, isGetSecurityPacket, appType)
-    # intoRoom(client)
+    if isInToRoom == "true":
+        intoRoom(client)
     close(client, "true")
 
 
@@ -453,7 +454,7 @@ def doAll(uuid, key):
         processNew(myclient, 1, "ppx")
 
 
-def doFromFile(uuid, key, fileName, appType, isCheckDiamond, isGetSecurityPacket, sleepTime):
+def doFromFile(uuid, key, fileName, appType, isCheckDiamond, isGetSecurityPacket, sleepTime, isInToRoom):
     runCount = 0
     try:
         myclient = wda.USBClient(uuid, port=8100)
@@ -480,19 +481,19 @@ def doFromFile(uuid, key, fileName, appType, isCheckDiamond, isGetSecurityPacket
                 try:
                     process(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
                             isCheckDiamond, isGetSecurityPacket,
-                            appType)
+                            appType, isInToRoom)
                 except:
                     init(myclient, appType)
                     try:
                         process(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
                                 isCheckDiamond,
-                                isGetSecurityPacket, appType)
+                                isGetSecurityPacket, appType, isInToRoom)
                     except:
                         init(myclient, appType)
                         process(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
                                 isCheckDiamond,
                                 isGetSecurityPacket,
-                                appType)
+                                appType, isInToRoom)
             if sleepTime != 0:
                 time.sleep(sleepTime)
 
