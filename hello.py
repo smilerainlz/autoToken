@@ -301,6 +301,12 @@ def sendPackageMethed(client, username, sendUserId, sendType):
             elif client.xpath("//*[@label=\"草莓冰棒\"]").exists:
                 client.xpath("//*[@label=\"草莓冰棒\"]").click()
                 client.xpath("//*[@label=\"送礼\"]").click()
+            elif client.xpath("//*[@label=\"多色笔\"]").exists:
+                client.xpath("//*[@label=\"多色笔\"]").click()
+                client.xpath("//*[@label=\"送礼\"]").click()
+            elif client.xpath("//*[@label=\"西瓜冰棒\"]").exists:
+                client.xpath("//*[@label=\"西瓜冰棒\"]").click()
+                client.xpath("//*[@label=\"送礼\"]").click()
             elif client.xpath("//*[@label=\"白桃啵啵\"]").exists:
                 client.xpath("//*[@label=\"白桃啵啵\"]").click()
                 client.xpath("//*[@label=\"送礼\"]").click()
