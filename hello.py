@@ -290,44 +290,41 @@ def sendPackageMethed(client, username, sendUserId, sendType):
         # 送福袋
         elif sendType == "package":
             client.xpath("//*[@label=\"包裹\"]").click()
-            # client.swipe_up()
+            client.swipe_up()
             # client.swipe_up()
         else:
             client.xpath("//*[@label=\"特别\"]").click()
         while True:
-            if client.xpath("//*[@label=\"星星票\"]").exists:
-                client.xpath("//*[@label=\"星星票\"]").click()
+            if client.xpath("//*[@label=\"礼花\"]").exists:
+                client.xpath("//*[@label=\"礼花\"]").click()
                 client.xpath("//*[@label=\"送礼\"]").click()
-            # if client.xpath("//*[@label=\"礼花\"]").exists:
-            #     client.xpath("//*[@label=\"礼花\"]").click()
-            #     client.xpath("//*[@label=\"送礼\"]").click()
-            # elif client.xpath("//*[@label=\"草莓冰棒\"]").exists:
-            #     client.xpath("//*[@label=\"草莓冰棒\"]").click()
-            #     client.xpath("//*[@label=\"送礼\"]").click()
-            # elif client.xpath("//*[@label=\"白桃啵啵\"]").exists:
-            #     client.xpath("//*[@label=\"白桃啵啵\"]").click()
-            #     client.xpath("//*[@label=\"送礼\"]").click()
-            # elif client.xpath("//*[@label=\"彩虹星\"]").exists:
-            #     client.xpath("//*[@label=\"彩虹星\"]").click()
-            #     client.xpath("//*[@label=\"送礼\"]").click()
-            # elif client.xpath("//*[@label=\"星月烙印\"]").exists:
-            #     client.xpath("//*[@label=\"星月烙印\"]").click()
-            #     client.xpath("//*[@label=\"送礼\"]").click()
-            # elif client.xpath("//*[@label=\"轻羽礼帽\"]").exists:
-            #     client.xpath("//*[@label=\"轻羽礼帽\"]").click()
-            #     client.xpath("//*[@label=\"送礼\"]").click()
-            # elif client.xpath("//*[@label=\"金月星芒\"]").exists:
-            #     client.xpath("//*[@label=\"金月星芒\"]").click()
-            #     client.xpath("//*[@label=\"送礼\"]").click()
-            # elif client.xpath("//*[@label=\"吉吉松鼠\"]").exists:
-            #     client.xpath("//*[@label=\"吉吉松鼠\"]").click()
-            #     client.xpath("//*[@label=\"送礼\"]").click()
-            # elif client.xpath("//*[@label=\"律动音符\"]").exists:
-            #     client.xpath("//*[@label=\"律动音符\"]").click()
-            #     client.xpath("//*[@label=\"送礼\"]").click()
-            # elif client.xpath("//*[@label=\"兔兔雪糕\"]").exists:
-            #     client.xpath("//*[@label=\"兔兔雪糕\"]").click()
-            #     client.xpath("//*[@label=\"送礼\"]").click()
+            elif client.xpath("//*[@label=\"草莓冰棒\"]").exists:
+                client.xpath("//*[@label=\"草莓冰棒\"]").click()
+                client.xpath("//*[@label=\"送礼\"]").click()
+            elif client.xpath("//*[@label=\"白桃啵啵\"]").exists:
+                client.xpath("//*[@label=\"白桃啵啵\"]").click()
+                client.xpath("//*[@label=\"送礼\"]").click()
+            elif client.xpath("//*[@label=\"彩虹星\"]").exists:
+                client.xpath("//*[@label=\"彩虹星\"]").click()
+                client.xpath("//*[@label=\"送礼\"]").click()
+            elif client.xpath("//*[@label=\"星月烙印\"]").exists:
+                client.xpath("//*[@label=\"星月烙印\"]").click()
+                client.xpath("//*[@label=\"送礼\"]").click()
+            elif client.xpath("//*[@label=\"轻羽礼帽\"]").exists:
+                client.xpath("//*[@label=\"轻羽礼帽\"]").click()
+                client.xpath("//*[@label=\"送礼\"]").click()
+            elif client.xpath("//*[@label=\"金月星芒\"]").exists:
+                client.xpath("//*[@label=\"金月星芒\"]").click()
+                client.xpath("//*[@label=\"送礼\"]").click()
+            elif client.xpath("//*[@label=\"吉吉松鼠\"]").exists:
+                client.xpath("//*[@label=\"吉吉松鼠\"]").click()
+                client.xpath("//*[@label=\"送礼\"]").click()
+            elif client.xpath("//*[@label=\"律动音符\"]").exists:
+                client.xpath("//*[@label=\"律动音符\"]").click()
+                client.xpath("//*[@label=\"送礼\"]").click()
+            elif client.xpath("//*[@label=\"兔兔雪糕\"]").exists:
+                client.xpath("//*[@label=\"兔兔雪糕\"]").click()
+                client.xpath("//*[@label=\"送礼\"]").click()
             else:
                 print("所有礼物不存在")
                 break
