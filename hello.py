@@ -389,7 +389,7 @@ def process(client, username, password, loginType, isCheckDiamond, isGetSecurity
         getDiamond(client)
     if isGetSecurityPacket >= 1:
         getSecurityPacket(client, isGetSecurityPacket, appType)
-    intoRoom(client)
+    # intoRoom(client)
     close(client, "true")
 
 
