@@ -232,7 +232,7 @@ def openSuperPlayer(client):
 
 
 def sendGift(client, username, sendUserId, sendType, sendName):
-    client.xpath("//*[@label=\"搜大神、搜房间、搜玩友\"]").click()
+    client.xpath("//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[4]").click()
     client.send_keys(sendUserId)
     if client.xpath("//*[@label=\"搜索\"]").exists:
         client.xpath("//*[@label=\"搜索\"]").click()
