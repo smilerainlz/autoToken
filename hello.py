@@ -295,6 +295,9 @@ def sendPackageMethed(client, username, sendUserId, sendType):
         else:
             client.xpath("//*[@label=\"特别\"]").click()
         while True:
+            if client.xpath("//*[@label=\"聚宝盆\"]").exists:
+                client.xpath("//*[@label=\"聚宝盆\"]").click()
+                client.xpath("//*[@label=\"送礼\"]").click()
             if client.xpath("//*[@label=\"礼花\"]").exists:
                 client.xpath("//*[@label=\"礼花\"]").click()
                 client.xpath("//*[@label=\"送礼\"]").click()
