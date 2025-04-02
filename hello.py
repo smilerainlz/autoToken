@@ -410,7 +410,7 @@ def processSendGift(client, username, password, loginType, sendUserId, sendType,
         client(label="确定").click()
         # 重新登录
         login(client, username, loginType)
-    sendPackageMethed(client, username, sendUserId, sendType)
+    sendGift(client, username, sendUserId, sendType, sendName)
     close(client, "true")
 
 
