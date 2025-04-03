@@ -3,7 +3,6 @@ import sys
 sys.path.append("..//")
 import hello
 
-
 # my
 uuid = "00008110-001A21803482401E"
 key = "0056"
@@ -12,7 +11,7 @@ key = "0056"
 # hello.doAll(uuid, key)
 
 # 通过文件一个个登陆uuid, key, fileName, appType, isCheckDiamond, isGetSecurityPacket, sleepTime
-# hello.doFromFile(uuid, key, "001", "hello", "false", 1, 0)
+hello.doFromFile(uuid, key, "001", "hello", "false", 1, 0, "false")
 
 # 送礼物uuid, key, fileName, appType, sendUserId, sendType, sendName
-hello.doFromFileSendGift(uuid, key, "001", "hello", "588815", "package", "星星票")
+# hello.doFromFileSendGift(uuid, key, "001", "hello", "588815", "package", "星星票")
