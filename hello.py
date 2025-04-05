@@ -232,7 +232,8 @@ def openSuperPlayer(client):
 
 
 def sendGift(client, username, sendUserId, sendType, sendName):
-    client.xpath("//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[4]").click()
+    client.xpath(
+        "//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[4]").click()
     client.send_keys(sendUserId)
     if client.xpath("//*[@label=\"搜索\"]").exists:
         client.xpath("//*[@label=\"搜索\"]").click()
@@ -403,6 +404,7 @@ def process(client, username, password, loginType, isCheckDiamond, isGetSecurity
         getSecurityPacket(client, isGetSecurityPacket, appType)
     if isInToRoom == "true":
         intoRoom(client)
+    # time.sleep(10)
     close(client, "true")
 
 
