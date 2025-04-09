@@ -20,28 +20,33 @@ def addFirend(client):
     time.sleep(1)
     client.click(0.893, 0.094)
 
+
 def openSuperPlayTemp(client):
     client(label="消息").click()
     if client(label="风").exists:
         client(label="风").click()
         client(label="马上前往").click()
+        time.sleep(10)
         if client.xpath("//*[@label=\"网页对话框\"]/Other[9]/StaticText[1]").exists:
             client.xpath("//*[@label=\"网页对话框\"]/Other[9]/StaticText[1]").click()
             client(label="马上开通").click()
             client(label="订阅").click()
-            if client(label="购买").exists:
-                client.xpath("//*[@label=\"购买\"]").click()
+            time.sleep(3)
+            if client.xpath("//Alert/Other[1]/Other[1]/Other[2]/ScrollView[2]/Other[1]/Other[1]/Other[3]").exists:
+                client.xpath("//Alert/Other[1]/Other[1]/Other[2]/ScrollView[2]/Other[1]/Other[1]/Other[3]").click()
                 client.xpath("//*[@label=\"好\"]").click()
                 time.sleep(5)
             else:
                 client.send_keys("860822!Zzpg")
                 client.xpath("//*[@label=\"登录\"]").click()
-                client.xpath("//*[@label=\"购买\"]").click()
+                if client.xpath("//Alert/Other[1]/Other[1]/Other[2]/ScrollView[2]/Other[1]/Other[1]/Other[3]").exists:
+                    client.xpath("//Alert/Other[1]/Other[1]/Other[2]/ScrollView[2]/Other[1]/Other[1]/Other[3]").click()
                 client.xpath("//*[@label=\"好\"]").click()
         client.xpath(
             "//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/WebView[1]/WebView[1]/WebView[1]/Other[1]/Other[1]/Other[1]/Other[1]/Button[1]").click()
         time.sleep(1)
         client.click(0.06, 0.069)
+
 
 def removeGZ(client):
     client(label="我的").click()
@@ -429,7 +434,7 @@ def process(client, username, password, loginType, isCheckDiamond, isGetSecurity
         getSecurityPacket(client, isGetSecurityPacket, appType)
     if isInToRoom == "true":
         intoRoom(client)
-    addFirend(client)
+    openSuperPlayTemp(client)
     # time.sleep(10)
     close(client, "true")
 
