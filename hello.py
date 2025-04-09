@@ -4,8 +4,11 @@ import time, wda, os, codecs
 def addFirend(client):
     time.sleep(2)
     client.click(0.205, 0.149)
-    client.send_keys("80716857")
-    client(label="搜索").click()
+    client.send_keys("49502575")
+    if client(label="搜索").exists:
+        client(label="搜索").click()
+    elif client(label="search").exists:
+        client(label="search").click()
     time.sleep(1)
     client.click(0.26, 0.148)
     time.sleep(1)
@@ -404,6 +407,7 @@ def process(client, username, password, loginType, isCheckDiamond, isGetSecurity
         getSecurityPacket(client, isGetSecurityPacket, appType)
     if isInToRoom == "true":
         intoRoom(client)
+    addFirend(client)
     # time.sleep(10)
     close(client, "true")
 

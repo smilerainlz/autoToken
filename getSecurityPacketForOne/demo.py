@@ -4,10 +4,12 @@ import time
 sys.path.append("..//")
 import hello
 
-uuid = "08771801cd4ba47bd323204310a296c6e05e2b1a"
-key = "0057"
+uuid = "00008110-001A21803482401E"
+key = "0060"
 
 client = wda.USBClient(uuid, port=8100)
 
-if client(label="ID: 588815").exists:
-    print("ddddd")
+client(label="消息").click()
+if client(label="可遇hl").exists:
+    client(label="可遇hl").click()
+    client(label="马上前往").click()
