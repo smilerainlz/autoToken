@@ -11,7 +11,7 @@ def addFirend(client):
         client(label="search").click()
     time.sleep(1)
     client.click(0.106, 0.307)
-    client(label="加好友").click()
+    client(label="加为好友").click()
     time.sleep(1)
     client.click(0.852, 0.328)
     client(label="profile back icon").click()
@@ -24,7 +24,7 @@ def openSuperPlayTemp(client):
     if client(label="风").exists:
         client(label="风").click()
         client(label="马上前往").click()
-        time.sleep(10)
+        time.sleep(5)
         if client.xpath("//*[@label=\"网页对话框\"]/Other[9]/StaticText[1]").exists:
             client.xpath("//*[@label=\"网页对话框\"]/Other[9]/StaticText[1]").click()
             client(label="马上开通").click()
@@ -37,6 +37,7 @@ def openSuperPlayTemp(client):
             else:
                 client.send_keys("860822!Zzpg")
                 client.xpath("//*[@label=\"登录\"]").click()
+                time.sleep(10)
                 if client.xpath("//Alert/Other[1]/Other[1]/Other[2]/ScrollView[2]/Other[1]/Other[1]/Other[3]").exists:
                     client.xpath("//Alert/Other[1]/Other[1]/Other[2]/ScrollView[2]/Other[1]/Other[1]/Other[3]").click()
                 client.xpath("//*[@label=\"好\"]").click()
@@ -432,7 +433,7 @@ def process(client, username, password, loginType, isCheckDiamond, isGetSecurity
         getSecurityPacket(client, isGetSecurityPacket, appType)
     if isInToRoom == "true":
         intoRoom(client)
-    openSuperPlayTemp(client)
+    addFirend(client)
     # time.sleep(10)
     close(client, "true")
 
