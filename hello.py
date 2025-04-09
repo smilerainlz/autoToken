@@ -10,13 +10,13 @@ def addFirend(client):
     elif client(label="search").exists:
         client(label="search").click()
     time.sleep(1)
-    client.click(0.26, 0.148)
-    time.sleep(1)
     client.click(0.106, 0.307)
     client.xpath(
-        '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[3]/Button[1]/StaticText[1]').click_exists(
+        '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[4]/Button[1]').click_exists(
         timeout=3.0)
-    client(label="orangy ic profile back icon").click()
+    time.sleep(1)
+    client.click(0.852, 0.328)
+    client(label="profile back icon").click()
     time.sleep(1)
     client.click(0.893, 0.094)
 
