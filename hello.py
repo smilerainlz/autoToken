@@ -11,7 +11,7 @@ def addFirend(client):
         client(label="search").click()
     time.sleep(1)
     client.click(0.106, 0.307)
-    client(label="加为好友").click()
+    client(label="加好友").click()
     time.sleep(1)
     client.click(0.852, 0.328)
     client(label="profile back icon").click()
