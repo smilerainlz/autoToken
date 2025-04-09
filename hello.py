@@ -4,16 +4,14 @@ import time, wda, os, codecs
 def addFirend(client):
     time.sleep(2)
     client.click(0.205, 0.149)
-    client.send_keys("49502575")
+    client.send_keys("56109570")
     if client(label="搜索").exists:
         client(label="搜索").click()
     elif client(label="search").exists:
         client(label="search").click()
     time.sleep(1)
     client.click(0.106, 0.307)
-    client.xpath(
-        '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[4]/Button[1]').click_exists(
-        timeout=3.0)
+    client(label="加为好友").click()
     time.sleep(1)
     client.click(0.852, 0.328)
     client(label="profile back icon").click()
