@@ -4,7 +4,7 @@ import time, wda, os, codecs
 def addFirend(client):
     time.sleep(2)
     client.click(0.205, 0.149)
-    client.send_keys("56109570")
+    client.send_keys("588815")
     if client(label="搜索").exists:
         client(label="搜索").click()
     elif client(label="search").exists:
