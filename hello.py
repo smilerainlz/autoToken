@@ -105,6 +105,7 @@ def login(client, username, password, loginType):
             client(label="其他号码登录 >").click()
     if loginType == "username":
         client.click(0.821, 0.817)
+        client.click(0.872, 0.75)
     # 清空用户名并输入用户名
     client(className="XCUIElementTypeTextField").clear_text()
     client(className="XCUIElementTypeTextField").set_text(username)
@@ -114,7 +115,7 @@ def login(client, username, password, loginType):
         timeout=3.0)
     client(className="XCUIElementTypeSecureTextField").set_text(password)
     # 点击登录
-    client.xpath('//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Button[2]').click_exists(
+    client(label="登录").click_exists(
         timeout=3.0)
 
 
@@ -433,8 +434,8 @@ def process(client, username, password, loginType, isCheckDiamond, isGetSecurity
         getSecurityPacket(client, isGetSecurityPacket, appType)
     if isInToRoom == "true":
         intoRoom(client)
-    addFirend(client)
-    # time.sleep(10)
+    # addFirend(client)
+    time.sleep(10)
     close(client, "true")
 
 
