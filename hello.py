@@ -117,6 +117,8 @@ def login(client, username, password, loginType):
     # 点击登录
     client(label="登录").click_exists(
         timeout=3.0)
+    client(label="登 录").click_exists(
+        timeout=3.0)
 
 
 def close(client, isLogin):
