@@ -131,18 +131,19 @@ def login(client, username, password, loginType, appType, openAJS):
         timeout=3.0)
     client(label="登 录").click_exists(
         timeout=3.0)
-    if openAJS == "true":
-        client.session().app_activate("com.aijiasuinc.AiJiaSuClient")
-        time.sleep(3)
-        if client(label="home btn connect sus").exists:
-            client(label="home btn connect sus").click()
+    if client(label="首页").exists:
+        if openAJS == "true":
+            client.session().app_activate("com.aijiasuinc.AiJiaSuClient")
             time.sleep(3)
-        if appType == "cm":
-            client.session().app_activate("sg.bigo.orangy")
-        if appType == "ppx":
-            client.session().app_activate("sg.bigo.pipixia")
-        if appType == "hello":
-            client.session().app_activate("com.yy.hello")
+            if client(label="home btn connect sus").exists:
+                client(label="home btn connect sus").click()
+                time.sleep(3)
+            if appType == "cm":
+                client.session().app_activate("sg.bigo.orangy")
+            if appType == "ppx":
+                client.session().app_activate("sg.bigo.pipixia")
+            if appType == "hello":
+                client.session().app_activate("com.yy.hello")
 
 
 def close(client, isLogin):
