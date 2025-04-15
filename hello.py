@@ -434,7 +434,7 @@ def getSecurityPacket(client, isGetSecurityPacket, appType):
     # client.click(0.566, 0.896)
     time.sleep(1)
     client.swipe(0.5, 0.8, 0.5, 0.5)
-    time.sleep(3)
+    time.sleep(8)
     client.click(0.566, 0.896)
     time.sleep(1)
     if isGetSecurityPacket == 1:
