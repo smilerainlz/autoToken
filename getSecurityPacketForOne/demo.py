@@ -10,3 +10,7 @@ key = "0061"
 client = wda.USBClient(uuid, port=8100)
 
 client.session().app_activate("com.aijiasuinc.AiJiaSuClient")
+if client(label="home btn connect nor").exists:
+    client(label="home btn connect nor").click()
+if client(label="home btn connect sus").exists:
+    client(label="home btn connect sus").click()
