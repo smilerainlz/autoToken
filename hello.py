@@ -104,6 +104,7 @@ def login(client, username, password, loginType, appType, openAJS):
             client.session().app_activate("sg.bigo.pipixia")
         if appType == "hello":
             client.session().app_activate("com.yy.hello")
+        time.sleep(1)
     print("当前时间: %s" % time.ctime())
     print(username, end="")
     # 如果未勾选用户协议，勾选
@@ -144,6 +145,7 @@ def login(client, username, password, loginType, appType, openAJS):
                 client.session().app_activate("sg.bigo.pipixia")
             if appType == "hello":
                 client.session().app_activate("com.yy.hello")
+            time.sleep(1)
 
 
 def close(client, isLogin):
