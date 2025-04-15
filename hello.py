@@ -215,15 +215,12 @@ def init(client, appType):
     if appType == "cm":
         client.session().app_terminate("sg.bigo.orangy")
         openAJS(client, appType)
-        client.session().app_activate("sg.bigo.orangy")
     if appType == "ppx":
         client.session().app_terminate("sg.bigo.pipixia")
         openAJS(client, appType)
-        client.session().app_activate("sg.bigo.pipixia")
     if appType == "hello":
         client.session().app_terminate("com.yy.hello")
         openAJS(client, appType)
-        client.session().app_activate("com.yy.hello")
     close(client, "false")
 
 
