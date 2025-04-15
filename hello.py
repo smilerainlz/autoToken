@@ -91,7 +91,17 @@ def modifyPwd(client, password):
 
 # appName(cm or ppx)
 # loginType(phone or username)
-def login(client, username, password, loginType):
+def login(client, username, password, loginType, appType, openAJS):
+    if openAJS is "true":
+        client.session().app_activate("com.aijiasuinc.AiJiaSuClient")
+        if client(label="home btn connect nor").exists:
+            client(label="home btn connect nor").click()
+        if appType == "cm":
+            client.session().app_activate("sg.bigo.orangy")
+        if appType == "ppx":
+            client.session().app_activate("sg.bigo.pipixia")
+        if appType == "hello":
+            client.session().app_activate("com.yy.hello")
     print("当前时间: %s" % time.ctime())
     print(username, end="")
     # 如果未勾选用户协议，勾选
@@ -417,9 +427,9 @@ def getSecurityPacket(client, isGetSecurityPacket, appType):
 # loginType(phone or username)
 # isCheckDiamond是否查看钻石（true获取）
 # isGetSecurityPacket是否获取securityPacket（1：1个号循环获取，2：多个号获取）
-def process(client, username, password, loginType, isCheckDiamond, isGetSecurityPacket, appType, isInToRoom):
+def process(client, username, password, loginType, isCheckDiamond, isGetSecurityPacket, appType, isInToRoom, openAJS):
     # 登录
-    login(client, username, password, loginType)
+    login(client, username, password, loginType, appType, openAJS)
     if client(label="daily reward close", timeout=1.0).exists:
         client.xpath(
             "//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]/Other[1]/Image[1]/Image[1]").click()
@@ -429,7 +439,7 @@ def process(client, username, password, loginType, isCheckDiamond, isGetSecurity
     if client(label="确定", timeout=1.0).exists:
         client(label="确定").click()
         # 重新登录
-        login(client, username, loginType)
+        login(client, username, loginType, appType, openAJS)
     if isCheckDiamond == "true":
         getDiamond(client)
     if isGetSecurityPacket >= 1:
@@ -443,7 +453,7 @@ def process(client, username, password, loginType, isCheckDiamond, isGetSecurity
 
 def processSendGift(client, username, password, loginType, sendUserId, sendType, sendName):
     # 登录
-    login(client, username, password, loginType)
+    login(client, username, password, loginType, "hello", "false")
     if client(label="daily reward close", timeout=1.0).exists:
         client.xpath(
             "//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]/Other[1]/Image[1]/Image[1]").click()
@@ -453,7 +463,7 @@ def processSendGift(client, username, password, loginType, sendUserId, sendType,
     if client(label="确定", timeout=1.0).exists:
         client(label="确定").click()
         # 重新登录
-        login(client, username, loginType)
+        login(client, username, loginType, "hello", "false")
     sendGift(client, username, sendUserId, sendType, sendName)
     close(client, "true")
 
@@ -501,7 +511,7 @@ def doAll(uuid, key):
         processNew(myclient, 1, "ppx")
 
 
-def doFromFile(uuid, key, fileName, appType, isCheckDiamond, isGetSecurityPacket, sleepTime, isInToRoom):
+def doFromFile(uuid, key, fileName, appType, isCheckDiamond, isGetSecurityPacket, sleepTime, isInToRoom, openAJS):
     runCount = 0
     try:
         myclient = wda.USBClient(uuid, port=8100)
@@ -530,19 +540,19 @@ def doFromFile(uuid, key, fileName, appType, isCheckDiamond, isGetSecurityPacket
                 try:
                     process(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
                             isCheckDiamond, isGetSecurityPacket,
-                            appType, isInToRoom)
+                            appType, isInToRoom, openAJS)
                 except:
                     init(myclient, appType)
                     try:
                         process(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
                                 isCheckDiamond,
-                                isGetSecurityPacket, appType, isInToRoom)
+                                isGetSecurityPacket, appType, isInToRoom, openAJS)
                     except:
                         init(myclient, appType)
                         process(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
                                 isCheckDiamond,
                                 isGetSecurityPacket,
-                                appType, isInToRoom)
+                                appType, isInToRoom, openAJS)
             if sleepTime != 0:
                 time.sleep(sleepTime)
 
