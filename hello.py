@@ -89,22 +89,41 @@ def modifyPwd(client, password):
     time.sleep(1)
 
 
+def openAJS(client, appType):
+    client.session().app_activate("com.aijiasuinc.AiJiaSuClient")
+    time.sleep(3)
+    if client(label="home btn connect nor").exists:
+        client(label="home btn connect nor").click()
+        time.sleep(3)
+    if appType == "cm":
+        client.session().app_activate("sg.bigo.orangy")
+    if appType == "ppx":
+        client.session().app_activate("sg.bigo.pipixia")
+    if appType == "hello":
+        client.session().app_activate("com.yy.hello")
+    time.sleep(1)
+
+
+def closeAJS(client, appType):
+    client.session().app_activate("com.aijiasuinc.AiJiaSuClient")
+    time.sleep(3)
+    if client(label="home btn connect sus").exists:
+        client(label="home btn connect sus").click()
+        time.sleep(3)
+    if appType == "cm":
+        client.session().app_activate("sg.bigo.orangy")
+    if appType == "ppx":
+        client.session().app_activate("sg.bigo.pipixia")
+    if appType == "hello":
+        client.session().app_activate("com.yy.hello")
+    time.sleep(1)
+
+
 # appName(cm or ppx)
 # loginType(phone or username)
 def login(client, username, password, loginType, appType, openAJS):
     if openAJS == "true":
-        client.session().app_activate("com.aijiasuinc.AiJiaSuClient")
-        time.sleep(3)
-        if client(label="home btn connect nor").exists:
-            client(label="home btn connect nor").click()
-            time.sleep(3)
-        if appType == "cm":
-            client.session().app_activate("sg.bigo.orangy")
-        if appType == "ppx":
-            client.session().app_activate("sg.bigo.pipixia")
-        if appType == "hello":
-            client.session().app_activate("com.yy.hello")
-        time.sleep(1)
+        openAJS(client, appType)
     print("当前时间: %s" % time.ctime())
     print(username, end="")
     # 如果未勾选用户协议，勾选
@@ -133,19 +152,7 @@ def login(client, username, password, loginType, appType, openAJS):
     client(label="登 录").click_exists(
         timeout=3.0)
     if client(label="首页").exists:
-        if openAJS == "true":
-            client.session().app_activate("com.aijiasuinc.AiJiaSuClient")
-            time.sleep(3)
-            if client(label="home btn connect sus").exists:
-                client(label="home btn connect sus").click()
-                time.sleep(3)
-            if appType == "cm":
-                client.session().app_activate("sg.bigo.orangy")
-            if appType == "ppx":
-                client.session().app_activate("sg.bigo.pipixia")
-            if appType == "hello":
-                client.session().app_activate("com.yy.hello")
-            time.sleep(1)
+        closeAJS(client, appType)
 
 
 def close(client, isLogin):
@@ -207,12 +214,15 @@ def closeForIpad(client, isLogin):
 def init(client, appType):
     if appType == "cm":
         client.session().app_terminate("sg.bigo.orangy")
+        openAJS(client, appType)
         client.session().app_activate("sg.bigo.orangy")
     if appType == "ppx":
         client.session().app_terminate("sg.bigo.pipixia")
+        openAJS(client, appType)
         client.session().app_activate("sg.bigo.pipixia")
     if appType == "hello":
         client.session().app_terminate("com.yy.hello")
+        openAJS(client, appType)
         client.session().app_activate("com.yy.hello")
     close(client, "false")
 
