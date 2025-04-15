@@ -206,13 +206,13 @@ def closeForIpad(client, isLogin):
 
 def init(client, appType):
     if appType == "cm":
-        # client.session().app_terminate("sg.bigo.orangy")
+        client.session().app_terminate("sg.bigo.orangy")
         client.session().app_activate("sg.bigo.orangy")
     if appType == "ppx":
-        # client.session().app_terminate("sg.bigo.pipixia")
+        client.session().app_terminate("sg.bigo.pipixia")
         client.session().app_activate("sg.bigo.pipixia")
     if appType == "hello":
-        # client.session().app_terminate("com.yy.hello")
+        client.session().app_terminate("com.yy.hello")
         client.session().app_activate("com.yy.hello")
     close(client, "false")
 
