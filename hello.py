@@ -211,16 +211,25 @@ def closeForIpad(client, isLogin):
             client.xpath('//Window[1]/Other[2]/Other[1]/Other[1]/Button[1]/StaticText[1]').click()
 
 
-def init(client, appType):
+def init(client, appType, openAJS):
     if appType == "cm":
         client.session().app_terminate("sg.bigo.orangy")
-        openAJSMethod(client, appType)
+        if openAJS == "true":
+            openAJSMethod(client, appType)
+        else:
+            client.session().app_activate("sg.bigo.orangy")
     if appType == "ppx":
         client.session().app_terminate("sg.bigo.pipixia")
-        openAJSMethod(client, appType)
+        if openAJS == "true":
+            openAJSMethod(client, appType)
+        else:
+            client.session().app_activate("sg.bigo.pipixia")
     if appType == "hello":
         client.session().app_terminate("com.yy.hello")
-        openAJSMethod(client, appType)
+        if openAJS == "true":
+            openAJSMethod(client, appType)
+        else:
+            client.session().app_activate("com.yy.hello")
     close(client, "false")
 
 
@@ -545,7 +554,7 @@ def doFromFile(uuid, key, fileName, appType, isCheckDiamond, isGetSecurityPacket
         os.system(
             "/Users/jfx/Library/Python/3.9/bin/tidevice -u " + uuid + " launch com.facebook.WebDriverAgentLib.lizhengtest" + key + ".xctrunner")
         myclient = wda.USBClient(uuid, port=8100)
-    init(myclient, appType)
+    init(myclient, appType, openAJS)
     while True:
         runCount = runCount + 1
         # 循环超过5次重启charles
@@ -566,13 +575,13 @@ def doFromFile(uuid, key, fileName, appType, isCheckDiamond, isGetSecurityPacket
                             isCheckDiamond, isGetSecurityPacket,
                             appType, isInToRoom, openAJS)
                 except:
-                    init(myclient, appType)
+                    init(myclient, appType, openAJS)
                     try:
                         process(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
                                 isCheckDiamond,
                                 isGetSecurityPacket, appType, isInToRoom, openAJS)
                     except:
-                        init(myclient, appType)
+                        init(myclient, appType, openAJS)
                         process(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
                                 isCheckDiamond,
                                 isGetSecurityPacket,
