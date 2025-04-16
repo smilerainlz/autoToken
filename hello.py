@@ -152,7 +152,8 @@ def login(client, username, password, loginType, appType, openAJS):
     client(label="登 录").click_exists(
         timeout=3.0)
     time.sleep(3)
-    closeAJSMethod(client, appType)
+    if openAJS == "true":
+        closeAJSMethod(client, appType)
 
 
 def close(client, isLogin):
