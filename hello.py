@@ -165,7 +165,7 @@ def close(client, isLogin):
     if client(label="知道了", timeout=1.0).exists:
         client(label="知道了").click()
     if client(label="daily reward close", timeout=1.0).exists:
-        client.xpath(0.6, 0.7)
+        client.click(0.6, 0.7)
         time.sleep(3)
         client(label="daily reward close").click()
     # 退出
