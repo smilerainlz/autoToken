@@ -466,7 +466,7 @@ def process(client, username, password, loginType, isCheckDiamond, isGetSecurity
     login(client, username, password, loginType, appType, openAJS)
     # 等待签到弹窗
     time.sleep(5)
-    if client(label="daily reward close").exists:
+    if client(label="daily reward close", timeout=1.0).exists:
         client.xpath(
             "//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]/Other[1]/Image[1]/Image[1]").click()
         time.sleep(3)
