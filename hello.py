@@ -464,7 +464,8 @@ def getSecurityPacket(client, isGetSecurityPacket, appType):
 def process(client, username, password, loginType, isCheckDiamond, isGetSecurityPacket, appType, isInToRoom, openAJS):
     # 登录
     login(client, username, password, loginType, appType, openAJS)
-    if client(label="daily reward close", timeout=1.0).exists:
+    time.sleep(5)
+    if client(label="daily reward close").exists:
         client.xpath(
             "//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]/Other[1]/Image[1]/Image[1]").click()
         time.sleep(3)
