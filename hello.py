@@ -19,34 +19,6 @@ def addFirend(client):
     client.click(0.893, 0.094)
 
 
-def openSuperPlayTemp(client):
-    client(label="消息").click()
-    if client(label="风").exists:
-        client(label="风").click()
-        client(label="马上前往").click()
-        time.sleep(5)
-        if client.xpath("//*[@label=\"网页对话框\"]/Other[9]/StaticText[1]").exists:
-            client.xpath("//*[@label=\"网页对话框\"]/Other[9]/StaticText[1]").click()
-            client(label="马上开通").click()
-            client(label="订阅").click()
-            time.sleep(3)
-            if client.xpath("//Alert/Other[1]/Other[1]/Other[2]/ScrollView[2]/Other[1]/Other[1]/Other[3]").exists:
-                client.xpath("//Alert/Other[1]/Other[1]/Other[2]/ScrollView[2]/Other[1]/Other[1]/Other[3]").click()
-                client.xpath("//*[@label=\"好\"]").click()
-                time.sleep(5)
-            else:
-                client.send_keys("860822!Zzpg")
-                client.xpath("//*[@label=\"登录\"]").click()
-                time.sleep(10)
-                if client.xpath("//Alert/Other[1]/Other[1]/Other[2]/ScrollView[2]/Other[1]/Other[1]/Other[3]").exists:
-                    client.xpath("//Alert/Other[1]/Other[1]/Other[2]/ScrollView[2]/Other[1]/Other[1]/Other[3]").click()
-                client.xpath("//*[@label=\"好\"]").click()
-        client.xpath(
-            "//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/WebView[1]/WebView[1]/WebView[1]/Other[1]/Other[1]/Other[1]/Other[1]/Button[1]").click()
-        time.sleep(1)
-        client.click(0.06, 0.069)
-
-
 def removeGZ(client):
     client(label="我的").click()
     client.xpath('//Table/Other[1]/Other[2]/Other[3]').click()
@@ -288,6 +260,7 @@ def intoRoom(client):
 def openSuperPlayer(client):
     client.xpath("//*[@label=\"星球\"]").click()
     client.xpath("//*[@label=\"超级玩家\"]").click()
+    client.click(0.566, 0.896)
     client.swipe_up()
     client.swipe(0.7, 0.758, 0.204, 0.768)
     client.xpath("//*[@label=\"¥3\"]").click()
@@ -479,7 +452,8 @@ def process(client, username, password, loginType, isCheckDiamond, isGetSecurity
     if isCheckDiamond == "true":
         getDiamond(client)
     if isGetSecurityPacket >= 1:
-        getSecurityPacket(client, isGetSecurityPacket, appType)
+        # getSecurityPacket(client, isGetSecurityPacket, appType)
+        openSuperPlayer(client)
     if isInToRoom == "true":
         intoRoom(client)
     # addFirend(client)
