@@ -261,6 +261,7 @@ def openSuperPlayer(client):
     client.xpath("//*[@label=\"星球\"]").click()
     client.xpath("//*[@label=\"超级玩家\"]").click()
     client.click(0.566, 0.896)
+    time.sleep(1)
     client.swipe_up()
     client.swipe(0.7, 0.758, 0.204, 0.768)
     client.xpath("//*[@label=\"¥3\"]").click()
@@ -276,8 +277,11 @@ def openSuperPlayer(client):
         else:
             client.send_keys("860822!Zzpg")
             client.xpath("//*[@label=\"登录\"]").click()
+            time.sleep(10)
             client.xpath("//*[@label=\"购买\"]").click()
+            time.sleep(10)
             client.xpath("//*[@label=\"好\"]").click()
+            time.sleep(5)
     client.xpath(
         "//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/WebView[1]/WebView[1]/WebView[1]/Other[1]/Other[1]/Other[1]/Other[1]/Button[1]").click()
 
