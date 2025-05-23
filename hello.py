@@ -260,8 +260,8 @@ def intoRoom(client):
 def openSuperPlayer(client):
     client.xpath("//*[@label=\"星球\"]").click()
     client.xpath("//*[@label=\"超级玩家\"]").click()
+    time.sleep(3)
     client.click(0.566, 0.896)
-    time.sleep(1)
     client.swipe_up()
     client.swipe(0.7, 0.758, 0.204, 0.768)
     client.xpath("//*[@label=\"¥3\"]").click()
