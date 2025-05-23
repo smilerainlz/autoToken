@@ -456,8 +456,8 @@ def process(client, username, password, loginType, isCheckDiamond, isGetSecurity
     if isCheckDiamond == "true":
         getDiamond(client)
     if isGetSecurityPacket >= 1:
-        # getSecurityPacket(client, isGetSecurityPacket, appType)
-        openSuperPlayer(client)
+        getSecurityPacket(client, isGetSecurityPacket, appType)
+        # openSuperPlayer(client)
     if isInToRoom == "true":
         intoRoom(client)
     # addFirend(client)
