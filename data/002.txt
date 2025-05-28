@@ -1,38 +1,17 @@
-ID92315224----qwer1234$$$----username----
-ID92337269----qwer1234$$$----username----
-ID92188954----qwer1234$$$----username----
-pqw9195----qwer1234$$$----username----
-jmw3608----qwer1234$$$----username----
-rxa5612----qwer1234$$$----username----
-ID92277949----qwer1234$$$----username----
-ID92308886----qwer1234$$$----username----
-ID92356757----qwer1234$$$----username----
-ID92135186----qwer1234$$$----username----
-ID92353258----qwer1234$$$----username----
-khc7226----qwer1234$$$----username----
-tzc5982----qwer1234$$$----username----
-ID92336253----qwer1234$$$----username----
-ID92284382----qwer1234$$$----username----
-ID92279174----qwer1234$$$----username----
-ID92308549----qwer1234$$$----username----
-ID92130502----qwer1234$$$----username----
-ID92286082----qwer1234$$$----username----
-ID92335298----qwer1234$$$----username----
-ID92132233----qwer1234$$$----username----
-ID92305186----qwer1234$$$----username----
-ID92214918----qwer1234$$$----username----
-ID92299986----qwer1234$$$----username----
-ID92199343----qwer1234$$$----username----
-ID92350331----qwer1234$$$----username----
-ID92315410----qwer1234$$$----username----
-ID92338382----qwer1234$$$----username----
-ID92317234----qwer1234$$$----username----
-ID92332852----qwer1234$$$----username----
-ID92355306----qwer1234$$$----username----
-ID92277792----qwer1234$$$----username----
-ID92317544----qwer1234$$$----username----
-ID92303836----qwer1234$$$----username----
-ID92355366----qwer1234$$$----username----
-nro5394----a977166188----username----
-obn7556----a977166188----username----
-foj9496----a977166188----username----
+ID92299986----qwer1234$$$----username----	3678089379
+ID92199343----qwer1234$$$----username----	3678092305
+ID92350331----qwer1234$$$----username----	3678094898
+ID92315410----qwer1234$$$----username----	3678095203
+ID92332852----qwer1234$$$----username----	3678135869
+ID92355306----qwer1234$$$----username----	3678136180
+ID92277792----qwer1234$$$----username----	3678141632
+ID92355366----qwer1234$$$----username----	3678145194
+ID92304153----qwer1234$$$----username----	3678150064
+ID92340353----qwer1234$$$----username----	3678150348
+ID92292820----qwer1234$$$----username----	3678180141
+ID92283818----qwer1234$$$----username----	3678180146
+ID92301889----qwer1234$$$----username----	3678190708
+ID92503653----qwer1234$$$----username----	3678377819
+ID92555821----qwer1234$$$----username----	3678395529
+ID92502972----qwer1234$$$----username----	3678425223
+nho4553----qwer1234$$$----username----	3602157114
