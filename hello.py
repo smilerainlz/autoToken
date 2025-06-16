@@ -548,9 +548,9 @@ def doFromFile(uuid, key, fileName, appType, isCheckDiamond, isGetSecurityPacket
         while True:
             file_cm = codecs.open("../data/" + fileName + ".txt", 'r', "utf-8")
             for line in file_cm:
-                print(line.split("----")[2])
                 if "###" in line:
                     continue
+                print(line.split("----")[2])
                 try:
                     process(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
                             isCheckDiamond, isGetSecurityPacket,
