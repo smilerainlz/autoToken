@@ -461,7 +461,7 @@ def process(client, username, password, loginType, isCheckDiamond, isGetSecurity
     if isInToRoom == "true":
         intoRoom(client)
     # addFirend(client)
-    # time.sleep(10)
+    time.sleep(10)
     close(client, "true")
 
 
