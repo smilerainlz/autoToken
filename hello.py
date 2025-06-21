@@ -300,7 +300,7 @@ def sendGift(client, username, sendUserId, sendType, sendName):
     client.click(0.901, 0.089)
 
 
-def sendMethed(client, username, sendUserId, sendType, sendName):
+def sendMethed(client, username, sendUserId, sendType):
     client.click(0.114, 0.31)
     time.sleep(1)
     while True:
@@ -328,7 +328,7 @@ def sendMethed(client, username, sendUserId, sendType, sendName):
                 client.xpath("//*[@label=\"送礼\"]").click()
             else:
                 client.xpath("//*[@label=\"new chatroom navi bar more\"]").click()
-                print(username + " : 礼物不存在 ：" + sendName)
+                print(username + " : 礼物不存在 ：")
                 break
             time.sleep(1)
             if client(label="取消").exists:
