@@ -296,8 +296,6 @@ def sendGift(client, username, sendUserId, sendType, sendName):
         client.xpath("//*[@label=\"search\"]").click()
     time.sleep(1)
     sendJinBiMethed(client, username, sendUserId, sendType)
-    sendJinBiMethed(client, username, sendUserId, sendType)
-    sendJinBiMethed(client, username, sendUserId, sendType)
     time.sleep(1)
     client.click(0.901, 0.089)
 
