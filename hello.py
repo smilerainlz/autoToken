@@ -295,7 +295,7 @@ def sendGift(client, username, sendUserId, sendType, sendName):
     if client.xpath("//*[@label=\"search\"]").exists:
         client.xpath("//*[@label=\"search\"]").click()
     time.sleep(1)
-    sendJinBiMethed(client, username, sendUserId, sendType)
+    sendMethed(client, username, sendUserId, sendType)
     time.sleep(1)
     client.click(0.901, 0.089)
 
@@ -303,32 +303,41 @@ def sendGift(client, username, sendUserId, sendType, sendName):
 def sendMethed(client, username, sendUserId, sendType, sendName):
     client.click(0.114, 0.31)
     time.sleep(1)
-    client.click(0.501, 0.158)
-    if client.xpath("//*[@label=\"ID: " + sendUserId + "\"]").exists:
-        client.xpath("//*[@label=\"送礼物\"]").click()
-        # 送普通礼物
-        if sendType == "diamond":
-            client.xpath("//*[@label=\"经典\"]").click()
-        # 送福袋
-        elif sendType == "package":
-            client.xpath("//*[@label=\"包裹\"]").click()
-            client.swipe_up()
-            # client.swipe_up()
+    while True:
+        client.click(0.501, 0.158)
+        if client.xpath("//*[@label=\"ID: " + sendUserId + "\"]").exists:
+            client.xpath("//*[@label=\"送礼物\"]").click()
+            # 送普通礼物
+            if sendType == "diamond":
+                client.xpath("//*[@label=\"经典\"]").click()
+            # 送福袋
+            elif sendType == "package":
+                client.xpath("//*[@label=\"包裹\"]").click()
+                # client.swipe_up()
+                # client.swipe_up()
+            else:
+                client.xpath("//*[@label=\"特别\"]").click()
+            if client.xpath("//*[@label=\"蜜桃酸奶\"]").exists:
+                client.xpath("//*[@label=\"蜜桃酸奶\"]").click()
+                client.xpath("//*[@label=\"送礼\"]").click()
+            if client.xpath("//*[@label=\"福运到\"]").exists:
+                client.xpath("//*[@label=\"福运到\"]").click()
+                client.xpath("//*[@label=\"送礼\"]").click()
+            if client.xpath("//*[@label=\"粽意你\"]").exists:
+                client.xpath("//*[@label=\"粽意你\"]").click()
+                client.xpath("//*[@label=\"送礼\"]").click()
+            else:
+                client.xpath("//*[@label=\"new chatroom navi bar more\"]").click()
+                print(username + " : 礼物不存在 ：" + sendName)
+                break
+            time.sleep(1)
+            if client(label="取消").exists:
+                client(label="取消").click()
+                print(username + " : 没钻了，请充值")
+                client.xpath("//*[@label=\"new chatroom navi bar more\"]").click()
         else:
-            client.xpath("//*[@label=\"特别\"]").click()
-        if client.xpath("//*[@label=\"" + sendName + "\"]").exists:
-            client.xpath("//*[@label=\"" + sendName + "\"]").click()
-            client.xpath("//*[@label=\"送礼\"]").click()
-        else:
-            client.xpath("//*[@label=\"new chatroom navi bar more\"]").click()
-            print(username + " : 礼物不存在 ：" + sendName)
-        time.sleep(1)
-        if client(label="取消").exists:
-            client(label="取消").click()
-            print(username + " : 没钻了，请充值")
-            client.xpath("//*[@label=\"new chatroom navi bar more\"]").click()
-    else:
-        print(username + " : 送礼物失败")
+            print(username + " : 送礼物失败")
+            break
     client.xpath("//*[@label=\"new chatroom navi bar more\"]").click()
     client.xpath('//CollectionView/Cell[4]/Other[1]/Image[1]').click()
 
