@@ -295,7 +295,9 @@ def sendGift(client, username, sendUserId, sendType, sendName):
     if client.xpath("//*[@label=\"search\"]").exists:
         client.xpath("//*[@label=\"search\"]").click()
     time.sleep(1)
-    sendPackageMethed(client, username, sendUserId, sendType)
+    sendJinBiMethed(client, username, sendUserId, sendType)
+    sendJinBiMethed(client, username, sendUserId, sendType)
+    sendJinBiMethed(client, username, sendUserId, sendType)
     time.sleep(1)
     client.click(0.901, 0.089)
 
@@ -396,6 +398,54 @@ def sendPackageMethed(client, username, sendUserId, sendType):
             elif client.xpath("//*[@label=\"兔兔雪糕\"]").exists:
                 client.xpath("//*[@label=\"兔兔雪糕\"]").click()
                 client.xpath("//*[@label=\"送礼\"]").click()
+            else:
+                print("所有礼物不存在")
+                break
+        client.xpath("//*[@label=\"profile back icon\"]").click()
+        client.xpath("//*[@label=\"profile back icon\"]").click()
+    else:
+        client.xpath("//*[@label=\"profile back icon\"]").click()
+        print(username + " : 礼物ID不符合")
+
+
+def sendJinBiMethed(client, username, sendUserId, sendType):
+    client.click(0.558, 0.345)
+    time.sleep(2)
+    if client(label="ID: " + sendUserId).exists:
+        client(label="profile menu icon").click()
+        client.xpath("//*[@label=\"送礼物\"]").click()
+        # 送普通礼物
+        if sendType == "diamond":
+            client.xpath("//*[@label=\"经典\"]").click()
+        # 送福袋
+        elif sendType == "package":
+            client.xpath("//*[@label=\"包裹\"]").click()
+            client.swipe_up()
+            # client.swipe_up()
+        else:
+            client.xpath("//*[@label=\"特别\"]").click()
+        while True:
+            if client.xpath(
+                    "//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[4]/Other[1]/Other[2]/Other[3]/Other[1]/ScrollView[1]/Other[1]/CollectionView[1]/Cell[1]/Other[1]/Other[3]/StaticText").exists:
+                giftName = client.xpath(
+                    "//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[4]/Other[1]/Other[2]/Other[3]/Other[1]/ScrollView[1]/Other[1]/CollectionView[1]/Cell[1]/Other[1]/Other[3]/StaticText").value
+                if "金币" in giftName:
+                    myNumber = client.xpath(
+                        "//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[4]/Other[1]/Other[2]/Other[3]/Other[1]/ScrollView[1]/Other[1]/CollectionView[1]/Cell[1]/Other[1]/Image[2]/StaticText").value.replace(
+                        "x", "")
+                    client.click(0.754, 0.923)
+                    client.xpath("//*[@label=\"自定义数量\"]").click()
+                    if len(myNumber) < 5:
+                        client.send_keys(myNumber)
+                    else:
+                        client.send_keys("9999")
+                    client.xpath("//*[@label=\"确认\"]").click()
+                    client.xpath("//*[@label=\"送礼\"]").click()
+                    print(giftName + " : " + myNumber)
+                    time.sleep(3)
+                else:
+                    print("没有金币礼物了")
+                    break
             else:
                 print("所有礼物不存在")
                 break
@@ -581,7 +631,7 @@ def doFromFileSendGift(uuid, key, fileName, appType, sendUserId, sendType, sendN
         os.system(
             "/Users/jfx/Library/Python/3.9/bin/tidevice -u " + uuid + " launch com.facebook.WebDriverAgentLib.lizhengtest" + key + ".xctrunner")
         myclient = wda.USBClient(uuid, port=8100)
-    init(myclient, appType)
+    init(myclient, appType, "false")
     file_cm = codecs.open("../data/" + fileName + ".txt", 'r', "utf-8")
     for line in file_cm:
         print(line.split("----")[2])
@@ -589,11 +639,11 @@ def doFromFileSendGift(uuid, key, fileName, appType, sendUserId, sendType, sendN
             processSendGift(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
                             sendUserId, sendType, sendName)
         except:
-            init(myclient, appType)
+            init(myclient, appType, "false")
             try:
                 processSendGift(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
                                 sendUserId, sendType, sendName)
             except:
-                init(myclient, appType)
+                init(myclient, appType, "false")
                 processSendGift(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
                                 sendUserId, sendType, sendName)
