@@ -433,7 +433,7 @@ def sendJinBiMethed(client, username, sendUserId, sendType):
                     myNumber = client.xpath(
                         "//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[4]/Other[1]/Other[2]/Other[3]/Other[1]/ScrollView[1]/Other[1]/CollectionView[1]/Cell[1]/Other[1]/Image[2]/StaticText").value.replace(
                         "x", "")
-                    client.click(0.754, 0.923)
+                    client.click(0.731, 0.954)
                     client.xpath("//*[@label=\"自定义数量\"]").click()
                     if len(myNumber) < 5:
                         client.send_keys(myNumber)
