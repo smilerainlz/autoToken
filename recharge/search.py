@@ -8,6 +8,10 @@ def process(client, userId):
     time.sleep(2)
     client.click(0.67, 0.309)
     time.sleep(3)
+    if client.xpath("//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]/Other[7]/Other[1]/Other[1]/Image[1]").exists:
+        print("---------------- " + userId)
+    else:
+        print(userId)
     client(label="profile back icon").click()
     client.click(0.908, 0.093)
 
