@@ -4,7 +4,7 @@ sys.path.append("..//")
 import hello
 
 uuid = "08771801cd4ba47bd323204310a296c6e05e2b1a"
-key = "0088"
+key = "0099"
 
 # 登陆好的
 # hello.doAll(uuid, key)
