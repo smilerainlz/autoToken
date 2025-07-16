@@ -5,7 +5,7 @@ import hello
 
 # my
 uuid = "00008110-001A21803482401E"
-key = "0097"
+key = "1006"
 
 # 登陆好的
 # hello.doAll(uuid, key)
