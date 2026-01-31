@@ -481,6 +481,7 @@ def getSecurityPacket(client, isGetSecurityPacket, appType):
     time.sleep(1)
     client.swipe(0.5, 0.8, 0.5, 0.5)
     time.sleep(3)
+    client(label="您已阅读并同意").click()
     client.click(0.566, 0.896)
     time.sleep(1)
     if isGetSecurityPacket == 1:
