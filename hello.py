@@ -69,7 +69,6 @@ def openAJSMethod(client, appType):
         time.sleep(3)
     if client(label="确定").exists:
         client(label="确定").click()
-        time.sleep(1)
     if appType == "cm":
         client.session().app_activate("sg.bigo.orangy")
     if appType == "ppx":
