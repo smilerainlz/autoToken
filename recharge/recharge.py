@@ -19,7 +19,7 @@ def process(client, userId):
     if client.xpath("//*[@label=\"充值中心\"]/TextField").value == userId:
         client(label="完成").click()
         time.sleep(2)
-        client.xpath('//*[@label="充值中心"]/Other[10]').click()
+        client.xpath('//*[@label="充值中心"]/Other[15]').click()
         myclient.swipe_up()
         if client.xpath("//Switch").value == "0":
             time.sleep(1)
@@ -29,21 +29,16 @@ def process(client, userId):
         if client(label="打开").exists:
             client(label="打开").click()
         time.sleep(5)
-        if client(label="购买Hello语音钻石到账号ID" + userId + "点  6点0 0元").exists:
-            client(label="立即支付").click()
-            if client(label="确认支付").exists:
-                client(label="确认支付").click()
-            client.xpath('//Window[3]/Other[1]/Other[1]/Other[2]/Key[8]/StaticText[1]').click()
-            client.xpath('//Window[3]/Other[1]/Other[1]/Other[2]/Key[6]/StaticText[1]').click()
-            client.xpath('//Window[3]/Other[1]/Other[1]/Other[2]/Key[10]/StaticText[1]').click()
-            client.xpath('//Window[3]/Other[1]/Other[1]/Other[2]/Key[8]/StaticText[1]').click()
-            client.xpath('//Window[3]/Other[1]/Other[1]/Other[2]/Key[2]/StaticText[1]').click()
-            client.xpath('//Window[3]/Other[1]/Other[1]/Other[2]/Key[2]/StaticText[1]').click()
-            client(label="完成").click()
-        else:
-            print(userId + " : 充值id或金额错误，跳过！")
-            client(label="取消").click()
-            client(label="放弃").click()
+        # client(label="立即支付").click()
+        if client(label="确认支付").exists:
+            client(label="确认支付").click()
+        client.xpath('//Window[3]/Other[1]/Other[1]/Other[2]/Other[1]/Key[8]/StaticText[1]').click()
+        client.xpath('//Window[3]/Other[1]/Other[1]/Other[2]/Other[1]/Key[6]/StaticText[1]').click()
+        client.xpath('//Window[3]/Other[1]/Other[1]/Other[2]/Other[1]/Key[10]/StaticText[1]').click()
+        client.xpath('//Window[3]/Other[1]/Other[1]/Other[2]/Other[1]/Key[8]/StaticText[1]').click()
+        client.xpath('//Window[3]/Other[1]/Other[1]/Other[2]/Other[1]/Key[2]/StaticText[1]').click()
+        client.xpath('//Window[3]/Other[1]/Other[1]/Other[2]/Other[1]/Key[2]/StaticText[1]').click()
+        client(label="完成").click()
     else:
         print(userId + " : 充值id错误，跳过！")
 
