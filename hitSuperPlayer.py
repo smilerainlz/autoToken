@@ -44,6 +44,6 @@ def process(client, userId):
 
 
 myclient = wda.USBClient("00008110-001A21803482401E", port=8100)
-for i in range(100):
+for i in range(1000):
     myclient.click(0.566, 0.896)
-    time.sleep(60000)
+    time.sleep(600)
