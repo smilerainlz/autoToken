@@ -19,7 +19,7 @@ def process(client, userId):
     if client.xpath("//*[@label=\"充值中心\"]/TextField").value == userId:
         client(label="完成").click()
         time.sleep(2)
-        client.xpath('//*[@label="充值中心"]/Other[14]').click()
+        client.xpath('//*[@label="充值中心"]/Other[13]').click()
         myclient.swipe_up()
         if client.xpath("//Switch").value == "0":
             time.sleep(1)
