@@ -19,7 +19,7 @@ def process(client, userId):
     if client.xpath("//*[@label=\"充值中心\"]/TextField").value == userId:
         client(label="完成").click()
         time.sleep(2)
-        client.xpath('//*[@label="充值中心"]/Other[16]').click()
+        client.xpath('//*[@label="充值中心"]/Other[15]').click()
         myclient.swipe_up()
         if client.xpath("//Switch").value == "0":
             time.sleep(1)
@@ -32,6 +32,7 @@ def process(client, userId):
         # client(label="立即支付").click()
         if client(label="确认支付").exists:
             client(label="确认支付").click()
+        client.click(0.712, 0.558)
         client.xpath('//Window[3]/Other[1]/Other[1]/Other[2]/Other[1]/Key[8]/StaticText[1]').click()
         client.xpath('//Window[3]/Other[1]/Other[1]/Other[2]/Other[1]/Key[6]/StaticText[1]').click()
         client.xpath('//Window[3]/Other[1]/Other[1]/Other[2]/Other[1]/Key[10]/StaticText[1]').click()
