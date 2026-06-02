@@ -19,7 +19,7 @@ def process(client, userId):
     if client.xpath("//*[@label=\"充值中心\"]/TextField").value == userId:
         client(label="完成").click()
         time.sleep(2)
-        client.xpath('//*[@label="充值中心"]/Other[13]').click()
+        client.xpath('//*[@label="充值中心"]/Other[6]').click()
         myclient.swipe_up()
         if client.xpath("//Switch").value == "0":
             time.sleep(1)
@@ -44,7 +44,7 @@ def process(client, userId):
         print(userId + " : 充值id错误，跳过！")
 
 
-myclient = wda.USBClient("00008110-001A21803482401E", port=8100)
+myclient = wda.USBClient("c933eea94b3ba611f48322b9d9ebc02e9c1efef1", port=8100)
 file = codecs.open("helloid.txt", 'r', "utf-8")
 myclient.home()
 myclient(label="Safari浏览器").click()
