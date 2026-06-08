@@ -4,13 +4,13 @@ sys.path.append("..//")
 import hello
 
 uuid = "c933eea94b3ba611f48322b9d9ebc02e9c1efef1"
-key = "3703"
+key = "3903"
 
 # 登陆好的
 # hello.doAll(uuid, key)
 
 # 通过文件一个个登陆uuid, key, fileName, appType, isCheckDiamond, isGetSecurityPacket, sleepTime
-hello.doFromFile(uuid, key, "008", "hello", "false", 1, 300, "false","true")
+hello.doFromFile(uuid, key, "008", "hello", "false", 1, 600, "false","true")
 
 # 送礼物uuid, key, fileName, appType, sendUserId, sendType, sendName
 # hello.doFromFileSendGift(uuid, key, "002", "hello", "588815", "package", "星星票")
