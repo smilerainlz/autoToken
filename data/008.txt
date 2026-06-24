@@ -1,7 +1,3 @@
-17606620545----qqz456456@----phone----
-ID92138191----qwer1234$$$----username----
-ID92296496----qwer1234$$$----username----
-ID92284386----qwer1234$$$----username----
-ID92277739----qwer1234$$$----username----
-ID92337982----qwer1234$$$----username----
-ID92356457----qwer1234$$$----username----
+ID92270003----qwer1234$$$----username----
+ID92222965----qwer1234$$$----username----
+ID92331605----qwer1234$$$----username----
