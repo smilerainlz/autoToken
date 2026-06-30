@@ -41,18 +41,23 @@ def removeGZ(client):
 def modifyPwd(client, password):
     client(label="我的").click()
     time.sleep(1)
-    client(label="安全中心").click()
+    client.swipe(0.5, 0.8, 0.5, 0.5)
     time.sleep(1)
-    client.xpath('//Table/Cell[3]').click()
+    client(label="安全中心").click()
+    time.sleep(3)
+    client(label="账号安全").click()
+    time.sleep(1)
+    client(label="登录密码").click()
+    time.sleep(1)
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/SecureTextField[1]').set_text(
         password)
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]/SecureTextField[1]').set_text(
-        "qwer1234$$$")
+        "lz456456$&@")
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[4]/SecureTextField[1]').set_text(
-        "qwer1234$$$")
+        "lz456456$&@")
     time.sleep(1)
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Button[1]').click()
@@ -484,7 +489,7 @@ def process(client, username, password, loginType, isCheckDiamond, isGetSecurity
     if isInToRoom == "true":
         intoRoom(client)
     # addFirend(client)
-    modifyPwd(client, "lz456456$&@")
+    modifyPwd(client, password)
     # time.sleep(10)
     close(client, "true")
 
