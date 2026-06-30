@@ -165,6 +165,7 @@ def close(client, isLogin):
                 client(label="退出当前帐号").click()
             client.xpath('//Window[1]/Other[2]/Other[1]/Other[1]/Button[1]/StaticText[1]').click()
 
+
 def init(client, appType, openAJS):
     if appType == "cm":
         client.session().app_terminate("sg.bigo.orangy")
@@ -485,6 +486,7 @@ def process(client, username, password, loginType, isCheckDiamond, isGetSecurity
     # addFirend(client)
     # time.sleep(10)
     close(client, "true")
+
 
 def doFromFile(uuid, key, fileName, appType, isCheckDiamond, isGetSecurityPacket, sleepTime, isInToRoom, openAJS):
     runCount = 0
