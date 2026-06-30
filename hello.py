@@ -165,29 +165,6 @@ def close(client, isLogin):
                 client(label="退出当前帐号").click()
             client.xpath('//Window[1]/Other[2]/Other[1]/Other[1]/Button[1]/StaticText[1]').click()
 
-
-def closeForIpad(client, isLogin):
-    time.sleep(3)
-    # 如果弹出签到提示，先签到，再关闭
-    if client(label="daily reward close").exists:
-        client.xpath(
-            '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]/Other[1]/Image[1]/Image[1]').click()
-        time.sleep(3)
-        client(label="daily reward close").click()
-    # 退出
-    if isLogin == "true":
-        client(label="我的").click()
-        client.click(0.975, 0.043)
-        client(label="退出当前帐号").click()
-        client.xpath('//Window[1]/Other[2]/Other[1]/Other[1]/Button[1]/StaticText[1]').click()
-    if isLogin != "true":
-        if client(label="我的").exists:
-            client(label="我的").click()
-            client.click(0.975, 0.043)
-            client(label="退出当前帐号").click()
-            client.xpath('//Window[1]/Other[2]/Other[1]/Other[1]/Button[1]/StaticText[1]').click()
-
-
 def init(client, appType, openAJS):
     if appType == "cm":
         client.session().app_terminate("sg.bigo.orangy")
@@ -208,21 +185,6 @@ def init(client, appType, openAJS):
         else:
             client.session().app_activate("com.yy.hello")
     close(client, "false")
-
-
-def initForIpad(client, appType):
-    if appType == "cm":
-        # client.session().app_terminate("sg.bigo.orangy")
-        client.session().app_activate("sg.bigo.orangy")
-    if appType == "ppx":
-        # client.session().app_terminate("sg.bigo.pipixia")
-        client.session().app_activate("sg.bigo.pipixia")
-    if appType == "hello":
-        # client.session().app_terminate("com.yy.hello")
-        client.session().app_activate("com.yy.hello")
-    if client(label="确定").exists:
-        client(label="确定").click()
-    closeForIpad(client, "false")
 
 
 def initNoClose(client, appType):
@@ -524,67 +486,6 @@ def process(client, username, password, loginType, isCheckDiamond, isGetSecurity
     # time.sleep(10)
     close(client, "true")
 
-
-def processSendGift(client, username, password, loginType, sendUserId, sendType, sendName):
-    # 登录
-    login(client, username, password, loginType, "hello", "false")
-    if client(label="daily reward close", timeout=1.0).exists:
-        client.xpath(
-            "//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]/Other[1]/Image[1]/Image[1]").click()
-        time.sleep(3)
-        client(label="daily reward close").click()
-    # 如果登录过期
-    if client(label="确定", timeout=1.0).exists:
-        client(label="确定").click()
-        # 重新登录
-        login(client, username, loginType, "hello", "false")
-    sendGift(client, username, sendUserId, sendType, sendName)
-    close(client, "true")
-
-
-def processNew(client, isGetSecurityPacket, appType):
-    time.sleep(5)
-    if client(label="daily reward close").exists:
-        client.xpath("//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]/Other[1]/Image[1]/Image[1]").click()
-        client(label="daily reward close").click()
-    if isGetSecurityPacket >= 1:
-        try:
-            getSecurityPacket(client, isGetSecurityPacket, appType)
-        except:
-            print(appType + " : 号被顶了")
-    time.sleep(10)
-
-
-def doAll(uuid, key):
-    runCount = 0
-    try:
-        myclient = wda.USBClient(uuid, port=8100)
-    except:
-        os.system(
-            "/Users/jfx/Library/Python/3.9/bin/tidevice -u " + uuid + " kill com.facebook.WebDriverAgentLib.lizhengtest" + key + ".xctrunner")
-        os.system(
-            "/Users/jfx/Library/Python/3.9/bin/tidevice -u " + uuid + " launch com.facebook.WebDriverAgentLib.lizhengtest" + key + ".xctrunner")
-        myclient = wda.USBClient(uuid, port=8100)
-    while True:
-        runCount = runCount + 1
-        # 循环超过5次重启charles
-        if runCount % 200 == 0:
-            os.system('sh ../charles-start.sh')
-            print("重启charles")
-            time.sleep(10)
-
-        # 打开cm
-        initNoClose(myclient, "hello")
-        # process(myclient, "bmbm123", "username", "false", 0, "hello")
-        processNew(myclient, 1, "hello")
-
-        initNoClose(myclient, "cm")
-        processNew(myclient, 1, "cm")
-
-        initNoClose(myclient, "ppx")
-        processNew(myclient, 1, "ppx")
-
-
 def doFromFile(uuid, key, fileName, appType, isCheckDiamond, isGetSecurityPacket, sleepTime, isInToRoom, openAJS):
     runCount = 0
     try:
@@ -629,31 +530,3 @@ def doFromFile(uuid, key, fileName, appType, isCheckDiamond, isGetSecurityPacket
                                 appType, isInToRoom, openAJS)
             if sleepTime != 0:
                 time.sleep(sleepTime)
-
-
-def doFromFileSendGift(uuid, key, fileName, appType, sendUserId, sendType, sendName):
-    runCount = 0
-    try:
-        myclient = wda.USBClient(uuid, port=8100)
-    except:
-        os.system(
-            "/Users/jfx/Library/Python/3.9/bin/tidevice -u " + uuid + " kill com.facebook.WebDriverAgentLib.lizhengtest" + key + ".xctrunner")
-        os.system(
-            "/Users/jfx/Library/Python/3.9/bin/tidevice -u " + uuid + " launch com.facebook.WebDriverAgentLib.lizhengtest" + key + ".xctrunner")
-        myclient = wda.USBClient(uuid, port=8100)
-    init(myclient, appType, "false")
-    file_cm = codecs.open("../data/" + fileName + ".txt", 'r', "utf-8")
-    for line in file_cm:
-        print(line.split("----")[2])
-        try:
-            processSendGift(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
-                            sendUserId, sendType, sendName)
-        except:
-            init(myclient, appType, "false")
-            try:
-                processSendGift(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
-                                sendUserId, sendType, sendName)
-            except:
-                init(myclient, appType, "false")
-                processSendGift(myclient, line.split("----")[0], line.split("----")[1], line.split("----")[2],
-                                sendUserId, sendType, sendName)
