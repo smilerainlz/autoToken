@@ -62,9 +62,9 @@ def modifyPwd(client, password):
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Button[1]').click()
     time.sleep(1)
-    client.click(0.061, 0.61)
+    client.click(0.061, 0.061)
     time.sleep(1)
-    client.click(0.067, 0.91)
+    client.click(0.067, 0.091)
     time.sleep(1)
 
 
