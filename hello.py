@@ -41,6 +41,9 @@ def removeGZ(client):
 def modifyPwd(client, password):
     client(label="我的").click()
     time.sleep(1)
+    if client(label="选好了").exists:
+        client(label="选好了").click()
+    time.sleep(1)
     client.swipe(0.5, 0.8, 0.5, 0.5)
     time.sleep(1)
     client(label="安全中心").click()
