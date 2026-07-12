@@ -10,7 +10,7 @@ key = "5033"
 # hello.doAll(uuid, key)
 
 # 通过文件一个个登陆uuid, key, fileName, appType, isCheckDiamond, isGetSecurityPacket, sleepTime
-hello.doFromFile(uuid, key, "003", "hello", "false", 0, 300, "false", "false")
+hello.doFromFile(uuid, key, "003", "hello", "false", 0, 3000, "false", "true")
 
 # 送礼物uuid, key, fileName, appType, sendUserId, sendType, sendName
 # hello.doFromFileSendGift(uuid, key, "003", "hello", "49502575", "package", "初级水晶球")
