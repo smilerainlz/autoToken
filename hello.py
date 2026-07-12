@@ -57,10 +57,10 @@ def modifyPwd(client, password):
         password)
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]/SecureTextField[1]').set_text(
-        "lz456456$&@")
+        "qwer@@@1234")
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[4]/SecureTextField[1]').set_text(
-        "lz456456$&@")
+        "qwer@@@1234")
     time.sleep(1)
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Button[1]').click()
@@ -494,7 +494,7 @@ def process(client, username, password, loginType, isCheckDiamond, isGetSecurity
     if isInToRoom == "true":
         intoRoom(client)
     # addFirend(client)
-    # modifyPwd(client, password)
+    modifyPwd(client, password)
     # time.sleep(10)
     close(client, "true")
 
