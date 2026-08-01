@@ -495,7 +495,7 @@ def process(client, username, password, loginType, isCheckDiamond, isGetSecurity
         intoRoom(client)
     # addFirend(client)
     # modifyPwd(client, password)
-    # time.sleep(10)
+    time.sleep(5)
     close(client, "true")
 
 
