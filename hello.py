@@ -158,6 +158,28 @@ def close(client, isLogin):
         if client(label="选好了").exists:
             client(label="选好了").click()
         client.click(0.927, 0.088)
+
+        # 关闭消息通知
+        client(label="消息通知").click()
+        if client.xpath('//*[@label="friReqMsg.config"]/Switch[1]').value == 1:
+            client.xpath('//*[@label="friReqMsg.config"]/Switch[1]').click()
+        if client.xpath('//*[@label="specialFollowMsg.config"]/Switch[1]').value == 1:
+            client.xpath('//*[@label="specialFollowMsg.config"]/Switch[1]').click()
+        if client.xpath('//*[@label="intimateFriendMsg.config"]/Switch[1]').value == 1:
+            client.xpath('//*[@label="intimateFriendMsg.config"]/Switch[1]').click()
+        if client.xpath('//*[@label="normalFriendMsg.config"]/Switch[1]').value == 1:
+            client.xpath('//*[@label="normalFriendMsg.config"]/Switch[1]').click()
+        if client.xpath('//*[@label="heartSignalNotify.config"]/Switch[1]').value == 1:
+            client.xpath('//*[@label="heartSignalNotify.config"]/Switch[1]').click()
+        if client.xpath('//*[@label="helloNotifycation.config"]').value == 1:
+            client.xpath('//*[@label="helloNotifycation.config"]').click()
+        client.swipe(0.5, 0.8, 0.5, 0.5)
+        if client.xpath('//*[@label="nearByUserNoti.config"]/Switch[1]').value == 1:
+            client.xpath('//*[@label="nearByUserNoti.config"]/Switch[1]').click()
+        if client.xpath('//*[@label="allow_bigclient_notifycation.config"]/Switch[1]').value == 1:
+            client.xpath('//*[@label="allow_bigclient_notifycation.config"]/Switch[1]').click()
+        client.click(0.067, 0.054)
+
         client(label="退出当前帐号").click()
         if client(label="下次再说", timeout=1.0).exists:
             client.xpath('//Window[1]/Other[2]/Other[1]/Other[1]/Button[1]/StaticText[1]').click()
