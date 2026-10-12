@@ -74,6 +74,10 @@ def modifyPwd(client, password):
 def openAJSMethod(client, appType):
     client.session().app_activate("com.aijiasuinc.AiJiaSuClient")
     time.sleep(3)
+    if client(label="取消").exists:
+        client(label="取消").click()
+    if client(label="确认").exists:
+        client(label="确认").click()
     if client(label="home btn connect nor").exists:
         client(label="home btn connect nor").click()
         time.sleep(3)
@@ -91,6 +95,10 @@ def openAJSMethod(client, appType):
 def closeAJSMethod(client, appType):
     client.session().app_activate("com.aijiasuinc.AiJiaSuClient")
     time.sleep(3)
+    if client(label="取消").exists:
+        client(label="取消").click()
+    if client(label="确认").exists:
+        client(label="确认").click()
     if client(label="home btn connect sus").exists:
         client(label="home btn connect sus").click()
         time.sleep(3)
