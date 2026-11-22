@@ -561,7 +561,7 @@ def process(client, username, password, loginType, isCheckDiamond, isGetSecurity
     if isInToRoom == "true":
         intoRoom(client)
     # addFirend(client)
-    modifyPwd(client, username, password, generate_password())
+    # modifyPwd(client, username, password, generate_password())
     # time.sleep(5)
     close(client, "true")
 
