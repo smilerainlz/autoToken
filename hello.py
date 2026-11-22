@@ -1,4 +1,39 @@
+import logging
+from logging.handlers import RotatingFileHandler
+import secrets
+import string
 import time, wda, os, codecs
+
+
+def setup_logger(log_file="password_generator.log"):
+    """配置日志：输出到文件 + 控制台，自动轮转"""
+    logger = logging.getLogger("PasswordGen")
+    logger.setLevel(logging.DEBUG)
+
+    # 防止重复添加 handler
+    if logger.handlers:
+        return logger
+
+    formatter = logging.Formatter(
+        fmt="%(asctime)s | %(levelname)-8s | %(message)s",
+        datefmt="%Y-%m-%d %H:%M:%S",
+    )
+
+    # 文件处理器：单文件最大 1MB，保留 3 个备份
+    file_handler = RotatingFileHandler(
+        log_file, maxBytes=1_000_000, backupCount=3, encoding="utf-8"
+    )
+    file_handler.setLevel(logging.DEBUG)
+    file_handler.setFormatter(formatter)
+
+    # 控制台处理器
+    console_handler = logging.StreamHandler()
+    console_handler.setLevel(logging.INFO)
+    console_handler.setFormatter(formatter)
+
+    logger.addHandler(file_handler)
+    logger.addHandler(console_handler)
+    return logger
 
 
 def addFirend(client):
@@ -38,7 +73,7 @@ def removeGZ(client):
         client.xpath('//Window[1]/Other[2]/Other[2]/Button[3]/StaticText[1]').click()
 
 
-def modifyPwd(client, password):
+def modifyPwd(client, username, password, newpassword):
     client(label="我的").click()
     time.sleep(1)
     if client(label="选好了").exists:
@@ -57,13 +92,15 @@ def modifyPwd(client, password):
         password)
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[2]/SecureTextField[1]').set_text(
-        "qwer@@@1234")
+        newpassword)
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[4]/SecureTextField[1]').set_text(
-        "qwer@@@1234")
+        newpassword)
     time.sleep(1)
     client.xpath(
         '//Window[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Other[1]/Button[1]').click()
+    logger = setup_logger("Log.log")
+    logger.info(username + "----" + newpassword + "----username----")
     time.sleep(1)
     client.click(0.061, 0.061)
     time.sleep(1)
@@ -524,9 +561,26 @@ def process(client, username, password, loginType, isCheckDiamond, isGetSecurity
     if isInToRoom == "true":
         intoRoom(client)
     # addFirend(client)
-    # modifyPwd(client, password)
+    modifyPwd(client, username, password, generate_password())
     # time.sleep(5)
     close(client, "true")
+
+
+def generate_password():
+    digits = string.digits
+    letters = string.ascii_letters
+    special = "!@#$%^&*=+"
+    all_chars = digits + letters + special
+
+    def has_all_types(pwd):
+        return (any(c in digits for c in pwd)
+                and any(c in letters for c in pwd)
+                and any(c in special for c in pwd))
+
+    while True:
+        pwd = ''.join(secrets.choice(all_chars) for _ in range(8))
+        if has_all_types(pwd):
+            return pwd
 
 
 def doFromFile(uuid, key, fileName, appType, isCheckDiamond, isGetSecurityPacket, sleepTime, isInToRoom, openAJS):
